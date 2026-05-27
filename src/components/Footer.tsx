@@ -174,10 +174,10 @@ export default function Footer() {
                 +52 55 8404 6430
               </a>
               <a
-                href="mailto:hola@conzultacrm.com"
+                href="mailto:info@conzultacrm.com"
                 className="text-neutral-400 text-sm hover:text-white transition-colors block"
               >
-                hola@conzultacrm.com
+                info@conzultacrm.com
               </a>
             </div>
           </div>

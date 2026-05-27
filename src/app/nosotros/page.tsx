@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Nosotros — ConZultaCRM",
@@ -41,37 +42,66 @@ const certifications = [
   { name: "Zoho Analytics Professional", desc: "Business Intelligence y reportería" },
 ];
 
+function NosotrosDecorativeCard() {
+  return (
+    <div className="relative w-72">
+      {/* Main card */}
+      <div
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
+        style={{ animation: "float 6s ease-in-out infinite" }}
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+            🏆
+          </div>
+          <div>
+            <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
+              Zoho Authorized Partner
+            </p>
+            <p className="text-blue-200 text-xs">México & LATAM</p>
+          </div>
+        </div>
+        <div className="space-y-2.5">
+          {[
+            { label: "Empresas implementadas", value: "50+", color: "#60A5FA" },
+            { label: "Satisfacción del cliente", value: "97%", color: "#34D399" },
+            { label: "Tiempo promedio go-live", value: "8 sem", color: "#A78BFA" },
+          ].map((s) => (
+            <div key={s.label} className="flex items-center justify-between">
+              <span className="text-blue-200 text-xs">{s.label}</span>
+              <span className="font-bold text-sm" style={{ color: s.color }}>
+                {s.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Floating certification badge */}
+      <div
+        className="absolute -bottom-4 -right-4 bg-white rounded-xl px-3 py-2 shadow-lg flex items-center gap-2"
+        style={{ animation: "float 8s ease-in-out infinite 1s" }}
+      >
+        <span className="text-lg">✅</span>
+        <span className="text-xs font-bold text-neutral-800">Certificados</span>
+      </div>
+    </div>
+  );
+}
+
 export default function NosotrosPage() {
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="badge badge-white mb-6">Nuestra historia</span>
-          <h1
-            className="text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
+      <AnimatedPageHero
+        badge="Nuestra historia"
+        title={
+          <>
             El equipo detrás de{" "}
             <span className="gradient-text-light">ConZultaCRM</span>
-          </h1>
-          <p className="text-blue-100 text-xl max-w-2xl mx-auto">
-            Somos un equipo de especialistas en Zoho CRM apasionados por ayudar
-            a empresas mexicanas a crecer con tecnología de clase mundial.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description="Somos un equipo de especialistas en Zoho CRM apasionados por ayudar a empresas mexicanas a crecer con tecnología de clase mundial."
+        decorative={<NosotrosDecorativeCard />}
+      />
 
       {/* Mission & Vision */}
       <section className="section-padding bg-white">

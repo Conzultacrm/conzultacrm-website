@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Servicios — ConZultaCRM",
@@ -93,37 +94,71 @@ const services = [
   },
 ];
 
+function ServiciosDecorativeCard() {
+  const steps = [
+    { n: "01", label: "Diagnóstico", color: "#60A5FA" },
+    { n: "02", label: "Implementación", color: "#A78BFA" },
+    { n: "03", label: "Capacitación", color: "#34D399" },
+    { n: "04", label: "Soporte continuo", color: "#F9A8D4" },
+  ];
+  return (
+    <div className="relative w-72">
+      <div
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
+        style={{ animation: "float 7s ease-in-out infinite" }}
+      >
+        <p className="text-blue-200 text-xs font-bold uppercase tracking-wider mb-4">
+          Tu ruta de implementación
+        </p>
+        <div className="space-y-3">
+          {steps.map((s, i) => (
+            <div key={s.n} className="flex items-center gap-3">
+              <div
+                className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                style={{ background: s.color + "40", border: `1.5px solid ${s.color}` }}
+              >
+                {s.n}
+              </div>
+              <div className="flex-1">
+                <div className="h-px mb-1" style={{ background: s.color + "50" }} />
+                <p className="text-white text-sm font-medium">{s.label}</p>
+              </div>
+              {i < steps.length - 1 && (
+                <span className="text-blue-300 text-xs">→</span>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 pt-3 border-t border-white/10">
+          <p className="text-blue-200 text-xs text-center">
+            ⏱ 4–8 semanas hasta producción
+          </p>
+        </div>
+      </div>
+      <div
+        className="absolute -top-3 -right-3 bg-emerald-400 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
+        style={{ animation: "float 5s ease-in-out infinite 0.5s" }}
+      >
+        Go-live garantizado
+      </div>
+    </div>
+  );
+}
+
 export default function ServiciosPage() {
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="badge badge-white mb-6">Nuestros servicios</span>
-          <h1
-            className="text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
+      <AnimatedPageHero
+        badge="Nuestros servicios"
+        title={
+          <>
             Todo lo que necesitas para{" "}
             <span className="gradient-text-light">aprovechar Zoho al máximo</span>
-          </h1>
-          <p className="text-blue-100 text-xl max-w-2xl mx-auto">
-            Desde la implementación inicial hasta el soporte continuo, te acompañamos
-            en cada etapa de tu transformación digital con Zoho CRM Plus.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description="Desde la implementación inicial hasta el soporte continuo, te acompañamos en cada etapa de tu transformación digital con Zoho CRM Plus."
+        decorative={<ServiciosDecorativeCard />}
+      />
 
       {/* Services */}
       <section className="section-padding bg-white">

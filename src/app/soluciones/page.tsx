@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Soluciones Zoho CRM Plus — ConZultaCRM",
@@ -103,38 +104,63 @@ const solutions = [
   },
 ];
 
+function SolucionesDecorativeCard() {
+  const sectors = [
+    { icon: "🏢", label: "Inmobiliaria", color: "#60A5FA" },
+    { icon: "🏗️", label: "Construcción", color: "#A78BFA" },
+    { icon: "⚙️", label: "Maquinaria", color: "#22D3EE" },
+    { icon: "🛍️", label: "Retail", color: "#34D399" },
+    { icon: "🌐", label: "CRM Plus", color: "#F9A8D4" },
+  ];
+  return (
+    <div className="relative w-72">
+      <div
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
+        style={{ animation: "float 8s ease-in-out infinite" }}
+      >
+        <p className="text-blue-200 text-xs font-bold uppercase tracking-wider mb-4">
+          Industrias que atendemos
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          {sectors.map((s) => (
+            <div
+              key={s.label}
+              className="flex items-center gap-2 px-2.5 py-2 rounded-xl"
+              style={{ background: s.color + "15", border: `1px solid ${s.color}30` }}
+            >
+              <span className="text-base">{s.icon}</span>
+              <span className="text-white text-xs font-medium">{s.label}</span>
+            </div>
+          ))}
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+            <span className="text-base">➕</span>
+            <span className="text-blue-200 text-xs">Tu sector</span>
+          </div>
+        </div>
+        <div className="mt-4 pt-3 border-t border-white/10">
+          <p className="text-blue-200 text-xs text-center">
+            Configuración 100% personalizada
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SolucionesPage() {
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-32 overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="badge badge-white mb-6">Soluciones por industria</span>
-          <h1
-            className="text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
+      <AnimatedPageHero
+        badge="Soluciones por industria"
+        title={
+          <>
             Zoho CRM Plus adaptado{" "}
             <span className="gradient-text-light">a tu sector</span>
-          </h1>
-          <p className="text-blue-100 text-xl max-w-2xl mx-auto">
-            Cada industria tiene procesos únicos. Implementamos Zoho CRM Plus
-            con configuraciones especializadas para que tu equipo opere
-            con máxima eficiencia desde el primer día.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description="Cada industria tiene procesos únicos. Implementamos Zoho CRM Plus con configuraciones especializadas para que tu equipo opere con máxima eficiencia desde el primer día."
+        decorative={<SolucionesDecorativeCard />}
+      />
 
       {/* Solutions */}
       <section className="section-padding bg-white">

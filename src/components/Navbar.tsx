@@ -43,27 +43,37 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[70px]">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
-            {transparent ? (
+          {/* Logo + Zoho Partner co-branding lockup */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Image
+              src={transparent ? "/logos/logo-horizontal-white.png" : "/logos/logo-horizontal.png"}
+              alt="ConZultaCRM"
+              width={200}
+              height={52}
+              className="h-11 w-auto"
+              priority
+            />
+            <div
+              className={`hidden sm:block h-6 w-px transition-colors duration-400 ${
+                transparent ? "bg-white/25" : "bg-neutral-200"
+              }`}
+            />
+            <div
+              className={`hidden sm:block rounded-lg px-2 py-1 transition-all duration-400 ${
+                transparent
+                  ? "bg-white/10 backdrop-blur-sm"
+                  : "bg-white border border-neutral-200 shadow-sm"
+              }`}
+            >
               <Image
-                src="/logos/logo-horizontal-white.png"
-                alt="ConZultaCRM"
-                width={200}
-                height={52}
-                className="h-9 w-auto"
+                src="/logos/zoho-partner.png"
+                alt="Zoho Authorized Partner"
+                width={90}
+                height={32}
+                className="h-6 w-auto"
                 priority
               />
-            ) : (
-              <Image
-                src="/logos/logo-horizontal.png"
-                alt="ConZultaCRM"
-                width={200}
-                height={52}
-                className="h-9 w-auto"
-                priority
-              />
-            )}
+            </div>
           </Link>
 
           {/* Desktop Nav */}

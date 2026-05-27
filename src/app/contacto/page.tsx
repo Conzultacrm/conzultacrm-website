@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Contacto — ConZultaCRM",
@@ -35,46 +36,70 @@ const contactOptions = [
   {
     icon: "✉️",
     title: "Correo electrónico",
-    desc: "Escríbenos a hola@conzultacrm.com. Respuesta garantizada en menos de 24 horas.",
+    desc: "Escríbenos a info@conzultacrm.com. Respuesta garantizada en menos de 24 horas.",
     action: "Enviar email",
-    href: "mailto:hola@conzultacrm.com",
+    href: "mailto:info@conzultacrm.com",
     color: "#7C3AED",
     external: false,
   },
 ];
 
+function ContactoDecorativeCard() {
+  return (
+    <div className="relative w-72">
+      <div
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6"
+        style={{ animation: "float 7s ease-in-out infinite" }}
+      >
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <p className="text-emerald-300 text-xs font-semibold">Disponibles ahora</p>
+        </div>
+        <div className="space-y-3">
+          {[
+            { icon: "💬", channel: "WhatsApp", status: "Respuesta inmediata" },
+            { icon: "📅", channel: "Videollamada", status: "Agendar 30 min" },
+            { icon: "✉️", channel: "Email", status: "< 2 horas hábiles" },
+          ].map((c) => (
+            <div
+              key={c.channel}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-xl"
+              style={{ background: "rgba(255,255,255,0.08)" }}
+            >
+              <span className="text-xl">{c.icon}</span>
+              <div>
+                <p className="text-white text-sm font-semibold">{c.channel}</p>
+                <p className="text-blue-200 text-xs">{c.status}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className="absolute -bottom-3 left-4 bg-white text-xs font-bold text-neutral-800 px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5"
+        style={{ animation: "float 9s ease-in-out infinite 1.5s" }}
+      >
+        <span className="text-base">🎯</span> Demo gratis, sin compromiso
+      </div>
+    </div>
+  );
+}
+
 export default function ContactoPage() {
   return (
     <div className="pt-16">
-      {/* Hero */}
-      <section
-        className="relative py-24 lg:py-28 overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="badge badge-white mb-6">Hablemos</span>
-          <h1
-            className="text-4xl lg:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
+      <AnimatedPageHero
+        badge="Hablemos"
+        title={
+          <>
             ¿Listo para transformar
             <br />
             <span className="gradient-text-light">tu operación comercial?</span>
-          </h1>
-          <p className="text-blue-100 text-xl max-w-2xl mx-auto">
-            Agenda una demo gratuita de 30 minutos. Sin presión, sin compromiso.
-            Te mostramos cómo Zoho CRM Plus puede funcionar específicamente para tu empresa.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description="Agenda una demo gratuita de 30 minutos. Sin presión, sin compromiso. Te mostramos cómo Zoho CRM Plus puede funcionar específicamente para tu empresa."
+        decorative={<ContactoDecorativeCard />}
+      />
 
       {/* Contact options */}
       <section className="py-14 bg-white border-b border-neutral-100">
