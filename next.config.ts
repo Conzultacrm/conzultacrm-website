@@ -9,8 +9,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Optimize fonts loading
-  optimizeFonts: true,
 };
 
 export default nextConfig;
