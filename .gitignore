@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.localized
+
+# Claude Code
+.claude/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+.next/
+out/
+
+# Env
+.env
+.env.local
+.env*.local
