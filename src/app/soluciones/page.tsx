@@ -5,7 +5,7 @@ import AnimatedPageHero from "@/components/AnimatedPageHero";
 export const metadata: Metadata = {
   title: "Soluciones Zoho CRM Plus — ConZultaCRM",
   description:
-    "Implementaciones de Zoho CRM Plus para inmobiliarias, construcción, maquinaria, retail y PyMEs en México. Soluciones CRM diseñadas para cada industria.",
+    "Implementamos Zoho CRM Plus para cualquier industria: inmobiliarias, salud, distribución, construcción, servicios y más. Si tienes un proceso comercial, podemos transformarlo.",
 };
 
 const WA_URL =
@@ -102,15 +102,52 @@ const solutions = [
     color: "#10B981",
     highlight: false,
   },
+  {
+    id: "salud",
+    icon: "🏥",
+    sector: "Salud & Clínicas",
+    title: "CRM para el Sector Salud",
+    description:
+      "Gestiona el ciclo completo de atención: captación de pacientes, agenda de citas, seguimiento post-consulta y fidelización a largo plazo, todo cumpliendo con las normas de privacidad.",
+    benefits: [
+      "Captación y seguimiento de pacientes",
+      "Agenda y recordatorios automáticos de citas",
+      "Historial de interacciones y preferencias",
+      "Campañas de salud preventiva segmentadas",
+      "Medición de satisfacción (NPS / CSAT)",
+      "Coordinación entre clínicas y especialistas",
+    ],
+    color: "#EF4444",
+    highlight: false,
+  },
+  {
+    id: "distribucion",
+    icon: "📦",
+    sector: "Distribución & Logística",
+    title: "CRM para Distribuidoras y Comercializadoras",
+    description:
+      "Administra tu red de distribuidores, controla pedidos, da seguimiento a cobranza y gestiona catálogos extensos con automatizaciones que eliminan el trabajo manual repetitivo.",
+    benefits: [
+      "Gestión de red de distribuidores y agentes",
+      "Seguimiento completo de pedidos y entregas",
+      "Automatización de cobranza y recordatorios",
+      "Cotización rápida desde catálogos masivos",
+      "Integración con ERP y sistemas de facturación",
+      "Dashboards de rotación y rendimiento por zona",
+    ],
+    color: "#F59E0B",
+    highlight: false,
+  },
 ];
 
 function SolucionesDecorativeCard() {
   const sectors = [
     { icon: "🏢", label: "Inmobiliaria", color: "#60A5FA" },
     { icon: "🏗️", label: "Construcción", color: "#A78BFA" },
-    { icon: "⚙️", label: "Maquinaria", color: "#22D3EE" },
-    { icon: "🛍️", label: "Retail", color: "#34D399" },
-    { icon: "🌐", label: "CRM Plus", color: "#F9A8D4" },
+    { icon: "🏥", label: "Salud", color: "#F9A8D4" },
+    { icon: "📦", label: "Distribución", color: "#34D399" },
+    { icon: "🛍️", label: "Retail", color: "#22D3EE" },
+    { icon: "⚙️", label: "Maquinaria", color: "#FCD34D" },
   ];
   return (
     <div className="relative w-72">
@@ -119,7 +156,7 @@ function SolucionesDecorativeCard() {
         style={{ animation: "float 8s ease-in-out infinite" }}
       >
         <p className="text-blue-200 text-xs font-bold uppercase tracking-wider mb-4">
-          Industrias que atendemos
+          Industrias donde operamos
         </p>
         <div className="grid grid-cols-2 gap-2">
           {sectors.map((s) => (
@@ -132,14 +169,14 @@ function SolucionesDecorativeCard() {
               <span className="text-white text-xs font-medium">{s.label}</span>
             </div>
           ))}
-          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
-            <span className="text-base">➕</span>
-            <span className="text-blue-200 text-xs">Tu sector</span>
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl col-span-2" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+            <span className="text-base">🌐</span>
+            <span className="text-blue-200 text-xs">+ Salud, Servicios, Tecnología y más</span>
           </div>
         </div>
         <div className="mt-4 pt-3 border-t border-white/10">
           <p className="text-blue-200 text-xs text-center">
-            Configuración 100% personalizada
+            Si hay proceso comercial, lo implementamos
           </p>
         </div>
       </div>
@@ -156,10 +193,10 @@ export default function SolucionesPage() {
         title={
           <>
             Zoho CRM Plus adaptado{" "}
-            <span className="gradient-text-light gu-rose">a tu sector</span>
+            <span className="gradient-text-light gu-rose">a tu negocio</span>
           </>
         }
-        description="Cada industria tiene procesos únicos. Implementamos Zoho CRM Plus con configuraciones especializadas para que tu equipo opere con máxima eficiencia desde el primer día."
+        description="No importa tu industria — si tienes un proceso de ventas, clientes que gestionar o equipos que coordinar, implementamos Zoho CRM Plus a tu medida. Sin configuraciones genéricas."
         decorative={<SolucionesDecorativeCard />}
       />
 
@@ -270,12 +307,13 @@ export default function SolucionesPage() {
             className="text-3xl font-bold text-neutral-900 mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            ¿Tu industria no está en la lista?
+            ¿Tu industria no aparece aquí?
           </h2>
           <p className="text-neutral-500 mb-8">
-            Trabajamos con cualquier empresa que tenga un proceso comercial.
-            Hacemos el diagnóstico y te decimos cómo Zoho CRM Plus puede
-            funcionar específicamente para tu negocio.
+            Estas son las verticales donde más experiencia tenemos, pero no las
+            únicas. Si tu empresa tiene clientes, un proceso de venta o equipos
+            que coordinar, implementamos Zoho CRM Plus a tu medida.
+            Diagnóstico sin costo, sin compromiso.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/contacto" className="btn-primary">
