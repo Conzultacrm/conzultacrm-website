@@ -367,7 +367,7 @@
   .gu-violet, .gu-cyan, .gu-rose, .gu-blue, .gu-violet-d, .gu-blue-d {
     display: inline;
     border-radius: 4px;
-    padding: 1px 8px 2px;
+    padding: 0 8px 2px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
@@ -456,6 +456,9 @@
 
 .animate-marquee { animation: marquee 20s linear infinite; }
 .animate-marquee:hover { animation-play-state: paused; }
+@media (max-width: 767px) {
+  .animate-marquee { animation-duration: 10s; }
+}
 
 /* Hero floating shapes */
 @keyframes drift-1 {
