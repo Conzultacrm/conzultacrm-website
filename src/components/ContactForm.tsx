@@ -213,8 +213,8 @@ export default function ContactForm() {
   // ── Success ──────────────────────────────────────────────────────────
   if (status === "success") {
     return (
-      <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
-        <div className="px-8 py-14 text-center">
+      <div className="w-full bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
+        <div className="px-4 sm:px-8 py-14 text-center">
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
             style={{
@@ -265,7 +265,7 @@ export default function ContactForm() {
             <WhatsAppIcon className="w-4 h-4" />
             También escríbenos por WhatsApp
           </a>
-          <p className="mt-6 text-xs text-neutral-400">
+          <p className="mt-6 text-xs text-neutral-400 break-all">
             Recibirás una confirmación en{" "}
             <strong className="text-neutral-500">{form.email}</strong>
           </p>
