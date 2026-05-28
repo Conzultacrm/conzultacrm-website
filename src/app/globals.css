@@ -364,8 +364,8 @@
   /* Geometría compartida */
   .gu-violet, .gu-cyan, .gu-rose, .gu-blue, .gu-violet-d, .gu-blue-d {
     display: inline;
-    border-radius: 5px;
-    padding: 0 9px 4px;
+    border-radius: 4px;
+    padding: 0 5px 2px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
@@ -374,7 +374,7 @@
   .gu-violet.gradient-text-light {
     background:
       linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(109,40,217,0.62), rgba(109,40,217,0.62));
+      linear-gradient(rgba(109,40,217,0.72), rgba(109,40,217,0.72));
     -webkit-background-clip: text, padding-box;
     background-clip:         text, padding-box;
     -webkit-text-fill-color: transparent;
@@ -382,7 +382,7 @@
   .gu-cyan.gradient-text-light {
     background:
       linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(8,145,178,0.60), rgba(8,145,178,0.60));
+      linear-gradient(rgba(8,145,178,0.70), rgba(8,145,178,0.70));
     -webkit-background-clip: text, padding-box;
     background-clip:         text, padding-box;
     -webkit-text-fill-color: transparent;
@@ -390,7 +390,7 @@
   .gu-rose.gradient-text-light {
     background:
       linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(219,39,119,0.60), rgba(219,39,119,0.60));
+      linear-gradient(rgba(219,39,119,0.70), rgba(219,39,119,0.70));
     -webkit-background-clip: text, padding-box;
     background-clip:         text, padding-box;
     -webkit-text-fill-color: transparent;
@@ -399,7 +399,7 @@
   .gu-blue.gradient-text-light {
     background:
       linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(6,182,212,0.60), rgba(6,182,212,0.60));
+      linear-gradient(rgba(6,182,212,0.70), rgba(6,182,212,0.70));
     -webkit-background-clip: text, padding-box;
     background-clip:         text, padding-box;
     -webkit-text-fill-color: transparent;
