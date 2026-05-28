@@ -36,10 +36,10 @@ const values = [
 ];
 
 const certifications = [
-  { name: "Zoho Authorized Partner", desc: "Partner oficial de Zoho Corporation en México" },
-  { name: "Zoho CRM Plus Expert", desc: "Especialización en el ecosistema completo" },
-  { name: "Zoho Desk Certified", desc: "Implementación de servicio al cliente" },
-  { name: "Zoho Analytics Professional", desc: "Business Intelligence y reportería" },
+  { name: "Zoho Authorized Partner", desc: "Acceso oficial como partner en México y LATAM" },
+  { name: "Zoho CRM Plus Specialist", desc: "Especialistas en el ecosistema CRM Plus completo" },
+  { name: "Zoho Desk Consultant", desc: "Consultores especializados en servicio al cliente" },
+  { name: "Zoho Analytics Consultant", desc: "Expertos en Business Intelligence y reportería" },
 ];
 
 function NosotrosDecorativeCard() {
@@ -92,6 +92,7 @@ export default function NosotrosPage() {
   return (
     <div className="pt-16">
       <AnimatedPageHero
+        theme="rose"
         badge="Nuestra historia"
         title={
           <>
@@ -203,15 +204,15 @@ export default function NosotrosPage() {
       <section className="section-padding bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="section-label mb-3">Credenciales</p>
+            <p className="section-label mb-3">Equipo</p>
             <h2
               className="text-3xl font-bold text-neutral-900 mb-4"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Certificaciones Zoho oficiales
+              Especialidades de nuestro equipo
             </h2>
             <p className="text-neutral-500">
-              Nuestras certificaciones garantizan que recibes implementación al más alto estándar de calidad Zoho.
+              Nuestros consultores cuentan con certificaciones individuales de Zoho Corporation que garantizan implementaciones al más alto estándar.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">

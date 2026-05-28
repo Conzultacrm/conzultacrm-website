@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
@@ -149,6 +150,7 @@ export default function ServiciosPage() {
   return (
     <div className="pt-16">
       <AnimatedPageHero
+        theme="teal"
         badge="Nuestros servicios"
         title={
           <>
@@ -269,6 +271,213 @@ export default function ServiciosPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GoTo Connect ── */}
+      <section id="goto-connect" className="section-padding bg-neutral-50 border-t border-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
+            {/* Content */}
+            <div>
+              <div className="mb-5">
+                <Image
+                  src="/logos/goto-logo.svg"
+                  alt="GoTo Connect"
+                  width={160}
+                  height={44}
+                  className="h-10 w-auto"
+                />
+              </div>
+              <span className="badge badge-blue mb-3 inline-block">Telefonía en la nube</span>
+              <h2
+                className="text-3xl font-bold text-neutral-900 mb-4"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                GoTo Connect: Comunicación{" "}
+                <span className="gradient-text">unificada para tu empresa</span>
+              </h2>
+              <p className="text-neutral-500 text-lg leading-relaxed mb-6">
+                Reemplaza tu central telefónica con una solución de telefonía en la
+                nube que integra llamadas, videollamadas y mensajería en equipo.
+                Se conecta de forma nativa con Zoho CRM para registrar llamadas
+                automáticamente, sincronizar contactos y hacer click-to-dial desde
+                el CRM.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Sistema telefónico VoIP para toda la empresa",
+                  "Videollamadas y reuniones virtuales integradas",
+                  "Mensajería en equipo y chat interno",
+                  "Integración nativa con Zoho CRM",
+                  "Grabación de llamadas y reportes de actividad",
+                  "App móvil para equipos en campo",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-neutral-600 text-sm">
+                    <span className="w-5 h-5 rounded-full bg-[#ED6C2B]/15 border border-[#ED6C2B]/30 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-[#ED6C2B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-3">
+                <Link href="/contacto" className="btn-primary text-sm">
+                  Consultar solución GoTo
+                </Link>
+                <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            {/* Feature card */}
+            <div className="bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm">
+              <p
+                className="text-sm font-bold text-neutral-700 mb-6 uppercase tracking-wider"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Comunicación unificada: todo en uno
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: "📞", title: "Telefonía VoIP", desc: "Extensiones, IVR, cola de llamadas y más sin hardware costoso" },
+                  { icon: "🎥", title: "Video & Reuniones", desc: "Videollamadas HD con pantalla compartida para hasta 250 participantes" },
+                  { icon: "💬", title: "Mensajería de Equipo", desc: "Chat interno, canales por área y mensajes directos" },
+                  { icon: "🔗", title: "Integrado con Zoho", desc: "Registro automático de llamadas, click-to-dial y sync de contactos" },
+                ].map((feat) => (
+                  <div
+                    key={feat.title}
+                    className="p-4 rounded-xl bg-neutral-50 border border-neutral-100"
+                  >
+                    <div className="text-2xl mb-2">{feat.icon}</div>
+                    <p className="font-bold text-neutral-900 text-sm mb-1" style={{ fontFamily: "var(--font-syne)" }}>
+                      {feat.title}
+                    </p>
+                    <p className="text-neutral-500 text-xs leading-relaxed">{feat.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Peaking.ai ── */}
+      <section id="peaking-ai" className="section-padding bg-white border-t border-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
+            {/* Decorative card */}
+            <div
+              className="relative rounded-2xl p-8 overflow-hidden hidden lg:block"
+              style={{ background: "linear-gradient(135deg, #1A0A0A 0%, #7B1A1A 50%, #C0392B 100%)" }}
+            >
+              {/* Background orb */}
+              <div
+                className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20"
+                style={{ background: "radial-gradient(circle, #FF6B35, transparent 70%)" }}
+              />
+              <div className="relative">
+                <Image
+                  src="/logos/peaking-logo.png"
+                  alt="Peaking.ai"
+                  width={160}
+                  height={44}
+                  className="h-10 w-auto mb-6 brightness-0 invert"
+                />
+                <p
+                  className="text-3xl font-bold text-white mb-3 leading-tight"
+                  style={{ fontFamily: "var(--font-syne)" }}
+                >
+                  Miles de productos.
+                  <br />
+                  <span className="text-orange-300">Vendidos y cobrados.</span>
+                </p>
+                <p className="text-red-200 text-sm leading-relaxed mb-6">
+                  El agente de ventas con IA diseñado específicamente para
+                  distribuidores industriales en Latinoamérica.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Cotización IA", "Quote-to-Cash", "Catálogos masivos", "LatAm"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full text-xs font-semibold text-white"
+                      style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div>
+              <div className="mb-5">
+                <Image
+                  src="/logos/peaking-logo.png"
+                  alt="Peaking.ai"
+                  width={140}
+                  height={40}
+                  className="h-9 w-auto"
+                />
+              </div>
+              <span className="badge badge-blue mb-3 inline-block">Distribuidores industriales</span>
+              <h2
+                className="text-3xl font-bold text-neutral-900 mb-4"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Peaking.ai — Agente de ventas{" "}
+                <span className="gradient-text">con IA para distribuidores</span>
+              </h2>
+              <p className="text-neutral-500 text-lg leading-relaxed mb-4">
+                Peaking.ai es el agente de ventas inteligente creado para
+                distribuidores industriales en Latinoamérica. Automatiza el proceso
+                completo de cotización a cobranza con IA, permitiendo a tu equipo
+                vender cientos de productos sin esfuerzo manual.
+              </p>
+              <p className="text-neutral-500 leading-relaxed mb-6">
+                Ofrecemos consultoría e implementación de Peaking.ai para empresas
+                que distribuyen maquinaria, refacciones, materiales industriales y
+                otros productos de catálogo extenso.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Cotización automática desde catálogos de miles de SKUs",
+                  "Automatización del flujo quote-to-cash",
+                  "Cobranza inteligente y seguimiento de pagos",
+                  "Integración con sistemas ERP y CRM",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-neutral-600 text-sm">
+                    <span
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: "#C0392B20", border: "1px solid #C0392B30" }}
+                    >
+                      <svg className="w-3 h-3" style={{ color: "#C0392B" }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-3">
+                <Link href="/contacto" className="btn-primary text-sm">
+                  Consultar implementación
+                </Link>
+                <a
+                  href="https://www.peaking.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline text-sm"
+                >
+                  Ver Peaking.ai →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

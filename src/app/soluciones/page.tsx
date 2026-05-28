@@ -151,6 +151,7 @@ export default function SolucionesPage() {
   return (
     <div className="pt-16">
       <AnimatedPageHero
+        theme="violet"
         badge="Soluciones por industria"
         title={
           <>
@@ -260,18 +261,18 @@ export default function SolucionesPage() {
       </section>
 
       {/* CTA */}
-      <section
-        className="py-20 px-4"
-        style={{ background: "linear-gradient(135deg, #001A4D 0%, #004AC6 50%, #4C1D95 100%)" }}
-      >
+      <section className="py-20 px-4 bg-white border-t border-neutral-100">
         <div className="max-w-2xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <span className="badge badge-blue">Diagnóstico sin costo</span>
+          </div>
           <h2
-            className="text-3xl font-bold text-white mb-4"
+            className="text-3xl font-bold text-neutral-900 mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
           >
             ¿Tu industria no está en la lista?
           </h2>
-          <p className="text-blue-100 mb-8">
+          <p className="text-neutral-500 mb-8">
             Trabajamos con cualquier empresa que tenga un proceso comercial.
             Hacemos el diagnóstico y te decimos cómo Zoho CRM Plus puede
             funcionar específicamente para tu negocio.
@@ -284,7 +285,7 @@ export default function SolucionesPage() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost"
+              className="btn-outline"
             >
               Preguntar por WhatsApp
             </a>

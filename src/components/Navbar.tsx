@@ -46,11 +46,11 @@ export default function Navbar() {
           {/* Logo + Zoho Partner co-branding lockup */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
-              src={transparent ? "/logos/logo-horizontal-white.png" : "/logos/logo-horizontal.png"}
+              src={transparent ? "/logos/logo-blanco.svg" : "/logos/logo-horizontal.png"}
               alt="ConZultaCRM"
-              width={200}
-              height={52}
-              className="h-11 w-auto"
+              width={220}
+              height={56}
+              className="h-12 w-auto"
               priority
             />
             <div
@@ -84,14 +84,14 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                  className={`relative px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
                     active
                       ? transparent
-                        ? "text-white bg-white/15"
-                        : "text-[#004AC6] bg-blue-50"
+                        ? "text-white after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:rounded-full after:bg-white/70"
+                        : "text-[#004AC6] after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:rounded-full after:bg-gradient-to-r after:from-[#004AC6] after:to-[#7C3AED]"
                       : transparent
-                      ? "text-white/85 hover:text-white hover:bg-white/10"
-                      : "text-neutral-700 hover:text-[#004AC6] hover:bg-neutral-100/80"
+                      ? "text-white/80 hover:text-white hover:bg-white/10 rounded-lg"
+                      : "text-neutral-600 hover:text-[#004AC6] hover:bg-neutral-100/80 rounded-lg"
                   }`}
                   style={{ fontFamily: "var(--font-syne)" }}
                 >

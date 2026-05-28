@@ -66,11 +66,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-5">
               <Image
-                src="/logos/logo-horizontal-white.png"
+                src="/logos/logo-blanco.svg"
                 alt="ConZultaCRM"
-                width={180}
-                height={46}
-                className="h-9 w-auto"
+                width={200}
+                height={52}
+                className="h-10 w-auto brightness-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.12)]"
               />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
@@ -192,7 +192,7 @@ export default function Footer() {
             México · Operación 100% Remota · LATAM
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/contacto" className="text-neutral-600 text-xs hover:text-neutral-300 transition-colors">
+            <Link href="/aviso-privacidad" className="text-neutral-600 text-xs hover:text-neutral-300 transition-colors">
               Privacidad
             </Link>
             <Link href="/contacto" className="text-neutral-600 text-xs hover:text-neutral-300 transition-colors">

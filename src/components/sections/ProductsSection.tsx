@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const products = [
   {
     name: "Zoho CRM",
@@ -6,7 +9,8 @@ const products = [
       "Gestiona todo tu pipeline de ventas, clientes potenciales y oportunidades en un solo lugar. Con automatizaciones inteligentes, tu equipo cierra más deals en menos tiempo.",
     features: ["Pipeline visual", "Lead scoring", "Automatización de seguimiento", "Forecasting con IA"],
     color: "#E61E25",
-    icon: "💼",
+    logoSrc: "/logos/zoho/crm.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=52f70e0b0b745d091f379e91c99ac01f&locale=es",
   },
   {
     name: "Zoho Desk",
@@ -15,7 +19,8 @@ const products = [
       "Centraliza todos los tickets de soporte provenientes de email, WhatsApp, chat y redes sociales. Ofrece respuestas rápidas y consistentes con IA integrada.",
     features: ["Multi-canal unificado", "SLA automáticos", "Base de conocimiento", "Reportes de CSAT"],
     color: "#F28A30",
-    icon: "🎧",
+    logoSrc: "/logos/zoho/desk.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=f84b39f7823d8d462be233c19abe8c1d&locale=es",
   },
   {
     name: "Zoho Projects",
@@ -24,7 +29,8 @@ const products = [
       "Planifica y ejecuta las implementaciones de tus clientes con control total. Asigna tareas, gestiona tiempos y documenta avances en tiempo real.",
     features: ["Gantt interactivo", "Seguimiento de horas", "Portafolio de proyectos", "Integración CRM"],
     color: "#009DD9",
-    icon: "📋",
+    logoSrc: "/logos/zoho/projects.png",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=bc09ec251c0fa0e40c0cdbe5eea89ab5&locale=es",
   },
   {
     name: "Zoho SalesIQ",
@@ -33,7 +39,8 @@ const products = [
       "Identifica visitantes en tu sitio web, inicia conversaciones proactivas y convierte más prospectos con chatbots inteligentes y tracking de comportamiento.",
     features: ["Chat en vivo", "Chatbots IA", "Identificación de visitantes", "Lead conversion"],
     color: "#00BFA5",
-    icon: "💬",
+    logoSrc: "/logos/zoho/salesiq.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=26c0ee131c0e1408e2b19537f3495f97&locale=es",
   },
   {
     name: "Zoho Analytics",
@@ -42,7 +49,8 @@ const products = [
       "Toma decisiones basadas en datos reales. Crea dashboards interactivos que conectan información de ventas, servicio, marketing y operaciones en una sola vista.",
     features: ["Dashboards personalizados", "IA predictiva", "Reportes automáticos", "Exportación avanzada"],
     color: "#FF6B35",
-    icon: "📊",
+    logoSrc: "/logos/zoho/analytics.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=28d61e8fc946e530193091771668210a&locale=es",
   },
   {
     name: "Zoho Social",
@@ -51,9 +59,13 @@ const products = [
       "Programa, publica y analiza tu presencia en redes sociales. Conecta con tus prospectos en Instagram, Facebook y LinkedIn directamente desde el CRM.",
     features: ["Publicación programada", "Monitoreo de marca", "Análisis de engagement", "Integración CRM"],
     color: "#7B68EE",
-    icon: "📱",
+    logoSrc: "/logos/zoho/social.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=1a2b049920ba2e919a6fcbbb802b063f&locale=es",
   },
 ];
+
+const CRM_PLUS_URL =
+  "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es";
 
 export default function ProductsSection() {
   return (
@@ -80,7 +92,7 @@ export default function ProductsSection() {
           {products.map((product) => (
             <div
               key={product.name}
-              className="group card border-neutral-200 hover:border-transparent overflow-hidden"
+              className="group card border-neutral-200 hover:border-transparent overflow-hidden flex flex-col"
               style={{ position: "relative" }}
             >
               {/* Accent top border */}
@@ -89,13 +101,19 @@ export default function ProductsSection() {
                 style={{ background: product.color }}
               />
 
-              {/* Icon + name */}
+              {/* Logo + name */}
               <div className="flex items-start gap-3 mb-4">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 p-2"
                   style={{ background: `${product.color}15`, border: `1px solid ${product.color}25` }}
                 >
-                  {product.icon}
+                  <Image
+                    src={product.logoSrc}
+                    alt={product.name}
+                    width={32}
+                    height={32}
+                    className="w-7 h-7 object-contain"
+                  />
                 </div>
                 <div>
                   <h3
@@ -114,7 +132,7 @@ export default function ProductsSection() {
                 {product.description}
               </p>
 
-              <ul className="space-y-1.5">
+              <ul className="space-y-1.5 mb-5 flex-1">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm text-neutral-600">
                     <span
@@ -125,30 +143,56 @@ export default function ProductsSection() {
                   </li>
                 ))}
               </ul>
+
+              {/* Sign-up CTA */}
+              <a
+                href={product.signupUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 text-xs font-bold transition-colors group/link"
+                style={{ color: product.color }}
+              >
+                Prueba gratis
+                <svg
+                  className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 text-center p-8 rounded-2xl bg-gradient-to-r from-blue-50 to-violet-50 border border-blue-100">
-          <p
-            className="text-xl font-bold text-neutral-900 mb-2"
-            style={{ fontFamily: "var(--font-syne)" }}
-          >
-            ¿No sabes cuál app necesitas primero?
-          </p>
-          <p className="text-neutral-500 mb-5">
-            Hacemos un diagnóstico gratuito de tu operación y te recomendamos el
-            plan de implementación más eficiente.
-          </p>
-          <a
-            href="https://wa.me/5215584046430?text=Hola%2C%20quiero%20un%20diagn%C3%B3stico%20gratuito%20de%20mi%20operaci%C3%B3n%20con%20Zoho%20CRM%20Plus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
-            Solicitar diagnóstico gratuito
-          </a>
+        <div className="mt-12 rounded-2xl overflow-hidden">
+          <div className="p-8 bg-gradient-to-r from-blue-50 to-violet-50 border border-blue-100 text-center">
+            <p
+              className="text-xl font-bold text-neutral-900 mb-2"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              ¿Quieres todas las apps en un solo plan?
+            </p>
+            <p className="text-neutral-500 mb-5">
+              Zoho CRM Plus incluye todas las herramientas anteriores más CRM, Campaigns,
+              SalesInbox y más — a un precio fijo por usuario al mes.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a
+                href={CRM_PLUS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-sm"
+              >
+                Probar Zoho CRM Plus gratis
+              </a>
+              <Link href="/contacto" className="btn-outline text-sm">
+                Solicitar diagnóstico gratuito
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

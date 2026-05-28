@@ -57,6 +57,64 @@ export default function HeroSection() {
         }}
       />
 
+      {/* Floating geometric shapes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Ring top-left */}
+        <div
+          className="absolute top-[14%] left-[7%] w-16 h-16 rounded-full border border-blue-400/25"
+          style={{ animation: "drift-1 14s ease-in-out infinite" }}
+        />
+        {/* Small dot top-right area */}
+        <div
+          className="absolute top-[28%] right-[14%] w-3 h-3 rounded-full bg-violet-400/35"
+          style={{ animation: "drift-2 9s ease-in-out infinite 1s" }}
+        />
+        {/* Triangle bottom-left */}
+        <div
+          className="absolute bottom-[28%] left-[14%] w-0 h-0 opacity-15"
+          style={{
+            borderLeft: "9px solid transparent",
+            borderRight: "9px solid transparent",
+            borderBottom: "16px solid #7C3AED",
+            animation: "drift-3 11s ease-in-out infinite 2s",
+          }}
+        />
+        {/* Large ring bottom-right */}
+        <div
+          className="absolute bottom-[18%] right-[7%] w-28 h-28 rounded-full border border-cyan-400/15"
+          style={{ animation: "drift-1 17s ease-in-out infinite 3s" }}
+        />
+        {/* Dot cluster left */}
+        <div
+          className="absolute top-[58%] left-[4%] flex gap-2"
+          style={{ animation: "drift-2 11s ease-in-out infinite 0.5s" }}
+        >
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-300/25" />
+          ))}
+        </div>
+        {/* Diamond mid */}
+        <div
+          className="absolute top-[18%] left-[42%] w-4 h-4 bg-violet-300/15 rotate-45"
+          style={{ animation: "drift-3 15s ease-in-out infinite 4s" }}
+        />
+        {/* Small ring mid-right */}
+        <div
+          className="absolute top-[52%] right-[22%] w-10 h-10 rounded-full border border-white/10"
+          style={{ animation: "drift-2 8s ease-in-out infinite 1.5s" }}
+        />
+        {/* Tiny dots top center */}
+        <div
+          className="absolute top-[10%] left-[55%] w-2 h-2 rounded-full bg-cyan-300/30"
+          style={{ animation: "drift-1 10s ease-in-out infinite 2.5s" }}
+        />
+        {/* Medium ring center-left */}
+        <div
+          className="absolute top-[42%] left-[22%] w-8 h-8 rounded-full border border-violet-400/20"
+          style={{ animation: "drift-3 12s ease-in-out infinite 5s" }}
+        />
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           {/* Left — Copy */}
@@ -206,7 +264,7 @@ export default function HeroSection() {
             </div>
 
             {/* Floating mini cards */}
-            <div className="absolute -top-4 -right-8 glass rounded-xl p-3 animate-float-delayed">
+            <div className="absolute -top-4 -right-8 z-20 glass rounded-xl p-3 animate-float-delayed">
               <p className="text-white/50 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
                 Automatización
               </p>
@@ -216,7 +274,7 @@ export default function HeroSection() {
               <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 glass rounded-xl p-3 animate-float">
+            <div className="absolute -bottom-6 -left-6 z-20 glass rounded-xl p-3 animate-float">
               <p className="text-white/50 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
                 Tiempo de respuesta
               </p>

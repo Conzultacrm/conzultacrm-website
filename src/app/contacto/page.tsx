@@ -12,7 +12,7 @@ const WA_URL =
   "https://wa.me/5215584046430?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%2C%20%C2%BFpodr%C3%ADan%20darme%20mayor%20informaci%C3%B3n%3F";
 
 // Placeholder calendar link — replace when user provides URL
-const CALENDAR_URL = "https://calendly.com/conzultacrm";
+const CALENDAR_URL = "https://calendar.app.google/5Z24rWMc3vtXzmBm7";
 
 const contactOptions = [
   {
