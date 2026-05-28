@@ -57,61 +57,43 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Floating geometric shapes */}
+      {/* Aurora blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Ring top-left */}
+        {/* Blob 1: azul top-left */}
         <div
-          className="absolute top-[14%] left-[7%] w-16 h-16 rounded-full border border-blue-400/25"
-          style={{ animation: "drift-1 14s ease-in-out infinite" }}
-        />
-        {/* Small dot top-right area */}
-        <div
-          className="absolute top-[28%] right-[14%] w-3 h-3 rounded-full bg-violet-400/35"
-          style={{ animation: "drift-2 9s ease-in-out infinite 1s" }}
-        />
-        {/* Triangle bottom-left */}
-        <div
-          className="absolute bottom-[28%] left-[14%] w-0 h-0 opacity-15"
+          className="absolute -top-20 -left-20 w-[520px] h-[520px] rounded-full"
           style={{
-            borderLeft: "9px solid transparent",
-            borderRight: "9px solid transparent",
-            borderBottom: "16px solid #7C3AED",
-            animation: "drift-3 11s ease-in-out infinite 2s",
+            background: "radial-gradient(circle at center, rgba(37,99,235,0.50), transparent 65%)",
+            animation: "aurora-drift 18s ease-in-out infinite",
+            filter: "blur(40px)",
           }}
         />
-        {/* Large ring bottom-right */}
+        {/* Blob 2: violeta center-right */}
         <div
-          className="absolute bottom-[18%] right-[7%] w-28 h-28 rounded-full border border-cyan-400/15"
-          style={{ animation: "drift-1 17s ease-in-out infinite 3s" }}
+          className="absolute top-[15%] -right-[8%] w-[450px] h-[450px] rounded-full"
+          style={{
+            background: "radial-gradient(circle at center, rgba(124,58,237,0.40), transparent 65%)",
+            animation: "aurora-drift 24s ease-in-out infinite 4s",
+            filter: "blur(50px)",
+          }}
         />
-        {/* Dot cluster left */}
+        {/* Blob 3: cyan bottom-center */}
         <div
-          className="absolute top-[58%] left-[4%] flex gap-2"
-          style={{ animation: "drift-2 11s ease-in-out infinite 0.5s" }}
-        >
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-300/25" />
-          ))}
-        </div>
-        {/* Diamond mid */}
-        <div
-          className="absolute top-[18%] left-[42%] w-4 h-4 bg-violet-300/15 rotate-45"
-          style={{ animation: "drift-3 15s ease-in-out infinite 4s" }}
+          className="absolute -bottom-[8%] left-[28%] w-[400px] h-[400px] rounded-full"
+          style={{
+            background: "radial-gradient(circle at center, rgba(6,182,212,0.35), transparent 65%)",
+            animation: "aurora-drift 20s ease-in-out infinite 8s",
+            filter: "blur(45px)",
+          }}
         />
-        {/* Small ring mid-right */}
+        {/* Blob 4: indigo bottom-left */}
         <div
-          className="absolute top-[52%] right-[22%] w-10 h-10 rounded-full border border-white/10"
-          style={{ animation: "drift-2 8s ease-in-out infinite 1.5s" }}
-        />
-        {/* Tiny dots top center */}
-        <div
-          className="absolute top-[10%] left-[55%] w-2 h-2 rounded-full bg-cyan-300/30"
-          style={{ animation: "drift-1 10s ease-in-out infinite 2.5s" }}
-        />
-        {/* Medium ring center-left */}
-        <div
-          className="absolute top-[42%] left-[22%] w-8 h-8 rounded-full border border-violet-400/20"
-          style={{ animation: "drift-3 12s ease-in-out infinite 5s" }}
+          className="absolute bottom-[12%] -left-[3%] w-[300px] h-[300px] rounded-full"
+          style={{
+            background: "radial-gradient(circle at center, rgba(76,29,149,0.45), transparent 65%)",
+            animation: "aurora-drift 15s ease-in-out infinite 2s",
+            filter: "blur(35px)",
+          }}
         />
       </div>
 

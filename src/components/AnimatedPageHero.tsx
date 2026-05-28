@@ -11,6 +11,14 @@ interface HeroThemeConfig {
   orb3: string;
 }
 
+// Aurora blob colors per theme [top-left, bottom-right, center]
+const auroraColors: Record<HeroTheme, [string, string, string]> = {
+  default: ["rgba(37,99,235,0.45)",  "rgba(124,58,237,0.35)",  "rgba(6,182,212,0.28)"],
+  teal:    ["rgba(16,185,129,0.45)", "rgba(6,182,212,0.38)",   "rgba(37,99,235,0.25)"],
+  violet:  ["rgba(109,40,217,0.50)", "rgba(139,92,246,0.38)",  "rgba(37,99,235,0.25)"],
+  rose:    ["rgba(109,40,217,0.45)", "rgba(167,139,250,0.30)", "rgba(37,99,235,0.28)"],
+};
+
 const themes: Record<HeroTheme, HeroThemeConfig> = {
   default: {
     bg: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
@@ -102,6 +110,34 @@ export default function AnimatedPageHero({
             left: "35%",
             background: `radial-gradient(circle at center, ${t.orb3}, transparent 70%)`,
             animation: "float 7s ease-in-out infinite 2s",
+          }}
+        />
+      </div>
+
+      {/* Aurora blobs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute -top-20 -left-20 w-96 h-96 rounded-full"
+          style={{
+            background: `radial-gradient(circle, ${auroraColors[theme][0]}, transparent 65%)`,
+            animation: "aurora-drift 20s ease-in-out infinite",
+            filter: "blur(40px)",
+          }}
+        />
+        <div
+          className="absolute -bottom-10 -right-10 w-80 h-80 rounded-full"
+          style={{
+            background: `radial-gradient(circle, ${auroraColors[theme][1]}, transparent 65%)`,
+            animation: "aurora-drift 25s ease-in-out infinite 5s",
+            filter: "blur(45px)",
+          }}
+        />
+        <div
+          className="absolute top-[40%] left-[10%] w-64 h-64 rounded-full"
+          style={{
+            background: `radial-gradient(circle, ${auroraColors[theme][2]}, transparent 65%)`,
+            animation: "aurora-drift 18s ease-in-out infinite 10s",
+            filter: "blur(35px)",
           }}
         />
       </div>

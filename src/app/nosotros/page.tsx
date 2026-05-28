@@ -35,12 +35,6 @@ const values = [
   },
 ];
 
-const certifications = [
-  { name: "Zoho Authorized Partner", desc: "Acceso oficial como partner en México y LATAM" },
-  { name: "Zoho CRM Plus Specialist", desc: "Especialistas en el ecosistema CRM Plus completo" },
-  { name: "Zoho Desk Consultant", desc: "Consultores especializados en servicio al cliente" },
-  { name: "Zoho Analytics Consultant", desc: "Expertos en Business Intelligence y reportería" },
-];
 
 function NosotrosDecorativeCard() {
   return (
@@ -200,38 +194,69 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Certifications */}
+      {/* Lo que te garantizamos */}
       <section className="section-padding bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="section-label mb-3">Equipo</p>
+            <p className="section-label mb-3">Compromiso</p>
             <h2
               className="text-3xl font-bold text-neutral-900 mb-4"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Especialidades de nuestro equipo
+              Lo que te garantizamos
             </h2>
-            <p className="text-neutral-500">
-              Nuestros consultores cuentan con certificaciones individuales de Zoho Corporation que garantizan implementaciones al más alto estándar.
+            <p className="text-neutral-500 max-w-xl mx-auto">
+              No somos un proveedor más. Estas son las promesas concretas con las que operamos cada proyecto.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {certifications.map((cert, i) => (
+          <div className="grid sm:grid-cols-2 gap-6">
+            {[
+              {
+                num: "01",
+                title: "Go-live o lo resolvemos",
+                desc: "Acompañamos hasta que el sistema esté en producción. No terminamos hasta que funcione.",
+              },
+              {
+                num: "02",
+                title: "En español, de principio a fin",
+                desc: "Diagnóstico, implementación, capacitación y soporte — todo en tu idioma, sin intermediarios.",
+              },
+              {
+                num: "03",
+                title: "Sin costos ocultos",
+                desc: "Propuesta económica detallada antes de firmar. Lo que se cotiza es lo que se cobra.",
+              },
+              {
+                num: "04",
+                title: "Somos tu equipo, no tu proveedor",
+                desc: "Post-implementación incluido. No desaparecemos después de la puesta en marcha.",
+              },
+            ].map((item) => (
               <div
-                key={cert.name}
-                className="flex items-center gap-4 p-5 bg-white border border-neutral-200 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all"
+                key={item.num}
+                className="flex gap-5 p-6 rounded-2xl border border-neutral-100 bg-neutral-50 hover:border-blue-200 hover:bg-white hover:shadow-md transition-all"
+                style={{ borderLeft: "4px solid transparent", backgroundImage: "linear-gradient(white, white), linear-gradient(135deg, #004AC6, #7C3AED)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box" }}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold flex-shrink-0"
-                  style={{ background: `linear-gradient(135deg, #004AC6, #7C3AED)` }}
+                <span
+                  className="text-5xl font-black leading-none flex-shrink-0 mt-1"
+                  style={{
+                    fontFamily: "var(--font-syne)",
+                    background: "linear-gradient(135deg, #004AC6, #7C3AED)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
                 >
-                  ✓
-                </div>
+                  {item.num}
+                </span>
                 <div>
-                  <p className="font-bold text-neutral-900" style={{ fontFamily: "var(--font-syne)" }}>
-                    {cert.name}
+                  <p
+                    className="font-bold text-neutral-900 text-lg mb-1.5 leading-tight"
+                    style={{ fontFamily: "var(--font-syne)" }}
+                  >
+                    {item.title}
                   </p>
-                  <p className="text-sm text-neutral-500">{cert.desc}</p>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}

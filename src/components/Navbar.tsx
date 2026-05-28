@@ -46,11 +46,11 @@ export default function Navbar() {
           {/* Logo + Zoho Partner co-branding lockup */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
-              src={transparent ? "/logos/logo-blanco.svg" : "/logos/logo-horizontal.png"}
+              src={transparent ? "/logos/logo-horizontal-white.png" : "/logos/logo-horizontal.png"}
               alt="ConZultaCRM"
-              width={220}
-              height={56}
-              className="h-12 w-auto"
+              width={240}
+              height={60}
+              className="h-14 w-auto"
               priority
             />
             <div

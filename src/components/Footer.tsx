@@ -66,11 +66,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-5">
               <Image
-                src="/logos/logo-blanco.svg"
+                src="/logos/logo-horizontal.png"
                 alt="ConZultaCRM"
                 width={200}
                 height={52}
-                className="h-10 w-auto brightness-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.12)]"
+                className="h-11 w-auto brightness-0 invert opacity-90"
               />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
