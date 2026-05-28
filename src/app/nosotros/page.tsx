@@ -264,35 +264,37 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section
-        className="py-20 px-4"
-        style={{ background: "linear-gradient(135deg, #001A4D 0%, #004AC6 50%, #4C1D95 100%)" }}
-      >
-        <div className="max-w-2xl mx-auto text-center">
+      {/* CTA — subtle, distinct from the footer gradient band */}
+      <section className="py-16 bg-neutral-50 border-t border-neutral-100">
+        <div className="max-w-xl mx-auto px-4 text-center">
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl"
+            style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }}
+          >
+            📅
+          </div>
           <h2
-            className="text-3xl font-bold text-white mb-4"
+            className="text-2xl font-bold text-neutral-900 mb-3"
             style={{ fontFamily: "var(--font-syne)" }}
           >
             ¿Listo para trabajar juntos?
           </h2>
-          <p className="text-blue-100 mb-8">
-            Agenda una llamada de diagnóstico. Sin costo, sin compromiso.
-            Solo 30 minutos para entender si podemos ayudarte.
+          <p className="text-neutral-500 mb-7 text-base">
+            Agenda una llamada de diagnóstico sin costo. 30 minutos para
+            entender tu operación y planificar el siguiente paso.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/contacto" className="btn-primary">
-              Agendar llamada gratuita
-            </Link>
+          <Link href="/contacto" className="btn-primary">
+            Agendar llamada gratuita
+          </Link>
+          <p className="mt-5 text-sm text-neutral-400">
+            O escríbenos a{" "}
             <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
+              href="mailto:info@conzultacrm.com"
+              className="text-[#004AC6] hover:underline font-medium"
             >
-              WhatsApp directo
+              info@conzultacrm.com
             </a>
-          </div>
+          </p>
         </div>
       </section>
     </div>
