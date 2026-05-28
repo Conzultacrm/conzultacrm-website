@@ -353,77 +353,31 @@
     border: 1px solid rgba(6,182,212,0.15);
   }
 
-  /* ── Marker highlights per theme (resaltador de color detrás del texto) ── */
+  /* ── Accent underlines per theme ── */
   /*
-   * Técnica de dos capas de background + dos valores de background-clip:
-   *   Layer 1 (arriba) → gradiente, clip:text  → texto se ve con gradiente
-   *   Layer 2 (abajo)  → color sólido, clip:padding-box → rectángulo de highlight
-   * Así el gradiente del texto y el resaltador coexisten sin conflicto.
-   * "Solid color as gradient" = linear-gradient(color, color) porque
-   * background-color no admite background-clip individual.
+   * Técnica: gradient-text / gradient-text-light ya maneja el color del texto.
+   * gu-* solo añade un subrayado temático — sin padding, sin background-box,
+   * sin box-decoration-break. Cero riesgo de colisión en multiline.
    */
 
-  /* Geometría compartida */
+  /* Base compartida — solo subrayado */
   .gu-violet, .gu-cyan, .gu-rose, .gu-blue, .gu-violet-d, .gu-blue-d {
     display: inline;
-    border-radius: 4px;
-    padding: 0 8px 2px;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.2em;
+    text-decoration-skip-ink: none;
   }
 
-  /* Heroes oscuros — con gradient-text-light */
-  .gu-violet.gradient-text-light {
-    background:
-      linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(109,40,217,0.80), rgba(109,40,217,0.80));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
-  .gu-cyan.gradient-text-light {
-    background:
-      linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(8,145,178,0.78), rgba(8,145,178,0.78));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
-  .gu-rose.gradient-text-light {
-    background:
-      linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(219,39,119,0.78), rgba(219,39,119,0.78));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
-  /* gu-blue usa cyan para contrastar con fondos navy/blue del hero de contacto */
-  .gu-blue.gradient-text-light {
-    background:
-      linear-gradient(135deg, #93C5FD 0%, #C4B5FD 55%, #67E8F9 100%),
-      linear-gradient(rgba(6,182,212,0.78), rgba(6,182,212,0.78));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
+  /* Heroes oscuros (con gradient-text-light) — color del subrayado por tema */
+  .gu-violet.gradient-text-light  { text-decoration-color: rgba(167,139,250,0.80); } /* violet-300 */
+  .gu-cyan.gradient-text-light    { text-decoration-color: rgba(34,211,238,0.80);  } /* cyan-400   */
+  .gu-rose.gradient-text-light    { text-decoration-color: rgba(244,114,182,0.80); } /* pink-400   */
+  .gu-blue.gradient-text-light    { text-decoration-color: rgba(6,182,212,0.80);   } /* cyan — contrasta vs navy */
 
-  /* Secciones claras — con gradient-text */
-  .gu-violet-d.gradient-text {
-    background:
-      linear-gradient(135deg, #004AC6 0%, #7C3AED 55%, #06B6D4 100%),
-      linear-gradient(rgba(109,40,217,0.28), rgba(109,40,217,0.28));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
-  .gu-blue-d.gradient-text {
-    background:
-      linear-gradient(135deg, #004AC6 0%, #7C3AED 55%, #06B6D4 100%),
-      linear-gradient(rgba(0,74,198,0.28), rgba(0,74,198,0.28));
-    -webkit-background-clip: text, padding-box;
-    background-clip:         text, padding-box;
-    -webkit-text-fill-color: transparent;
-  }
+  /* Secciones claras (con gradient-text) — subrayado más sutil */
+  .gu-violet-d.gradient-text { text-decoration-color: rgba(109,40,217,0.45); } /* violet-600 */
+  .gu-blue-d.gradient-text   { text-decoration-color: rgba(0,74,198,0.45);   } /* brand-600  */
 }
 
 /* ── Animations ── */
