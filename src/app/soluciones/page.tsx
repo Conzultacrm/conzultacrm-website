@@ -248,7 +248,7 @@ export default function SolucionesPage() {
                     {sol.description}
                   </p>
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Link href="/contacto" className="btn-primary text-sm">
                       Ver caso de uso
                     </Link>

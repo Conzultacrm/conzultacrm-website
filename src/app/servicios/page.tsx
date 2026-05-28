@@ -221,7 +221,7 @@ export default function ServiciosPage() {
                     </span>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Link href="/contacto" className="btn-primary text-sm">
                       Solicitar información
                     </Link>
@@ -326,7 +326,7 @@ export default function ServiciosPage() {
                   </li>
                 ))}
               </ul>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/contacto" className="btn-primary text-sm">
                   Consultar solución GoTo
                 </Link>
@@ -470,7 +470,7 @@ export default function ServiciosPage() {
                   </li>
                 ))}
               </ul>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/contacto" className="btn-primary text-sm">
                   Consultar implementación
                 </Link>

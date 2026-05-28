@@ -366,8 +366,8 @@
   /* Geometría compartida */
   .gu-violet, .gu-cyan, .gu-rose, .gu-blue, .gu-violet-d, .gu-blue-d {
     display: inline;
-    border-radius: 6px;
-    padding: 2px 8px 4px;
+    border-radius: 4px;
+    padding: 1px 8px 2px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
