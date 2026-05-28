@@ -357,27 +357,27 @@
 /* Hero aurora blobs */
 /* Organic blob animations — three distinct paths for natural movement */
 @keyframes blob-1 {
-  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scale(1);    }
-  20%      { transform: translate(60px,-80px)  rotate(72deg)  scale(1.12); }
-  40%      { transform: translate(-40px,70px)  rotate(144deg) scale(0.88); }
-  60%      { transform: translate(90px, 30px)  rotate(216deg) scale(1.18); }
-  80%      { transform: translate(-20px,-50px) rotate(288deg) scale(0.93); }
+  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scaleX(1)    scaleY(1);    }
+  20%      { transform: translate(60px,-80px)  rotate(72deg)  scaleX(1.15) scaleY(0.88); }
+  40%      { transform: translate(-40px,70px)  rotate(144deg) scaleX(0.85) scaleY(1.15); }
+  60%      { transform: translate(90px, 30px)  rotate(216deg) scaleX(1.25) scaleY(0.82); }
+  80%      { transform: translate(-20px,-50px) rotate(288deg) scaleX(0.90) scaleY(1.20); }
 }
 @keyframes blob-2 {
-  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scale(1);    }
-  25%      { transform: translate(-90px,60px)  rotate(90deg)  scale(1.20); }
-  50%      { transform: translate(60px,-90px)  rotate(180deg) scale(0.82); }
-  75%      { transform: translate(-35px,70px)  rotate(270deg) scale(1.10); }
+  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scaleX(1)    scaleY(1);    }
+  25%      { transform: translate(-90px,60px)  rotate(90deg)  scaleX(1.30) scaleY(0.78); }
+  50%      { transform: translate(60px,-90px)  rotate(180deg) scaleX(0.80) scaleY(1.30); }
+  75%      { transform: translate(-35px,70px)  rotate(270deg) scaleX(1.15) scaleY(0.88); }
 }
 @keyframes blob-3 {
-  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scale(1);    }
-  33%      { transform: translate(75px, 65px)  rotate(120deg) scale(1.22); }
-  66%      { transform: translate(-65px,-55px) rotate(240deg) scale(0.78); }
+  0%, 100% { transform: translate(0px, 0px)    rotate(0deg)   scaleX(1)    scaleY(1);    }
+  33%      { transform: translate(75px, 65px)  rotate(120deg) scaleX(1.20) scaleY(0.82); }
+  66%      { transform: translate(-65px,-55px) rotate(240deg) scaleX(0.78) scaleY(1.22); }
 }
 
 @keyframes marquee {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-33.333%); }
 }
 
 .animate-marquee { animation: marquee 35s linear infinite; }

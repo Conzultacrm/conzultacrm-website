@@ -57,16 +57,29 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Organic aurora blobs — mix-blend-mode:screen makes colors luminous on dark bg */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* SVG goo filter — makes adjacent blobs merge like plasma (GradientBlob technique) */}
+      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
+        <defs>
+          <filter id="hero-goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+            <feColorMatrix in="blur" type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 14 -5" result="goo" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Organic aurora blobs — goo filter makes them merge + mix-blend-mode:screen = luminous on dark bg */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ filter: "url(#hero-goo)", mixBlendMode: "screen" }}>
         {/* Blob 1 — cyan top-left */}
         <div style={{
           position: "absolute", top: "-5%", left: "-5%",
           width: 600, height: 600,
           borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-          background: "rgba(34,211,238,0.55)",
-          filter: "blur(60px)",
-          mixBlendMode: "screen",
+          background: "rgba(34,211,238,0.70)",
           animation: "blob-1 20s ease-in-out infinite",
         }} />
         {/* Blob 2 — violet right */}
@@ -74,9 +87,7 @@ export default function HeroSection() {
           position: "absolute", top: "15%", right: "-8%",
           width: 520, height: 520,
           borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          background: "rgba(167,139,250,0.50)",
-          filter: "blur(70px)",
-          mixBlendMode: "screen",
+          background: "rgba(167,139,250,0.65)",
           animation: "blob-2 26s ease-in-out infinite 4s",
         }} />
         {/* Blob 3 — emerald bottom */}
@@ -84,9 +95,7 @@ export default function HeroSection() {
           position: "absolute", bottom: "-5%", left: "25%",
           width: 480, height: 480,
           borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-          background: "rgba(52,211,153,0.45)",
-          filter: "blur(65px)",
-          mixBlendMode: "screen",
+          background: "rgba(52,211,153,0.60)",
           animation: "blob-3 23s ease-in-out infinite 8s",
         }} />
         {/* Blob 4 — pink accent bottom-left */}
@@ -94,9 +103,7 @@ export default function HeroSection() {
           position: "absolute", bottom: "15%", left: "-3%",
           width: 360, height: 360,
           borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
-          background: "rgba(244,114,182,0.40)",
-          filter: "blur(55px)",
-          mixBlendMode: "screen",
+          background: "rgba(244,114,182,0.55)",
           animation: "blob-1 17s ease-in-out infinite reverse 2s",
         }} />
       </div>
