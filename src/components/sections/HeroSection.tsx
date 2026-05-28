@@ -11,6 +11,8 @@ export default function HeroSection() {
   const orbRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Skip parallax on touch-only devices — avoids jitter when tapping/scrolling on mobile
+    if (!window.matchMedia("(hover: hover)").matches) return;
     const handleMouseMove = (e: MouseEvent) => {
       if (!orbRef.current) return;
       const x = (e.clientX / window.innerWidth - 0.5) * 30;
@@ -23,8 +25,9 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative flex items-center overflow-hidden"
       style={{
+        minHeight: "100svh", /* svh = stable on mobile (no bounce when browser chrome shows/hides) */
         background: "linear-gradient(135deg, #001A4D 0%, #003A8C 40%, #004AC6 70%, #4C1D95 100%)",
       }}
     >
@@ -57,54 +60,47 @@ export default function HeroSection() {
         }}
       />
 
-      {/* SVG goo filter — makes adjacent blobs merge like plasma (GradientBlob technique) */}
-      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
-        <defs>
-          <filter id="hero-goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
-            <feColorMatrix in="blur" type="matrix"
-              values="1 0 0 0 0
-                      0 1 0 0 0
-                      0 0 1 0 0
-                      0 0 0 14 -5" result="goo" />
-          </filter>
-        </defs>
-      </svg>
-
-      {/* Organic aurora blobs — goo filter makes them merge + mix-blend-mode:screen = luminous on dark bg */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ filter: "url(#hero-goo)", mixBlendMode: "screen" }}>
+      {/* Organic aurora blobs — individual CSS blur + mix-blend-mode:screen = vivid luminous colors */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Blob 1 — cyan top-left */}
         <div style={{
           position: "absolute", top: "-5%", left: "-5%",
-          width: 600, height: 600,
+          width: 620, height: 620,
           borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-          background: "rgba(34,211,238,0.70)",
-          animation: "blob-1 20s ease-in-out infinite",
+          background: "rgba(34,211,238,0.88)",
+          filter: "blur(45px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 14s ease-in-out infinite",
         }} />
         {/* Blob 2 — violet right */}
         <div style={{
           position: "absolute", top: "15%", right: "-8%",
-          width: 520, height: 520,
+          width: 540, height: 540,
           borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          background: "rgba(167,139,250,0.65)",
-          animation: "blob-2 26s ease-in-out infinite 4s",
+          background: "rgba(167,139,250,0.82)",
+          filter: "blur(50px)",
+          mixBlendMode: "screen",
+          animation: "blob-2 18s ease-in-out infinite 2s",
         }} />
         {/* Blob 3 — emerald bottom */}
         <div style={{
           position: "absolute", bottom: "-5%", left: "25%",
-          width: 480, height: 480,
+          width: 500, height: 500,
           borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-          background: "rgba(52,211,153,0.60)",
-          animation: "blob-3 23s ease-in-out infinite 8s",
+          background: "rgba(52,211,153,0.78)",
+          filter: "blur(42px)",
+          mixBlendMode: "screen",
+          animation: "blob-3 12s ease-in-out infinite 4s",
         }} />
         {/* Blob 4 — pink accent bottom-left */}
         <div style={{
-          position: "absolute", bottom: "15%", left: "-3%",
-          width: 360, height: 360,
+          position: "absolute", bottom: "10%", left: "-3%",
+          width: 380, height: 380,
           borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
-          background: "rgba(244,114,182,0.55)",
-          animation: "blob-1 17s ease-in-out infinite reverse 2s",
+          background: "rgba(244,114,182,0.72)",
+          filter: "blur(38px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 10s ease-in-out infinite reverse 1s",
         }} />
       </div>
 

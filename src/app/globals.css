@@ -80,6 +80,7 @@
     color: #1C1C27;
     font-family: 'DM Sans', sans-serif;
     line-height: 1.65;
+    overflow-x: hidden; /* prevent horizontal scroll from marquee / animated elements */
   }
 
   h1, h2, h3, h4, h5, h6 {

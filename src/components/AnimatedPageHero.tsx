@@ -14,10 +14,10 @@ interface HeroThemeConfig {
 // Aurora blob colors per theme [top-left, bottom-right, center]
 // Organic blob colors per theme — mix-blend-mode:screen makes them luminous on dark bg
 const blobColors: Record<HeroTheme, [string, string, string]> = {
-  default: ["rgba(34,211,238,0.75)",  "rgba(167,139,250,0.70)", "rgba(52,211,153,0.65)"],
-  teal:    ["rgba(34,211,238,0.75)",  "rgba(52,211,153,0.70)",  "rgba(96,165,250,0.65)"],
-  violet:  ["rgba(167,139,250,0.75)", "rgba(34,211,238,0.70)",  "rgba(244,114,182,0.65)"],
-  rose:    ["rgba(244,114,182,0.75)", "rgba(167,139,250,0.70)", "rgba(34,211,238,0.65)"],
+  default: ["rgba(34,211,238,0.88)",  "rgba(167,139,250,0.82)", "rgba(52,211,153,0.78)"],
+  teal:    ["rgba(34,211,238,0.88)",  "rgba(52,211,153,0.82)",  "rgba(96,165,250,0.78)"],
+  violet:  ["rgba(167,139,250,0.88)", "rgba(34,211,238,0.82)",  "rgba(244,114,182,0.78)"],
+  rose:    ["rgba(244,114,182,0.88)", "rgba(167,139,250,0.82)", "rgba(34,211,238,0.78)"],
 };
 
 const themes: Record<HeroTheme, HeroThemeConfig> = {
@@ -115,43 +115,34 @@ export default function AnimatedPageHero({
         />
       </div>
 
-      {/* SVG goo filter — GradientBlob merge technique (unique per theme to avoid collisions) */}
-      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
-        <defs>
-          <filter id={`page-goo-${theme}`}>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur" />
-            <feColorMatrix in="blur" type="matrix"
-              values="1 0 0 0 0
-                      0 1 0 0 0
-                      0 0 1 0 0
-                      0 0 0 12 -4" result="goo" />
-          </filter>
-        </defs>
-      </svg>
-
-      {/* Organic aurora blobs — goo filter merges + mix-blend-mode:screen = luminous */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ filter: `url(#page-goo-${theme})`, mixBlendMode: "screen" }}>
+      {/* Organic aurora blobs — individual CSS blur + mix-blend-mode:screen = vivid on dark bg */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div style={{
           position: "absolute", top: "-5%", left: "-5%",
-          width: 480, height: 480,
+          width: 500, height: 500,
           borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
           background: blobColors[theme][0],
-          animation: "blob-1 20s ease-in-out infinite",
+          filter: "blur(42px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 14s ease-in-out infinite",
         }} />
         <div style={{
           position: "absolute", bottom: "-5%", right: "-5%",
-          width: 420, height: 420,
+          width: 440, height: 440,
           borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
           background: blobColors[theme][1],
-          animation: "blob-2 25s ease-in-out infinite 5s",
+          filter: "blur(48px)",
+          mixBlendMode: "screen",
+          animation: "blob-2 18s ease-in-out infinite 3s",
         }} />
         <div style={{
           position: "absolute", top: "40%", left: "10%",
-          width: 340, height: 340,
+          width: 360, height: 360,
           borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
           background: blobColors[theme][2],
-          animation: "blob-3 18s ease-in-out infinite 10s",
+          filter: "blur(38px)",
+          mixBlendMode: "screen",
+          animation: "blob-3 12s ease-in-out infinite 6s",
         }} />
       </div>
 

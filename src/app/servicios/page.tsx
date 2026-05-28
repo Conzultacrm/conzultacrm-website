@@ -418,13 +418,15 @@ export default function ServiciosPage() {
             {/* Content */}
             <div>
               <div className="mb-5">
-                <Image
-                  src="/logos/peaking-logo.png"
-                  alt="Peaking.ai"
-                  width={140}
-                  height={40}
-                  className="h-9 w-auto"
-                />
+                <div className="inline-flex items-center bg-[#1A0A0A] rounded-xl px-4 py-2.5">
+                  <Image
+                    src="/logos/peaking-logo.png"
+                    alt="Peaking.ai"
+                    width={140}
+                    height={40}
+                    className="h-8 w-auto brightness-0 invert"
+                  />
+                </div>
               </div>
               <span className="badge badge-blue mb-3 inline-block">Distribuidores industriales</span>
               <h2
