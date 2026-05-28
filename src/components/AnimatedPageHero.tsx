@@ -13,10 +13,10 @@ interface HeroThemeConfig {
 
 // Aurora blob colors per theme [top-left, bottom-right, center]
 const auroraColors: Record<HeroTheme, [string, string, string]> = {
-  default: ["rgba(37,99,235,0.45)",  "rgba(124,58,237,0.35)",  "rgba(6,182,212,0.28)"],
-  teal:    ["rgba(16,185,129,0.45)", "rgba(6,182,212,0.38)",   "rgba(37,99,235,0.25)"],
-  violet:  ["rgba(109,40,217,0.50)", "rgba(139,92,246,0.38)",  "rgba(37,99,235,0.25)"],
-  rose:    ["rgba(109,40,217,0.45)", "rgba(167,139,250,0.30)", "rgba(37,99,235,0.28)"],
+  default: ["rgba(37,99,235,0.75)",  "rgba(124,58,237,0.65)",  "rgba(6,182,212,0.55)"],
+  teal:    ["rgba(16,185,129,0.70)", "rgba(6,182,212,0.65)",   "rgba(37,99,235,0.50)"],
+  violet:  ["rgba(109,40,217,0.80)", "rgba(139,92,246,0.65)",  "rgba(37,99,235,0.50)"],
+  rose:    ["rgba(109,40,217,0.75)", "rgba(167,139,250,0.60)", "rgba(37,99,235,0.55)"],
 };
 
 const themes: Record<HeroTheme, HeroThemeConfig> = {

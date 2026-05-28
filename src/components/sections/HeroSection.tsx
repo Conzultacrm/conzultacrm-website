@@ -63,7 +63,7 @@ export default function HeroSection() {
         <div
           className="absolute -top-20 -left-20 w-[520px] h-[520px] rounded-full"
           style={{
-            background: "radial-gradient(circle at center, rgba(37,99,235,0.50), transparent 65%)",
+            background: "radial-gradient(circle at center, rgba(37,99,235,0.75), transparent 65%)",
             animation: "aurora-drift 18s ease-in-out infinite",
             filter: "blur(40px)",
           }}
@@ -72,7 +72,7 @@ export default function HeroSection() {
         <div
           className="absolute top-[15%] -right-[8%] w-[450px] h-[450px] rounded-full"
           style={{
-            background: "radial-gradient(circle at center, rgba(124,58,237,0.40), transparent 65%)",
+            background: "radial-gradient(circle at center, rgba(124,58,237,0.65), transparent 65%)",
             animation: "aurora-drift 24s ease-in-out infinite 4s",
             filter: "blur(50px)",
           }}
@@ -81,7 +81,7 @@ export default function HeroSection() {
         <div
           className="absolute -bottom-[8%] left-[28%] w-[400px] h-[400px] rounded-full"
           style={{
-            background: "radial-gradient(circle at center, rgba(6,182,212,0.35), transparent 65%)",
+            background: "radial-gradient(circle at center, rgba(6,182,212,0.60), transparent 65%)",
             animation: "aurora-drift 20s ease-in-out infinite 8s",
             filter: "blur(45px)",
           }}
@@ -90,7 +90,7 @@ export default function HeroSection() {
         <div
           className="absolute bottom-[12%] -left-[3%] w-[300px] h-[300px] rounded-full"
           style={{
-            background: "radial-gradient(circle at center, rgba(76,29,149,0.45), transparent 65%)",
+            background: "radial-gradient(circle at center, rgba(76,29,149,0.70), transparent 65%)",
             animation: "aurora-drift 15s ease-in-out infinite 2s",
             filter: "blur(35px)",
           }}

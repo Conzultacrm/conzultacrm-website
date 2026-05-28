@@ -68,9 +68,9 @@ export default function Footer() {
               <Image
                 src="/logos/logo-horizontal.png"
                 alt="ConZultaCRM"
-                width={200}
-                height={52}
-                className="h-11 w-auto brightness-0 invert opacity-90"
+                width={260}
+                height={68}
+                className="h-16 w-auto brightness-0 invert opacity-90"
               />
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
@@ -84,9 +84,9 @@ export default function Footer() {
               <Image
                 src="/logos/zoho-partner.png"
                 alt="Zoho Authorized Partner"
-                width={160}
-                height={52}
-                className="h-10 w-auto"
+                width={190}
+                height={62}
+                className="h-12 w-auto"
               />
             </div>
 

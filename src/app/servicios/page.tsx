@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
+import ZohoAppsCarousel from "@/components/sections/ZohoAppsCarousel";
 
 export const metadata: Metadata = {
   title: "Servicios — ConZultaCRM",
@@ -481,6 +482,8 @@ export default function ServiciosPage() {
           </div>
         </div>
       </section>
+
+      <ZohoAppsCarousel />
 
       {/* Pricing note */}
       <section className="py-10 bg-neutral-50 border-t border-neutral-100">
