@@ -353,22 +353,23 @@
     border: 1px solid rgba(6,182,212,0.15);
   }
 
-  /* ── Gradient underlines per theme ── */
-  /* Base — applied to all gu-* variants */
+  /* ── Marker highlights per theme (resaltador de color detrás del texto) ── */
+  /* Base — geometría compartida */
   .gu-violet, .gu-cyan, .gu-rose, .gu-blue, .gu-violet-d, .gu-blue-d {
-    text-decoration: underline;
-    text-underline-offset: 8px;
-    text-decoration-thickness: 3px;
-    text-decoration-skip-ink: none;
+    display: inline;
+    border-radius: 6px;
+    padding: 2px 10px 4px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
-  /* Dark-bg heroes */
-  .gu-violet   { text-decoration-color: rgba(196,181,253,0.65); } /* violet-300 */
-  .gu-cyan     { text-decoration-color: rgba(34,211,238,0.55);  } /* cyan-400   */
-  .gu-rose     { text-decoration-color: rgba(244,114,182,0.55); } /* pink-400   */
-  .gu-blue     { text-decoration-color: rgba(180,197,255,0.60); } /* blue-200   */
-  /* Light-bg sections */
-  .gu-violet-d { text-decoration-color: rgba(113,42,226,0.40);  } /* violet-600 */
-  .gu-blue-d   { text-decoration-color: rgba(0,74,198,0.40);    } /* brand-600  */
+  /* Dark-bg heroes — colored glow behind white/gradient text */
+  .gu-violet   { background: rgba(167,139,250,0.32); } /* violet-300 */
+  .gu-cyan     { background: rgba(34,211,238,0.24);  } /* cyan-400   */
+  .gu-rose     { background: rgba(244,114,182,0.30); } /* pink-400   */
+  .gu-blue     { background: rgba(96,165,250,0.28);  } /* blue-400   */
+  /* Light-bg sections — subtle brand-color highlight */
+  .gu-violet-d { background: rgba(109,40,217,0.10);  } /* violet-600 */
+  .gu-blue-d   { background: rgba(0,74,198,0.10);    } /* brand-600  */
 }
 
 /* ── Animations ── */
