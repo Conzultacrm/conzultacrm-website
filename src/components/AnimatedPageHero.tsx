@@ -12,11 +12,12 @@ interface HeroThemeConfig {
 }
 
 // Aurora blob colors per theme [top-left, bottom-right, center]
-const auroraColors: Record<HeroTheme, [string, string, string]> = {
-  default: ["rgba(37,99,235,0.75)",  "rgba(124,58,237,0.65)",  "rgba(6,182,212,0.55)"],
-  teal:    ["rgba(16,185,129,0.70)", "rgba(6,182,212,0.65)",   "rgba(37,99,235,0.50)"],
-  violet:  ["rgba(109,40,217,0.80)", "rgba(139,92,246,0.65)",  "rgba(37,99,235,0.50)"],
-  rose:    ["rgba(109,40,217,0.75)", "rgba(167,139,250,0.60)", "rgba(37,99,235,0.55)"],
+// Organic blob colors per theme — mix-blend-mode:screen makes them luminous on dark bg
+const blobColors: Record<HeroTheme, [string, string, string]> = {
+  default: ["rgba(34,211,238,0.55)",  "rgba(167,139,250,0.50)", "rgba(52,211,153,0.45)"],
+  teal:    ["rgba(34,211,238,0.55)",  "rgba(52,211,153,0.50)",  "rgba(96,165,250,0.45)"],
+  violet:  ["rgba(167,139,250,0.55)", "rgba(34,211,238,0.50)",  "rgba(244,114,182,0.45)"],
+  rose:    ["rgba(244,114,182,0.55)", "rgba(167,139,250,0.50)", "rgba(34,211,238,0.45)"],
 };
 
 const themes: Record<HeroTheme, HeroThemeConfig> = {
@@ -114,32 +115,35 @@ export default function AnimatedPageHero({
         />
       </div>
 
-      {/* Aurora blobs */}
+      {/* Organic aurora blobs — mix-blend-mode:screen for luminous colors */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute -top-20 -left-20 w-96 h-96 rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${auroraColors[theme][0]}, transparent 65%)`,
-            animation: "aurora-drift 20s ease-in-out infinite",
-            filter: "blur(40px)",
-          }}
-        />
-        <div
-          className="absolute -bottom-10 -right-10 w-80 h-80 rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${auroraColors[theme][1]}, transparent 65%)`,
-            animation: "aurora-drift 25s ease-in-out infinite 5s",
-            filter: "blur(45px)",
-          }}
-        />
-        <div
-          className="absolute top-[40%] left-[10%] w-64 h-64 rounded-full"
-          style={{
-            background: `radial-gradient(circle, ${auroraColors[theme][2]}, transparent 65%)`,
-            animation: "aurora-drift 18s ease-in-out infinite 10s",
-            filter: "blur(35px)",
-          }}
-        />
+        <div style={{
+          position: "absolute", top: "-5%", left: "-5%",
+          width: 480, height: 480,
+          borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+          background: blobColors[theme][0],
+          filter: "blur(55px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 20s ease-in-out infinite",
+        }} />
+        <div style={{
+          position: "absolute", bottom: "-5%", right: "-5%",
+          width: 420, height: 420,
+          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+          background: blobColors[theme][1],
+          filter: "blur(60px)",
+          mixBlendMode: "screen",
+          animation: "blob-2 25s ease-in-out infinite 5s",
+        }} />
+        <div style={{
+          position: "absolute", top: "40%", left: "10%",
+          width: 340, height: 340,
+          borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
+          background: blobColors[theme][2],
+          filter: "blur(50px)",
+          mixBlendMode: "screen",
+          animation: "blob-3 18s ease-in-out infinite 10s",
+        }} />
       </div>
 
       {/* Grid overlay */}

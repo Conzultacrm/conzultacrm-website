@@ -10,20 +10,12 @@ interface ZohoApp {
 }
 
 const APPS: ZohoApp[] = [
-  { name: "CRM",       tagline: "Ventas",           color: "#E61E25", logo: "/logos/zoho/crm.svg"      },
-  { name: "SalesIQ",   tagline: "Chat en vivo",     color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"  },
-  { name: "Desk",      tagline: "Soporte",           color: "#F28A30", logo: "/logos/zoho/desk.svg"     },
-  { name: "Analytics", tagline: "BI & Reportes",    color: "#FF6B35", logo: "/logos/zoho/analytics.svg"},
-  { name: "Campaigns", tagline: "Email marketing",  color: "#E44D2E"                                   },
-  { name: "Social",    tagline: "Redes sociales",   color: "#7B68EE", logo: "/logos/zoho/social.svg"   },
-  { name: "Projects",  tagline: "Gestión proyectos",color: "#009DD9", logo: "/logos/zoho/projects.png" },
-  { name: "Bookings",  tagline: "Citas online",     color: "#00BCD4"                                   },
-  { name: "Forms",     tagline: "Formularios",      color: "#FF7043"                                   },
-  { name: "Sign",      tagline: "Firma digital",    color: "#2196F3"                                   },
-  { name: "Cliq",      tagline: "Chat de equipo",   color: "#FF5722"                                   },
-  { name: "Meeting",   tagline: "Videollamadas",    color: "#4CAF50"                                   },
-  { name: "Survey",    tagline: "Encuestas",        color: "#9C27B0"                                   },
-  { name: "Flow",      tagline: "Automatización",   color: "#FF9800"                                   },
+  { name: "CRM",       tagline: "Ventas",            color: "#E61E25", logo: "/logos/zoho/crm.svg"       },
+  { name: "SalesIQ",   tagline: "Chat en vivo",      color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"   },
+  { name: "Desk",      tagline: "Soporte",            color: "#F28A30", logo: "/logos/zoho/desk.svg"      },
+  { name: "Analytics", tagline: "BI & Reportes",     color: "#FF6B35", logo: "/logos/zoho/analytics.svg" },
+  { name: "Social",    tagline: "Redes sociales",    color: "#7B68EE", logo: "/logos/zoho/social.svg"    },
+  { name: "Projects",  tagline: "Gestión proyectos", color: "#009DD9", logo: "/logos/zoho/projects.png"  },
 ];
 
 function AppChip({ app }: { app: ZohoApp }) {
@@ -56,7 +48,7 @@ function AppChip({ app }: { app: ZohoApp }) {
 }
 
 export default function ZohoAppsCarousel() {
-  const doubled = [...APPS, ...APPS]; // duplicate for seamless loop
+  const tripled = [...APPS, ...APPS, ...APPS]; // triple for seamless loop on large screens
 
   return (
     <section className="py-16 bg-neutral-50 border-y border-neutral-100 overflow-hidden">
@@ -84,7 +76,7 @@ export default function ZohoAppsCarousel() {
           style={{ background: "linear-gradient(to left, #F2F2F8, transparent)" }} />
 
         <div className="flex animate-marquee">
-          {doubled.map((app, i) => (
+          {tripled.map((app, i) => (
             <AppChip key={`${app.name}-${i}`} app={app} />
           ))}
         </div>

@@ -57,44 +57,48 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Aurora blobs */}
+      {/* Organic aurora blobs — mix-blend-mode:screen makes colors luminous on dark bg */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Blob 1: azul top-left */}
-        <div
-          className="absolute -top-20 -left-20 w-[520px] h-[520px] rounded-full"
-          style={{
-            background: "radial-gradient(circle at center, rgba(37,99,235,0.75), transparent 65%)",
-            animation: "aurora-drift 18s ease-in-out infinite",
-            filter: "blur(40px)",
-          }}
-        />
-        {/* Blob 2: violeta center-right */}
-        <div
-          className="absolute top-[15%] -right-[8%] w-[450px] h-[450px] rounded-full"
-          style={{
-            background: "radial-gradient(circle at center, rgba(124,58,237,0.65), transparent 65%)",
-            animation: "aurora-drift 24s ease-in-out infinite 4s",
-            filter: "blur(50px)",
-          }}
-        />
-        {/* Blob 3: cyan bottom-center */}
-        <div
-          className="absolute -bottom-[8%] left-[28%] w-[400px] h-[400px] rounded-full"
-          style={{
-            background: "radial-gradient(circle at center, rgba(6,182,212,0.60), transparent 65%)",
-            animation: "aurora-drift 20s ease-in-out infinite 8s",
-            filter: "blur(45px)",
-          }}
-        />
-        {/* Blob 4: indigo bottom-left */}
-        <div
-          className="absolute bottom-[12%] -left-[3%] w-[300px] h-[300px] rounded-full"
-          style={{
-            background: "radial-gradient(circle at center, rgba(76,29,149,0.70), transparent 65%)",
-            animation: "aurora-drift 15s ease-in-out infinite 2s",
-            filter: "blur(35px)",
-          }}
-        />
+        {/* Blob 1 — cyan top-left */}
+        <div style={{
+          position: "absolute", top: "-5%", left: "-5%",
+          width: 600, height: 600,
+          borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+          background: "rgba(34,211,238,0.55)",
+          filter: "blur(60px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 20s ease-in-out infinite",
+        }} />
+        {/* Blob 2 — violet right */}
+        <div style={{
+          position: "absolute", top: "15%", right: "-8%",
+          width: 520, height: 520,
+          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+          background: "rgba(167,139,250,0.50)",
+          filter: "blur(70px)",
+          mixBlendMode: "screen",
+          animation: "blob-2 26s ease-in-out infinite 4s",
+        }} />
+        {/* Blob 3 — emerald bottom */}
+        <div style={{
+          position: "absolute", bottom: "-5%", left: "25%",
+          width: 480, height: 480,
+          borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
+          background: "rgba(52,211,153,0.45)",
+          filter: "blur(65px)",
+          mixBlendMode: "screen",
+          animation: "blob-3 23s ease-in-out infinite 8s",
+        }} />
+        {/* Blob 4 — pink accent bottom-left */}
+        <div style={{
+          position: "absolute", bottom: "15%", left: "-3%",
+          width: 360, height: 360,
+          borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
+          background: "rgba(244,114,182,0.40)",
+          filter: "blur(55px)",
+          mixBlendMode: "screen",
+          animation: "blob-1 17s ease-in-out infinite reverse 2s",
+        }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
