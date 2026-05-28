@@ -17,7 +17,7 @@ const sectors = [
   },
   {
     icon: "⚙️",
-    name: "Maquinaria",
+    name: "Maquinaria & Industria",
     desc: "Administra tu flota, servicio técnico y relaciones con distribuidores desde el CRM.",
     features: ["Control de flotilla", "Órdenes de servicio", "Mantenimiento preventivo", "Garantías y refacciones"],
     color: "#06B6D4",
@@ -30,19 +30,35 @@ const sectors = [
     color: "#10B981",
   },
   {
-    icon: "🏭",
-    name: "PyMEs & Manufactureras",
-    desc: "Escala tu operación sin contratar más personal. Automatiza desde la cotización hasta la facturación.",
-    features: ["Cotizaciones automáticas", "Seguimiento post-venta", "Integración con ERP", "Dashboards ejecutivos"],
-    color: "#F59E0B",
-  },
-  {
     icon: "🏥",
-    name: "Servicios Profesionales",
-    desc: "Consultoras, despachos y agencias que necesitan CRM para gestionar relaciones a largo plazo con sus clientes.",
-    features: ["Gestión de cuentas clave", "Facturación por proyecto", "Portal de clientes", "Reportes de rentabilidad"],
+    name: "Salud & Clínicas",
+    desc: "Gestiona pacientes, citas y seguimiento post-consulta. Automatiza recordatorios y mide la satisfacción del paciente.",
+    features: ["Agenda y seguimiento de pacientes", "Recordatorios automáticos", "Historial de interacciones", "Métricas de satisfacción"],
     color: "#EF4444",
   },
+  {
+    icon: "📦",
+    name: "Distribuidoras & Logística",
+    desc: "Controla tu cadena de distribución, gestiona distribuidores y da seguimiento completo a pedidos y cobranza.",
+    features: ["Gestión de distribuidores", "Seguimiento de pedidos", "Control de cobranza", "Integración con ERP"],
+    color: "#F59E0B",
+  },
+];
+
+// Additional industries shown as chips
+const moreIndustries = [
+  "Agencias de Marketing",
+  "Servicios Financieros",
+  "Despachos Jurídicos",
+  "Educación & EdTech",
+  "Telecomunicaciones",
+  "Seguros & Fianzas",
+  "Consultoras",
+  "Restaurantes & Hospitality",
+  "Tecnología & SaaS",
+  "Agropecuario",
+  "Turismo & Viajes",
+  "Automotriz",
 ];
 
 export default function SectorsSection() {
@@ -127,9 +143,44 @@ export default function SectorsSection() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        {/* More industries */}
+        <div className="mt-12 bg-neutral-50 border border-neutral-200 rounded-2xl p-7">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
+            <div>
+              <p
+                className="text-sm font-bold text-neutral-700 uppercase tracking-wider"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                También implementamos en
+              </p>
+              <p className="text-neutral-500 text-sm mt-0.5">
+                Estas son solo algunas — si tienes un proceso comercial, podemos ayudarte.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {moreIndustries.map((industry) => (
+              <span
+                key={industry}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-600 bg-white border border-neutral-200 hover:border-blue-300 hover:text-blue-700 transition-colors"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                {industry}
+              </span>
+            ))}
+            <Link
+              href="/contacto"
+              className="px-3 py-1.5 rounded-full text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-colors"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              + La tuya →
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
           <p className="text-neutral-500 text-sm mb-4">
-            ¿No ves tu industria? Trabajamos con cualquier empresa que tenga proceso comercial.
+            Si tu empresa tiene un proceso de ventas o clientes que gestionar, Zoho CRM Plus puede transformarlo.
           </p>
           <Link href="/contacto" className="btn-outline">
             Habla con un especialista

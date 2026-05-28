@@ -213,9 +213,10 @@ export default function AnimatedPageHero({
 
           {/* Description */}
           <p
-            className={`text-blue-100 text-lg lg:text-xl max-w-2xl transition-all duration-700 delay-300 ${
+            className={`text-white/90 text-lg lg:text-xl max-w-2xl transition-all duration-700 delay-300 ${
               align === "center" && !hasDecorative ? "mx-auto" : ""
             } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+            style={{ textShadow: "0 1px 10px rgba(0,0,0,0.5)" }}
           >
             {description}
           </p>

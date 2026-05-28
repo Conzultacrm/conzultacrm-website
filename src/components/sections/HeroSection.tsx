@@ -136,7 +136,10 @@ export default function HeroSection() {
               con Zoho CRM Plus
             </h1>
 
-            <p className="text-blue-100 text-lg leading-relaxed mb-8 max-w-xl">
+            <p
+              className="text-white/90 text-lg leading-relaxed mb-8 max-w-xl"
+              style={{ textShadow: "0 1px 12px rgba(0,0,0,0.55), 0 0 40px rgba(0,0,0,0.25)" }}
+            >
               Somos Zoho Authorized Partners en México. Implementamos
               el ecosistema Zoho CRM Plus para que tus equipos de ventas, servicio y
               marketing trabajen en perfecta sincronía.
@@ -150,7 +153,7 @@ export default function HeroSection() {
                 "Integración con tus sistemas actuales",
                 "Soporte continuo en español",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-blue-100 text-sm">
+                <li key={item} className="flex items-center gap-3 text-white/85 text-sm">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-400/20 border border-emerald-400/40 flex items-center justify-center">
                     <svg className="w-3 h-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />

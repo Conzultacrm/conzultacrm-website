@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface ZohoApp {
   name: string;
@@ -55,19 +56,40 @@ export default function ZohoAppsCarousel() {
 
   return (
     <section className="py-16 bg-neutral-50 border-y border-neutral-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        <p className="section-label mb-3">Ecosistema</p>
-        <h2
-          className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3"
-          style={{ fontFamily: "var(--font-syne)" }}
-        >
-          Todas las herramientas,{" "}
-          <span className="gradient-text">un solo ecosistema</span>
-        </h2>
-        <p className="text-neutral-500 max-w-xl mx-auto text-base">
-          Implementamos y conectamos el ecosistema completo de Zoho para que
-          ventas, servicio, marketing y operaciones trabajen en sincronía.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div className="text-center lg:text-left">
+            <p className="section-label mb-3">Ecosistema</p>
+            <h2
+              className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              Todas las herramientas,{" "}
+              <span className="gradient-text">un solo ecosistema</span>
+            </h2>
+            <p className="text-neutral-500 max-w-xl text-base">
+              Implementamos y conectamos el ecosistema completo de Zoho para que
+              ventas, servicio, marketing y operaciones trabajen en sincronía.
+            </p>
+          </div>
+          {/* Zoho Authorized Partner badge */}
+          <div className="flex justify-center lg:justify-end shrink-0">
+            <Link href="/nosotros" className="inline-block hover:opacity-80 transition-opacity">
+              <div className="bg-white border border-neutral-200 shadow-sm rounded-xl px-4 py-3">
+                <p className="text-neutral-400 text-xs mb-1.5 text-center" style={{ fontFamily: "var(--font-syne)" }}>
+                  Certificados por
+                </p>
+                <Image
+                  src="/logos/zoho-partner.png"
+                  alt="Zoho Authorized Partner"
+                  width={150}
+                  height={50}
+                  className="h-9 w-auto"
+                />
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* Marquee strip */}

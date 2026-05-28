@@ -50,6 +50,22 @@ const testimonials = [
   },
 ];
 
+function ChevronLeftIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
@@ -87,6 +103,18 @@ export default function TestimonialsSection() {
   const handleDotClick = (idx: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     setActive(idx);
+    startAutoPlay();
+  };
+
+  const handlePrev = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    startAutoPlay();
+  };
+
+  const handleNext = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setActive((prev) => (prev + 1) % testimonials.length);
     startAutoPlay();
   };
 
@@ -148,20 +176,41 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Dots navigation */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => handleDotClick(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === active
-                    ? "w-8 h-2.5 bg-white"
-                    : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
-                }`}
-                aria-label={`Testimonial ${i + 1}`}
-              />
-            ))}
+          {/* Dots + arrow navigation */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            {/* Prev arrow */}
+            <button
+              onClick={handlePrev}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
+              aria-label="Anterior testimonial"
+            >
+              <ChevronLeftIcon className="w-4 h-4 text-white" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => handleDotClick(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === active
+                      ? "w-8 h-2.5 bg-white"
+                      : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
+                  }`}
+                  aria-label={`Testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next arrow */}
+            <button
+              onClick={handleNext}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
+              aria-label="Siguiente testimonial"
+            >
+              <ChevronRightIcon className="w-4 h-4 text-white" />
+            </button>
           </div>
         </div>
 

@@ -90,7 +90,7 @@ export default function Footer() {
               />
             </div>
 
-            <p className="text-neutral-600 text-xs">
+            <p className="text-neutral-500 text-xs">
               Zoho es una marca registrada de Zoho Corporation Pvt. Ltd.
             </p>
           </div>
@@ -185,17 +185,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-neutral-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-neutral-600 text-xs text-center sm:text-left">
+          <p className="text-neutral-300 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} ConZultaCRM. Todos los derechos reservados.
           </p>
-          <p className="text-neutral-700 text-xs text-center">
+          <p className="text-neutral-400 text-xs text-center">
             México · Operación 100% Remota · LATAM
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/aviso-privacidad" className="text-neutral-600 text-xs hover:text-neutral-300 transition-colors">
+            <Link href="/aviso-privacidad" className="text-neutral-400 text-xs hover:text-neutral-200 transition-colors">
               Privacidad
             </Link>
-            <Link href="/contacto" className="text-neutral-600 text-xs hover:text-neutral-300 transition-colors">
+            <Link href="/contacto" className="text-neutral-400 text-xs hover:text-neutral-200 transition-colors">
               Términos
             </Link>
           </div>

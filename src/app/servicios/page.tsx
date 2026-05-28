@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
-import ZohoAppsCarousel from "@/components/sections/ZohoAppsCarousel";
 
 export const metadata: Metadata = {
   title: "Servicios — ConZultaCRM",
@@ -283,13 +282,15 @@ export default function ServiciosPage() {
             {/* Content */}
             <div>
               <div className="mb-5">
-                <Image
-                  src="/logos/goto-logo.svg"
-                  alt="GoTo Connect"
-                  width={160}
-                  height={44}
-                  className="h-10 w-auto"
-                />
+                <a href="https://www.goto.com/connect" target="_blank" rel="noopener noreferrer" className="inline-block hover:opacity-80 transition-opacity">
+                  <Image
+                    src="/logos/goto-logo.svg"
+                    alt="GoTo Connect"
+                    width={160}
+                    height={44}
+                    className="h-10 w-auto"
+                  />
+                </a>
               </div>
               <span className="badge badge-blue mb-3 inline-block">Telefonía en la nube</span>
               <h2
@@ -368,7 +369,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ── Peaking.ai ── */}
-      <section id="peaking-ai" className="section-padding bg-white border-t border-neutral-100">
+      <section id="peaking-ai" className="section-padding bg-white border-t border-neutral-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             {/* Decorative card */}
@@ -382,13 +383,15 @@ export default function ServiciosPage() {
                 style={{ background: "radial-gradient(circle, #FF6B35, transparent 70%)" }}
               />
               <div className="relative">
-                <Image
-                  src="/logos/peaking-logo.png"
-                  alt="Peaking.ai"
-                  width={160}
-                  height={44}
-                  className="h-10 w-auto mb-6 brightness-0 invert"
-                />
+                <a href="https://www.peaking.ai" target="_blank" rel="noopener noreferrer" className="inline-block hover:opacity-80 transition-opacity">
+                  <Image
+                    src="/logos/peaking-logo.png"
+                    alt="Peaking.ai"
+                    width={160}
+                    height={44}
+                    className="h-10 w-auto mb-6 brightness-0 invert"
+                  />
+                </a>
                 <p
                   className="text-3xl font-bold text-white mb-3 leading-tight"
                   style={{ fontFamily: "var(--font-syne)" }}
@@ -418,7 +421,7 @@ export default function ServiciosPage() {
             {/* Content */}
             <div>
               <div className="mb-5">
-                <div className="inline-flex items-center bg-[#1A0A0A] rounded-xl px-4 py-2.5">
+                <a href="https://www.peaking.ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-[#1A0A0A] rounded-xl px-4 py-2.5 hover:opacity-80 transition-opacity">
                   <Image
                     src="/logos/peaking-logo.png"
                     alt="Peaking.ai"
@@ -426,7 +429,7 @@ export default function ServiciosPage() {
                     height={40}
                     className="h-8 w-auto brightness-0 invert"
                   />
-                </div>
+                </a>
               </div>
               <span className="badge badge-blue mb-3 inline-block">Distribuidores industriales</span>
               <h2
@@ -484,8 +487,6 @@ export default function ServiciosPage() {
           </div>
         </div>
       </section>
-
-      <ZohoAppsCarousel />
 
       {/* Pricing note */}
       <section className="py-10 bg-neutral-50 border-t border-neutral-100">
