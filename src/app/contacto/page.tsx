@@ -94,7 +94,7 @@ export default function ContactoPage() {
           <>
             ¿Listo para transformar
             <br />
-            <span className="gradient-text-light">tu operación comercial?</span>
+            <span className="gradient-text-light gu-blue">tu operación comercial?</span>
           </>
         }
         description="Agenda una demo gratuita de 30 minutos. Sin presión, sin compromiso. Te mostramos cómo Zoho CRM Plus puede funcionar específicamente para tu empresa."

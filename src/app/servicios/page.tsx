@@ -156,7 +156,7 @@ export default function ServiciosPage() {
         title={
           <>
             Todo lo que necesitas para{" "}
-            <span className="gradient-text-light">aprovechar Zoho al máximo</span>
+            <span className="gradient-text-light gu-cyan">aprovechar Zoho al máximo</span>
           </>
         }
         description="Desde la implementación inicial hasta el soporte continuo, te acompañamos en cada etapa de tu transformación digital con Zoho CRM Plus."
@@ -297,7 +297,7 @@ export default function ServiciosPage() {
                 style={{ fontFamily: "var(--font-syne)" }}
               >
                 GoTo Connect: Comunicación{" "}
-                <span className="gradient-text">unificada para tu empresa</span>
+                <span className="gradient-text gu-violet-d">unificada para tu empresa</span>
               </h2>
               <p className="text-neutral-500 text-lg leading-relaxed mb-6">
                 Reemplaza tu central telefónica con una solución de telefonía en la
@@ -434,7 +434,7 @@ export default function ServiciosPage() {
                 style={{ fontFamily: "var(--font-syne)" }}
               >
                 Peaking.ai — Agente de ventas{" "}
-                <span className="gradient-text">con IA para distribuidores</span>
+                <span className="gradient-text gu-violet-d">con IA para distribuidores</span>
               </h2>
               <p className="text-neutral-500 text-lg leading-relaxed mb-4">
                 Peaking.ai es el agente de ventas inteligente creado para

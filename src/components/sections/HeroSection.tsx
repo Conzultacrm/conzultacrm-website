@@ -121,7 +121,7 @@ export default function HeroSection() {
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Centraliza y automatiza{" "}
-              <span className="gradient-text-light">toda tu operación</span>{" "}
+              <span className="gradient-text-light gu-violet">toda tu operación</span>{" "}
               con Zoho CRM Plus
             </h1>
 

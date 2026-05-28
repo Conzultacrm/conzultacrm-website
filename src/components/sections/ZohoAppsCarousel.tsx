@@ -10,12 +10,15 @@ interface ZohoApp {
 }
 
 const APPS: ZohoApp[] = [
-  { name: "CRM",       tagline: "Ventas",            color: "#E61E25", logo: "/logos/zoho/crm.svg"       },
-  { name: "SalesIQ",   tagline: "Chat en vivo",      color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"   },
-  { name: "Desk",      tagline: "Soporte",            color: "#F28A30", logo: "/logos/zoho/desk.svg"      },
-  { name: "Analytics", tagline: "BI & Reportes",     color: "#FF6B35", logo: "/logos/zoho/analytics.svg" },
-  { name: "Social",    tagline: "Redes sociales",    color: "#7B68EE", logo: "/logos/zoho/social.svg"    },
-  { name: "Projects",  tagline: "Gestión proyectos", color: "#009DD9", logo: "/logos/zoho/projects.png"  },
+  { name: "CRM",       tagline: "Ventas",             color: "#E61E25", logo: "/logos/zoho/crm.svg"       },
+  { name: "SalesIQ",   tagline: "Chat en vivo",       color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"   },
+  { name: "Desk",      tagline: "Soporte",             color: "#F28A30", logo: "/logos/zoho/desk.svg"      },
+  { name: "Analytics", tagline: "BI & Reportes",      color: "#FF6B35", logo: "/logos/zoho/analytics.svg" },
+  { name: "Social",    tagline: "Redes sociales",     color: "#7B68EE", logo: "/logos/zoho/social.svg"    },
+  { name: "Projects",  tagline: "Gestión proyectos",  color: "#009DD9", logo: "/logos/zoho/projects.png"  },
+  { name: "Survey",    tagline: "Encuestas",          color: "#9C27B0", logo: "/logos/zoho/survey.svg"    },
+  { name: "Campaigns", tagline: "Email marketing",    color: "#E44D2E", logo: "/logos/zoho/campaigns.svg" },
+  { name: "Sites",     tagline: "Sitios web",         color: "#089949", logo: "/logos/zoho/sites.svg"     },
 ];
 
 function AppChip({ app }: { app: ZohoApp }) {

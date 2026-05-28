@@ -62,6 +62,36 @@ const products = [
     logoSrc: "/logos/zoho/social.svg",
     signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=1a2b049920ba2e919a6fcbbb802b063f&locale=es",
   },
+  {
+    name: "Zoho Survey",
+    tagline: "Encuestas y feedback",
+    description:
+      "Mide la satisfacción de clientes y empleados con encuestas profesionales. Conecta los resultados directamente al CRM para actuar sobre la retroalimentación en tiempo real.",
+    features: ["Plantillas listas", "Lógica condicional", "Reportes automáticos", "Integración CRM"],
+    color: "#9C27B0",
+    logoSrc: "/logos/zoho/survey.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=d986bc5c2da4b0ab1cf949f6ff439b12&locale=es",
+  },
+  {
+    name: "Zoho Sites",
+    tagline: "Sitios web profesionales",
+    description:
+      "Crea y publica sitios web de alto impacto sin código. Conecta tus formularios de contacto directamente al CRM para capturar leads desde el primer clic.",
+    features: ["Constructor drag & drop", "SEO integrado", "Formularios al CRM", "SSL incluido"],
+    color: "#089949",
+    logoSrc: "/logos/zoho/sites.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=19382b51b6c3376241a09fe838b83399&locale=es",
+  },
+  {
+    name: "Zoho Campaigns",
+    tagline: "Email marketing",
+    description:
+      "Diseña y envía campañas de email personalizadas con segmentación avanzada. Mide aperturas, clics y conversiones con datos sincronizados al CRM en tiempo real.",
+    features: ["Plantillas responsivas", "Segmentación avanzada", "A/B testing", "Reportes de ROI"],
+    color: "#E44D2E",
+    logoSrc: "/logos/zoho/campaigns.svg",
+    signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es",
+  },
 ];
 
 const CRM_PLUS_URL =
@@ -79,7 +109,7 @@ export default function ProductsSection() {
             style={{ fontFamily: "var(--font-syne)" }}
           >
             Zoho CRM Plus:{" "}
-            <span className="gradient-text">6 apps, un solo precio</span>
+            <span className="gradient-text">9 apps, un solo ecosistema</span>
           </h2>
           <p className="text-neutral-500 text-lg">
             No compres módulos sueltos. Con Zoho CRM Plus obtienes todo el ecosistema

@@ -91,7 +91,7 @@ export default function NosotrosPage() {
         title={
           <>
             El equipo detrás de{" "}
-            <span className="gradient-text-light">ConZultaCRM</span>
+            <span className="gradient-text-light gu-violet">ConZultaCRM</span>
           </>
         }
         description="Somos un equipo de especialistas en Zoho CRM apasionados por ayudar a empresas mexicanas a crecer con tecnología de clase mundial."
@@ -109,7 +109,7 @@ export default function NosotrosPage() {
                 style={{ fontFamily: "var(--font-syne)" }}
               >
                 Comunicación en movimiento,{" "}
-                <span className="gradient-text">negocios en crecimiento</span>
+                <span className="gradient-text gu-blue-d">negocios en crecimiento</span>
               </h2>
               <p className="text-neutral-500 text-lg leading-relaxed mb-6">
                 ConZultaCRM nació con una convicción clara: las empresas mexicanas

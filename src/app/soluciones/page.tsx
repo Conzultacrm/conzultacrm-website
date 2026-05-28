@@ -156,7 +156,7 @@ export default function SolucionesPage() {
         title={
           <>
             Zoho CRM Plus adaptado{" "}
-            <span className="gradient-text-light">a tu sector</span>
+            <span className="gradient-text-light gu-rose">a tu sector</span>
           </>
         }
         description="Cada industria tiene procesos únicos. Implementamos Zoho CRM Plus con configuraciones especializadas para que tu equipo opere con máxima eficiencia desde el primer día."
