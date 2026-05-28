@@ -128,7 +128,7 @@ export default function HeroSection() {
             </div>
 
             <h1
-              className="text-4xl sm:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6"
+              className="text-4xl sm:text-5xl xl:text-6xl font-bold text-white leading-[1.4] mb-6"
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Centraliza y automatiza{" "}

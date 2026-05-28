@@ -206,7 +206,7 @@ export default function AnimatedPageHero({
             className={`text-4xl lg:text-5xl font-bold text-white mb-6 transition-all duration-700 delay-150 ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
-            style={{ fontFamily: "var(--font-syne)" }}
+            style={{ fontFamily: "var(--font-syne)", lineHeight: 1.4 }}
           >
             {title}
           </h1>
