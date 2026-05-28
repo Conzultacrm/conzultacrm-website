@@ -5,7 +5,7 @@ import AnimatedPageHero from "@/components/AnimatedPageHero";
 export const metadata: Metadata = {
   title: "Contacto — ConZultaCRM",
   description:
-    "Contáctanos para una demo gratuita de Zoho CRM Plus. Somos ConZultaCRM, partner certificado de Zoho en México. Respuesta en menos de 2 horas hábiles.",
+    "Contáctanos para una demo gratuita de Zoho CRM Plus. Somos ConZultaCRM, Zoho Authorized Partner en México. Respuesta en menos de 2 horas hábiles.",
 };
 
 const WA_URL =

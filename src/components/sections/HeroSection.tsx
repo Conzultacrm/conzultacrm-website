@@ -79,7 +79,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-blue-100 text-lg leading-relaxed mb-8 max-w-xl">
-              Somos partners certificados de Zoho Corporation en México. Implementamos
+              Somos Zoho Authorized Partners en México. Implementamos
               el ecosistema Zoho CRM Plus para que tus equipos de ventas, servicio y
               marketing trabajen en perfecta sincronía.
             </p>

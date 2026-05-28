@@ -22,11 +22,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://conzultacrm.com"),
   title: {
-    default: "ConZultaCRM — Partner Certificado Zoho CRM Plus en México",
+    default: "ConZultaCRM — Zoho Authorized Partner en México",
     template: "%s | ConZultaCRM",
   },
   description:
-    "Implementamos Zoho CRM Plus para empresas mexicanas. Automatiza ventas, servicio al cliente y marketing con el ecosistema Zoho certificado.",
+    "Implementamos Zoho CRM Plus para empresas mexicanas. Automatiza ventas, servicio al cliente y marketing con el ecosistema Zoho CRM Plus.",
   keywords: [
     "Zoho CRM",
     "CRM México",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: "https://conzultacrm.com",
     siteName: "ConZultaCRM",
-    title: "ConZultaCRM — Partner Certificado Zoho CRM Plus en México",
+    title: "ConZultaCRM — Zoho Authorized Partner en México",
     description:
       "Implementamos Zoho CRM Plus para empresas mexicanas. Automatiza ventas, servicio al cliente y marketing.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ConZultaCRM — Partner Certificado Zoho CRM Plus",
+    title: "ConZultaCRM — Zoho Authorized Partner en México",
     description:
       "Implementamos Zoho CRM Plus para empresas en México y LATAM.",
   },

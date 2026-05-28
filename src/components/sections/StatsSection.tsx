@@ -107,8 +107,8 @@ export default function StatsSection() {
           {[
             {
               icon: "🏆",
-              title: "Partner Certificado",
-              desc: "Reconocidos oficialmente por Zoho Corporation como Authorized Partner.",
+              title: "Zoho Authorized Partner",
+              desc: "Zoho Authorized Partners para México y Latinoamérica.",
             },
             {
               icon: "🇲🇽",

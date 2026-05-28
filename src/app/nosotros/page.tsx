@@ -6,7 +6,7 @@ import AnimatedPageHero from "@/components/AnimatedPageHero";
 export const metadata: Metadata = {
   title: "Nosotros — ConZultaCRM",
   description:
-    "Conoce al equipo de ConZultaCRM, partner certificado de Zoho Corporation en México. Nuestra misión: hacer que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
+    "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: hacer que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
 };
 
 const WA_URL =
@@ -36,7 +36,7 @@ const values = [
 ];
 
 const certifications = [
-  { name: "Zoho Authorized Partner", desc: "Certificación oficial de Zoho Corporation" },
+  { name: "Zoho Authorized Partner", desc: "Partner oficial de Zoho Corporation en México" },
   { name: "Zoho CRM Plus Expert", desc: "Especialización en el ecosistema completo" },
   { name: "Zoho Desk Certified", desc: "Implementación de servicio al cliente" },
   { name: "Zoho Analytics Professional", desc: "Business Intelligence y reportería" },
@@ -122,9 +122,9 @@ export default function NosotrosPage() {
                 profesional, en su idioma y adaptada a su realidad de negocio.
               </p>
               <p className="text-neutral-500 text-lg leading-relaxed mb-8">
-                Como Partner Certificado de Zoho Corporation, contamos con el
-                respaldo oficial para implementar, personalizar y dar soporte al
-                ecosistema Zoho CRM Plus en México y Latinoamérica.
+                Como Zoho Authorized Partners, contamos con acceso oficial para
+                implementar, personalizar y dar soporte al ecosistema Zoho CRM Plus
+                en México y Latinoamérica.
               </p>
               <div className="flex items-center gap-4">
                 <div className="bg-white rounded-xl p-2 border border-neutral-200 shadow-sm">
