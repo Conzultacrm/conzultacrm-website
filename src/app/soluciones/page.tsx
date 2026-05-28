@@ -192,7 +192,8 @@ export default function SolucionesPage() {
         badge="Soluciones por industria"
         title={
           <>
-            Zoho CRM Plus adaptado{" "}
+            Zoho CRM Plus adaptado
+            <br />
             <span className="gradient-text-light gu-rose">a tu negocio</span>
           </>
         }
