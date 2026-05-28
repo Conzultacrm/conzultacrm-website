@@ -81,6 +81,7 @@ export async function POST(req: NextRequest) {
     Company:     empresa,
     Lead_Source: "Website",
     Lead_Status: "Not Contacted",
+    Tag:         [{ name: "Sitio Web" }],
   };
 
   if (industria && INDUSTRY_MAP[industria]) {
