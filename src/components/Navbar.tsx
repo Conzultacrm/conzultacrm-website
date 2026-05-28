@@ -31,7 +31,9 @@ export default function Navbar() {
   useEffect(() => setMobileOpen(false), [pathname]);
 
   const isHome = pathname === "/";
-  const transparent = isHome && !scrolled;
+  // Cuando el menú está abierto: navbar se vuelve sólido aunque sea home al top
+  // (el panel blanco necesita contexto visual + evita el re-compositing de la aurora)
+  const transparent = isHome && !scrolled && !mobileOpen;
 
   return (
     <header
@@ -139,11 +141,14 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — absolute para no cambiar altura del header fixed y evitar re-compositing */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden absolute left-0 right-0 transition-all duration-300 z-50 ${
+          mobileOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
+        style={{ top: "100%" }}
       >
         <div className="bg-white border-t border-neutral-200 shadow-xl">
           <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">

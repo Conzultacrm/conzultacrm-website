@@ -20,6 +20,14 @@ const blobColors: Record<HeroTheme, [string, string, string]> = {
   rose:    ["rgba(244,114,182,0.88)", "rgba(167,139,250,0.82)", "rgba(34,211,238,0.78)"],
 };
 
+// Mobile: reduced alpha to avoid bloom/washout on small viewports (blobs ~55% smaller)
+const blobColorsMobile: Record<HeroTheme, [string, string, string]> = {
+  default: ["rgba(34,211,238,0.38)",  "rgba(167,139,250,0.32)", "rgba(52,211,153,0.28)"],
+  teal:    ["rgba(34,211,238,0.38)",  "rgba(52,211,153,0.32)",  "rgba(96,165,250,0.28)"],
+  violet:  ["rgba(167,139,250,0.38)", "rgba(34,211,238,0.32)",  "rgba(244,114,182,0.28)"],
+  rose:    ["rgba(244,114,182,0.38)", "rgba(167,139,250,0.32)", "rgba(34,211,238,0.28)"],
+};
+
 const themes: Record<HeroTheme, HeroThemeConfig> = {
   default: {
     bg: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
@@ -70,11 +78,21 @@ export default function AnimatedPageHero({
   theme = "default",
 }: AnimatedPageHeroProps) {
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const t = themes[theme];
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
+  }, []);
+
+  useEffect(() => {
+    // Detect mobile viewport for scaled-down aurora blobs
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const hasDecorative = !!decorative;
@@ -116,31 +134,32 @@ export default function AnimatedPageHero({
       </div>
 
       {/* Organic aurora blobs — individual CSS blur + mix-blend-mode:screen = vivid on dark bg */}
+      {/* Mobile: blobs ~55% smaller + reduced alpha to avoid bloom/washout */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div style={{
           position: "absolute", top: "-5%", left: "-5%",
-          width: 500, height: 500,
+          width: isMobile ? 220 : 500, height: isMobile ? 220 : 500,
           borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-          background: blobColors[theme][0],
-          filter: "blur(42px)",
+          background: isMobile ? blobColorsMobile[theme][0] : blobColors[theme][0],
+          filter: isMobile ? "blur(20px)" : "blur(42px)",
           mixBlendMode: "screen",
           animation: "blob-1 14s ease-in-out infinite",
         }} />
         <div style={{
           position: "absolute", bottom: "-5%", right: "-5%",
-          width: 440, height: 440,
+          width: isMobile ? 190 : 440, height: isMobile ? 190 : 440,
           borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          background: blobColors[theme][1],
-          filter: "blur(48px)",
+          background: isMobile ? blobColorsMobile[theme][1] : blobColors[theme][1],
+          filter: isMobile ? "blur(22px)" : "blur(48px)",
           mixBlendMode: "screen",
           animation: "blob-2 18s ease-in-out infinite 3s",
         }} />
         <div style={{
           position: "absolute", top: "40%", left: "10%",
-          width: 360, height: 360,
+          width: isMobile ? 160 : 360, height: isMobile ? 160 : 360,
           borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-          background: blobColors[theme][2],
-          filter: "blur(38px)",
+          background: isMobile ? blobColorsMobile[theme][2] : blobColors[theme][2],
+          filter: isMobile ? "blur(18px)" : "blur(38px)",
           mixBlendMode: "screen",
           animation: "blob-3 12s ease-in-out infinite 6s",
         }} />
