@@ -1,82 +1,122 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ZOHO_FORM_URL =
-  "https://crm.zoho.com/crm/WebFormServeServlet?rid=0910ad374e58524cde083191bc99e258d50c9e0088335a04caf6373feba201ad5447d87375d4ec0a1c0780a0a331a6c0gida31291a1e5d5aad3fb4497520b66ab2d3bd99eb4620142528397a7324ff147bf";
+// ── Zoho CRM API v2 ──────────────────────────────────────────────────────────
+const ZOHO_TOKEN_URL = "https://accounts.zoho.com/oauth/v2/token";
+const ZOHO_CRM_URL   = "https://www.zohoapis.com/crm/v2/Leads";
 
-// In-memory token cache (valid ~1 hour)
-let tokenCache: Record<string, string> | null = null;
-let cacheExpiry = 0;
+// Map form industria values → Zoho Industry picklist
+const INDUSTRY_MAP: Record<string, string> = {
+  "Inmobiliaria":             "Real Estate",
+  "Construcción":             "Construction",
+  "Manufactura / Maquinaria": "Engineering",
+  "Retail / Comercio":        "Retail",
+  "Servicios Profesionales":  "Consulting",
+  "Tecnología":               "Technology",
+  "Salud":                    "Healthcare",
+  "Educación":                "Education",
+  "Otro":                     "Other",
+};
 
-async function fetchZohoTokens(): Promise<Record<string, string>> {
-  if (tokenCache && Date.now() < cacheExpiry) return tokenCache;
+// Map form tamano → approximate employee count (integer for Zoho field)
+const EMPLOYEES_MAP: Record<string, number> = {
+  "1–10 personas":   5,
+  "11–50 personas":  25,
+  "51–200 personas": 100,
+  "200+ personas":   300,
+};
 
-  const res = await fetch(ZOHO_FORM_URL, {
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; ConZultaCRM/1.0)" },
+// In-process token cache (valid ~1 h per Vercel instance lifetime)
+let cachedToken: string | null = null;
+let tokenExpiry = 0;
+
+async function getAccessToken(): Promise<string> {
+  if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
+
+  const res = await fetch(ZOHO_TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type:    "refresh_token",
+      client_id:     process.env.ZOHO_CLIENT_ID!,
+      client_secret: process.env.ZOHO_CLIENT_SECRET!,
+      refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
+    }),
     cache: "no-store",
   });
-  const html = await res.text();
 
-  const tokens: Record<string, string> = {};
-  const nameRe = /name=["']([^"']+)["']/i;
-  const valueRe = /value=["']([^"']*?)["']/i;
-
-  for (const [tag] of html.matchAll(/<input[^>]+type=["']?hidden["']?[^>]*>/gi)) {
-    const name = nameRe.exec(tag)?.[1];
-    const value = valueRe.exec(tag)?.[1] ?? "";
-    if (name) tokens[name] = value;
+  const data = await res.json();
+  if (!data.access_token) {
+    throw new Error(`Zoho token refresh failed: ${JSON.stringify(data)}`);
   }
 
-  tokenCache = tokens;
-  cacheExpiry = Date.now() + 3_600_000;
-  return tokens;
+  cachedToken = data.access_token as string;
+  tokenExpiry = Date.now() + (Number(data.expires_in) - 120) * 1000;
+  return cachedToken;
 }
 
+// ── POST handler ─────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-  const { nombre, email, telefono, empresa, industria, tamano, crmActual, mensaje } =
-    await req.json();
-
-  const description = [
-    `Industria: ${industria}`,
-    `Tamaño del equipo: ${tamano}`,
-    `CRM Actual: ${crmActual}`,
-    "",
+  const {
+    nombre,
+    email,
+    telefono,
+    empresa,
+    industria,
+    tamano,
+    crmActual,
     mensaje,
-  ].join("\n");
+  } = await req.json();
+
+  // Build the description block with all contextual fields
+  const descParts = [
+    tamano    ? `Tamaño del equipo: ${tamano}`   : null,
+    crmActual ? `CRM Actual: ${crmActual}`        : null,
+    mensaje   ? `\n${mensaje}`                    : null,
+  ].filter(Boolean);
+
+  const lead: Record<string, unknown> = {
+    Last_Name:   nombre,
+    Email:       email,
+    Phone:       telefono,
+    Company:     empresa,
+    Lead_Source: "Website",
+    Lead_Status: "Not Contacted",
+  };
+
+  if (industria && INDUSTRY_MAP[industria]) {
+    lead.Industry = INDUSTRY_MAP[industria];
+  }
+  if (tamano && EMPLOYEES_MAP[tamano]) {
+    lead.No_of_Employees = EMPLOYEES_MAP[tamano];
+  }
+  if (descParts.length) {
+    lead.Description = descParts.join("\n");
+  }
 
   try {
-    const tokens = await fetchZohoTokens();
+    const token = await getAccessToken();
 
-    const body = new URLSearchParams({
-      ...tokens,
-      "Last Name": nombre,
-      Email: email,
-      Phone: telefono,
-      Company: empresa,
-      Description: description,
-    });
-
-    const zohoRes = await fetch("https://crm.zoho.com/crm/WebFormServeServlet", {
+    const zohoRes = await fetch(ZOHO_CRM_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Referer: "https://conzultacrm.com/contacto",
-        Origin: "https://conzultacrm.com",
+        Authorization:  `Zoho-oauthtoken ${token}`,
+        "Content-Type": "application/json",
       },
-      body: body.toString(),
+      body: JSON.stringify({ data: [lead] }),
     });
 
-    // Zoho returns 302 redirect on success; any non-5xx is treated as success
-    if (zohoRes.status < 500) {
+    const result = await zohoRes.json();
+    const status = result?.data?.[0]?.status;
+
+    if (status === "success") {
       return NextResponse.json({ success: true });
     }
-    throw new Error(`Zoho: ${zohoRes.status}`);
+
+    // Log rejection details (visible in Vercel logs)
+    console.error("[contact] Zoho rejected lead:", JSON.stringify(result));
+    return NextResponse.json({ success: true });
   } catch (err) {
-    // Log for manual follow-up; still return 200 so the user experience isn't broken
-    console.error("[contact] Zoho submission failed:", err, {
-      nombre,
-      email,
-      empresa,
-    });
+    console.error("[contact] Zoho CRM API error:", err, { nombre, email, empresa });
     return NextResponse.json({ success: true });
   }
 }
