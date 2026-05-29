@@ -187,9 +187,20 @@ export default function HeroSection() {
           </div>
 
           {/* Right — Visual */}
-          <div className="relative hidden lg:block">
-            {/* Main card */}
-            <div className="relative z-10 glass rounded-2xl p-6 max-w-md mx-auto animate-float">
+          <div className="relative hidden lg:block pt-12 pb-12">
+            {/* Floating chip — ABOVE the card, never overlaps content */}
+            <div className="absolute top-0 right-4 z-20 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float-delayed">
+              <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                Automatización
+              </p>
+              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
+                47 flujos activos
+              </p>
+              <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
+            </div>
+
+            {/* Main card — slightly more opaque for readability */}
+            <div className="relative z-10 rounded-2xl p-6 max-w-md mx-auto animate-float" style={{ background: "rgba(255,255,255,0.13)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.18)" }}>
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
                 <div>
@@ -265,26 +276,17 @@ export default function HeroSection() {
                 ))}
               </div>
 
-              {/* Floating mini cards — inside main card so positions are relative to it, no viewport collisions */}
-              <div className="absolute -top-3 -right-3 z-10 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float-delayed">
-                <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                  Automatización
-                </p>
-                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                  47 flujos activos
-                </p>
-                <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
-              </div>
+            </div>
 
-              <div className="absolute -bottom-3 -left-3 z-10 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float">
-                <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                  Tiempo de respuesta
-                </p>
-                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                  &lt; 2 horas
-                </p>
-                <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
-              </div>
+            {/* Floating chip — BELOW the card, never overlaps content */}
+            <div className="absolute bottom-0 left-4 z-20 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float">
+              <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                Tiempo de respuesta
+              </p>
+              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
+                &lt; 2 horas
+              </p>
+              <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
             </div>
           </div>
         </div>
