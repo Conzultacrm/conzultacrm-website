@@ -187,24 +187,16 @@ export default function HeroSection() {
           </div>
 
           {/* Right — Visual */}
-          <div className="relative hidden lg:block pt-12 pb-12">
-            {/* Floating chip — ABOVE the card, never overlaps content */}
-            <div className="absolute top-0 right-4 z-20 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float-delayed">
-              <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                Automatización
-              </p>
-              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                47 flujos activos
-              </p>
-              <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
-            </div>
-
-            {/* Main card — slightly more opaque for readability */}
-            <div className="relative z-10 rounded-2xl p-6 max-w-md mx-auto animate-float" style={{ background: "rgba(255,255,255,0.13)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.18)" }}>
+          <div className="hidden lg:flex flex-col gap-3">
+            {/* Main dashboard card — solid dark navy, fully readable */}
+            <div
+              className="relative z-10 rounded-2xl p-6 max-w-md mx-auto w-full animate-float"
+              style={{ background: "#0D1B3E", border: "1px solid rgba(99,130,220,0.3)" }}
+            >
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <p className="text-white/75 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                  <p className="text-blue-300 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
                     Panel de Ventas
                   </p>
                   <p className="text-white font-bold" style={{ fontFamily: "var(--font-syne)" }}>
@@ -221,12 +213,12 @@ export default function HeroSection() {
               {/* Stats row */}
               <div className="grid grid-cols-3 gap-3 mb-5">
                 {[
-                  { label: "Leads", value: "248", change: "+32%", color: "#2563EB" },
-                  { label: "Deals", value: "$1.2M", change: "+18%", color: "#7C3AED" },
-                  { label: "Tickets", value: "97%", change: "CSAT", color: "#06B6D4" },
+                  { label: "Leads", value: "248", change: "+32%", color: "#60A5FA" },
+                  { label: "Deals", value: "$1.2M", change: "+18%", color: "#A78BFA" },
+                  { label: "Tickets", value: "97%", change: "CSAT", color: "#34D399" },
                 ].map((s) => (
-                  <div key={s.label} className="glass rounded-xl p-3 text-center">
-                    <p className="text-white/70 text-xs mb-1" style={{ fontFamily: "var(--font-syne)" }}>
+                  <div key={s.label} className="rounded-xl p-3 text-center" style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                    <p className="text-blue-200 text-xs mb-1" style={{ fontFamily: "var(--font-syne)" }}>
                       {s.label}
                     </p>
                     <p className="text-white font-bold text-lg leading-none mb-1" style={{ fontFamily: "var(--font-syne)" }}>
@@ -241,24 +233,24 @@ export default function HeroSection() {
 
               {/* Pipeline bars */}
               <div className="space-y-3 mb-4">
-                <p className="text-white/70 text-xs mb-2" style={{ fontFamily: "var(--font-syne)" }}>
+                <p className="text-blue-300 text-xs mb-2" style={{ fontFamily: "var(--font-syne)" }}>
                   Pipeline por etapa
                 </p>
                 {[
-                  { label: "Prospecto", pct: 80, color: "#2563EB" },
-                  { label: "Propuesta", pct: 55, color: "#7C3AED" },
-                  { label: "Negociación", pct: 30, color: "#06B6D4" },
-                  { label: "Cierre", pct: 15, color: "#10B981" },
+                  { label: "Prospecto", pct: 80, color: "#60A5FA" },
+                  { label: "Propuesta", pct: 55, color: "#A78BFA" },
+                  { label: "Negociación", pct: 30, color: "#34D399" },
+                  { label: "Cierre", pct: 15, color: "#F9A8D4" },
                 ].map((bar) => (
                   <div key={bar.label} className="flex items-center gap-3">
-                    <span className="text-white/75 text-xs w-20 shrink-0">{bar.label}</span>
-                    <div className="flex-1 h-1.5 rounded-full bg-white/10">
+                    <span className="text-blue-100 text-xs w-20 shrink-0">{bar.label}</span>
+                    <div className="flex-1 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.1)" }}>
                       <div
                         className="h-full rounded-full"
                         style={{ width: `${bar.pct}%`, background: bar.color }}
                       />
                     </div>
-                    <span className="text-white/65 text-xs w-8 text-right">{bar.pct}%</span>
+                    <span className="text-blue-200 text-xs w-8 text-right">{bar.pct}%</span>
                   </div>
                 ))}
               </div>
@@ -268,25 +260,27 @@ export default function HeroSection() {
                 {["CRM", "Desk", "SalesIQ", "Analytics", "Projects"].map((app) => (
                   <span
                     key={app}
-                    className="px-2.5 py-1 rounded-lg text-xs font-semibold text-white/80 bg-white/10"
-                    style={{ fontFamily: "var(--font-syne)" }}
+                    className="px-2.5 py-1 rounded-lg text-xs font-semibold text-white"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", fontFamily: "var(--font-syne)" }}
                   >
                     {app}
                   </span>
                 ))}
               </div>
-
             </div>
 
-            {/* Floating chip — BELOW the card, never overlaps content */}
-            <div className="absolute bottom-0 left-4 z-20 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float">
-              <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                Tiempo de respuesta
-              </p>
-              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                &lt; 2 horas
-              </p>
-              <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
+            {/* Stat chips — BELOW the card, solid colors, zero overlap */}
+            <div className="flex gap-3 max-w-md mx-auto w-full">
+              <div className="flex-1 rounded-xl p-3" style={{ background: "#0A2818", border: "1px solid rgba(52,211,153,0.35)" }}>
+                <p className="text-emerald-300 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>Automatización</p>
+                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>47 flujos activos</p>
+                <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
+              </div>
+              <div className="flex-1 rounded-xl p-3" style={{ background: "#051828", border: "1px solid rgba(34,211,238,0.35)" }}>
+                <p className="text-cyan-300 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>Tiempo de respuesta</p>
+                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>&lt; 2 horas</p>
+                <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
+              </div>
             </div>
           </div>
         </div>
