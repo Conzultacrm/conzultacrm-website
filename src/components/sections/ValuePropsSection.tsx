@@ -10,7 +10,7 @@ const values = [
     icon: "⚡",
     title: "Implementación Ágil",
     description:
-      "Metodología probada que te lleva de cero a producción en 4–8 semanas. Sin proyectos eternos, sin sorpresas, con resultados medibles desde el primer mes.",
+      "Metodología probada que te lleva de cero a producción en semanas, no meses. Sin proyectos eternos, sin sorpresas, con resultados medibles desde el primer mes.",
     color: "violet" as const,
   },
   {

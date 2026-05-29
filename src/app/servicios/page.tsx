@@ -17,7 +17,7 @@ const services = [
     id: "implementacion",
     icon: "⚙️",
     title: "Implementación Zoho CRM Plus",
-    subtitle: "De cero a producción en 4–8 semanas",
+    subtitle: "De cero a producción con plazos claros",
     description:
       "Configuramos y personalizamos Zoho CRM Plus para que se adapte 100% a tus procesos de negocio, no al revés. Desde el diseño de flujos hasta la migración de datos.",
     includes: [
@@ -30,7 +30,7 @@ const services = [
       "Pruebas de calidad y ajustes previos al go-live",
       "Lanzamiento en producción acompañado",
     ],
-    timeline: "4–8 semanas",
+    timeline: "Plazos acordados",
     color: "#2563EB",
   },
   {
@@ -132,7 +132,7 @@ function ServiciosDecorativeCard() {
         </div>
         <div className="mt-4 pt-3 border-t border-white/10">
           <p className="text-blue-200 text-xs text-center">
-            ⏱ 4–8 semanas hasta producción
+            ⏱ Go-live garantizado, sin retrasos
           </p>
         </div>
       </div>
@@ -292,29 +292,29 @@ export default function ServiciosPage() {
                   />
                 </a>
               </div>
-              <span className="badge badge-blue mb-3 inline-block">Telefonía en la nube</span>
+              <span className="badge badge-blue mb-3 inline-block">Experiencia del cliente</span>
               <h2
                 className="text-3xl font-bold text-neutral-900 mb-4"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                GoTo Connect: Comunicación{" "}
-                <span className="gradient-text gu-violet-d">unificada para tu empresa</span>
+                GoTo Connect:{" "}
+                <span className="gradient-text gu-violet-d">atención al cliente omnicanal</span>
               </h2>
               <p className="text-neutral-500 text-lg leading-relaxed mb-6">
-                Reemplaza tu central telefónica con una solución de telefonía en la
-                nube que integra llamadas, videollamadas y mensajería en equipo.
-                Se conecta de forma nativa con Zoho CRM para registrar llamadas
-                automáticamente, sincronizar contactos y hacer click-to-dial desde
-                el CRM.
+                Gestiona todas las interacciones con tus clientes desde una sola
+                plataforma. GoTo Connect integra llamadas, videollamadas y mensajería
+                con enrutamiento inteligente, supervisión de agentes en tiempo real
+                y conexión nativa con Zoho CRM para que cada interacción quede
+                registrada y con seguimiento automático.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Sistema telefónico VoIP para toda la empresa",
+                  "Telefonía VoIP con IVR y enrutamiento inteligente de llamadas",
+                  "Supervisión de agentes y colas en tiempo real",
                   "Videollamadas y reuniones virtuales integradas",
-                  "Mensajería en equipo y chat interno",
-                  "Integración nativa con Zoho CRM",
-                  "Grabación de llamadas y reportes de actividad",
-                  "App móvil para equipos en campo",
+                  "Integración nativa con Zoho CRM (click-to-dial, registro automático)",
+                  "Grabación de llamadas, transcripción y reportes de actividad",
+                  "App móvil para equipos en campo y home office",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-neutral-600 text-sm">
                     <span className="w-5 h-5 rounded-full bg-[#ED6C2B]/15 border border-[#ED6C2B]/30 flex items-center justify-center flex-shrink-0">
@@ -342,14 +342,14 @@ export default function ServiciosPage() {
                 className="text-sm font-bold text-neutral-700 mb-6 uppercase tracking-wider"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Comunicación unificada: todo en uno
+                Plataforma de experiencia del cliente
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: "📞", title: "Telefonía VoIP", desc: "Extensiones, IVR, cola de llamadas y más sin hardware costoso" },
-                  { icon: "🎥", title: "Video & Reuniones", desc: "Videollamadas HD con pantalla compartida para hasta 250 participantes" },
-                  { icon: "💬", title: "Mensajería de Equipo", desc: "Chat interno, canales por área y mensajes directos" },
-                  { icon: "🔗", title: "Integrado con Zoho", desc: "Registro automático de llamadas, click-to-dial y sync de contactos" },
+                  { icon: "📞", title: "VoIP + IVR Inteligente", desc: "Enrutamiento por habilidades, cola de llamadas y extensiones sin hardware costoso" },
+                  { icon: "📊", title: "Supervisión en Tiempo Real", desc: "Wallboard de agentes, escucha en vivo y métricas de rendimiento del equipo" },
+                  { icon: "🎥", title: "Video & Reuniones", desc: "Videollamadas HD con pantalla compartida para seguimiento con clientes" },
+                  { icon: "🔗", title: "Integrado con Zoho CRM", desc: "Registro automático de llamadas, click-to-dial y sincronización de contactos" },
                 ].map((feat) => (
                   <div
                     key={feat.title}
