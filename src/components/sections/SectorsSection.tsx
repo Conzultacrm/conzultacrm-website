@@ -72,7 +72,8 @@ export default function SectorsSection() {
             className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Soluciones CRM{" "}
+            Soluciones CRM
+            <br />
             <span className="gradient-text">diseñadas para tu industria</span>
           </h2>
           <p className="text-neutral-500 text-lg">

@@ -72,7 +72,7 @@ export default function ProcessSection() {
             style={{ fontFamily: "var(--font-syne)" }}
           >
             De cero a producción en{" "}
-            <span className="gradient-text">8 semanas</span>
+            <span className="gradient-text">semanas, no meses</span>
           </h2>
           <p className="text-neutral-500 text-lg">
             Un proceso probado y estructurado que garantiza adopción real,
@@ -141,9 +141,9 @@ export default function ProcessSection() {
               className="text-2xl font-bold text-neutral-900"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              4 a 8 semanas
+              Semanas, no meses
             </p>
-            <p className="text-neutral-500 text-sm">Tiempo total de implementación</p>
+            <p className="text-neutral-500 text-sm">Implementación ágil según tu alcance</p>
           </div>
           <div className="flex-1 max-w-sm">
             <div className="h-2 rounded-full bg-neutral-100 overflow-hidden">

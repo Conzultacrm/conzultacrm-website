@@ -57,9 +57,9 @@ function NosotrosDecorativeCard() {
         </div>
         <div className="space-y-2.5">
           {[
-            { label: "Empresas implementadas", value: "50+", color: "#60A5FA" },
+            { label: "Empresas implementadas", value: "70+", color: "#60A5FA" },
             { label: "Satisfacción del cliente", value: "97%", color: "#34D399" },
-            { label: "Tiempo promedio go-live", value: "8 sem", color: "#A78BFA" },
+            { label: "Go-lives sin retrasos", value: "100%", color: "#A78BFA" },
           ].map((s) => (
             <div key={s.label} className="flex items-center justify-between">
               <span className="text-blue-200 text-xs">{s.label}</span>
@@ -142,8 +142,8 @@ export default function NosotrosPage() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { num: "50+", label: "Empresas implementadas", color: "#2563EB" },
-                { num: "8", label: "Semanas promedio go-live", color: "#7C3AED" },
+                { num: "70+", label: "Empresas implementadas", color: "#2563EB" },
+                { num: "100%", label: "Go-lives entregados a tiempo", color: "#7C3AED" },
                 { num: "97%", label: "Satisfacción del cliente", color: "#06B6D4" },
                 { num: "100%", label: "Operación remota México", color: "#10B981" },
               ].map((s) => (

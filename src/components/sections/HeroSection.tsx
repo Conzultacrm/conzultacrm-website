@@ -148,7 +148,7 @@ export default function HeroSection() {
             {/* Bullets */}
             <ul className="space-y-3 mb-10">
               {[
-                "Implementación en menos de 8 semanas",
+                "Implementación ágil, sin proyectos eternos",
                 "Capacitación y acompañamiento incluido",
                 "Integración con tus sistemas actuales",
                 "Soporte continuo en español",
@@ -193,7 +193,7 @@ export default function HeroSection() {
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <p className="text-white/60 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                  <p className="text-white/75 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
                     Panel de Ventas
                   </p>
                   <p className="text-white font-bold" style={{ fontFamily: "var(--font-syne)" }}>
@@ -215,7 +215,7 @@ export default function HeroSection() {
                   { label: "Tickets", value: "97%", change: "CSAT", color: "#06B6D4" },
                 ].map((s) => (
                   <div key={s.label} className="glass rounded-xl p-3 text-center">
-                    <p className="text-white/50 text-xs mb-1" style={{ fontFamily: "var(--font-syne)" }}>
+                    <p className="text-white/70 text-xs mb-1" style={{ fontFamily: "var(--font-syne)" }}>
                       {s.label}
                     </p>
                     <p className="text-white font-bold text-lg leading-none mb-1" style={{ fontFamily: "var(--font-syne)" }}>
@@ -230,7 +230,7 @@ export default function HeroSection() {
 
               {/* Pipeline bars */}
               <div className="space-y-3 mb-4">
-                <p className="text-white/50 text-xs mb-2" style={{ fontFamily: "var(--font-syne)" }}>
+                <p className="text-white/70 text-xs mb-2" style={{ fontFamily: "var(--font-syne)" }}>
                   Pipeline por etapa
                 </p>
                 {[
@@ -240,14 +240,14 @@ export default function HeroSection() {
                   { label: "Cierre", pct: 15, color: "#10B981" },
                 ].map((bar) => (
                   <div key={bar.label} className="flex items-center gap-3">
-                    <span className="text-white/60 text-xs w-20 shrink-0">{bar.label}</span>
+                    <span className="text-white/75 text-xs w-20 shrink-0">{bar.label}</span>
                     <div className="flex-1 h-1.5 rounded-full bg-white/10">
                       <div
                         className="h-full rounded-full"
                         style={{ width: `${bar.pct}%`, background: bar.color }}
                       />
                     </div>
-                    <span className="text-white/50 text-xs w-8 text-right">{bar.pct}%</span>
+                    <span className="text-white/65 text-xs w-8 text-right">{bar.pct}%</span>
                   </div>
                 ))}
               </div>
@@ -264,27 +264,27 @@ export default function HeroSection() {
                   </span>
                 ))}
               </div>
-            </div>
 
-            {/* Floating mini cards */}
-            <div className="absolute -top-4 -right-8 z-20 glass rounded-xl p-3 animate-float-delayed">
-              <p className="text-white/50 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                Automatización
-              </p>
-              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                47 flujos activos
-              </p>
-              <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
-            </div>
+              {/* Floating mini cards — inside main card so positions are relative to it, no viewport collisions */}
+              <div className="absolute -top-3 -right-3 z-10 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float-delayed">
+                <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                  Automatización
+                </p>
+                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
+                  47 flujos activos
+                </p>
+                <p className="text-emerald-400 text-xs font-semibold">↑ Corriendo ahora</p>
+              </div>
 
-            <div className="absolute -bottom-6 -left-6 z-20 glass rounded-xl p-3 animate-float">
-              <p className="text-white/50 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
-                Tiempo de respuesta
-              </p>
-              <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
-                &lt; 2 horas
-              </p>
-              <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
+              <div className="absolute -bottom-3 -left-3 z-10 bg-[#051228]/90 backdrop-blur-sm border border-white/25 shadow-xl rounded-xl p-3 animate-float">
+                <p className="text-white/70 text-xs mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
+                  Tiempo de respuesta
+                </p>
+                <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
+                  &lt; 2 horas
+                </p>
+                <p className="text-cyan-400 text-xs font-semibold">Soporte 24/7</p>
+              </div>
             </div>
           </div>
         </div>
