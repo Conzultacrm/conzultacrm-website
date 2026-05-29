@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 50, suffix: "+", label: "Empresas implementadas", color: "#2563EB" },
-  { value: 8, suffix: " sem", label: "Tiempo promedio de go-live", color: "#7C3AED" },
+  { value: 70, suffix: "+", label: "Empresas implementadas", color: "#2563EB" },
+  { value: 100, suffix: "%", label: "Go-lives entregados a tiempo", color: "#7C3AED" },
   { value: 97, suffix: "%", label: "Tasa de adopción de usuarios", color: "#06B6D4" },
   { value: 3, suffix: "x", label: "ROI promedio en 12 meses", color: "#10B981" },
 ];
