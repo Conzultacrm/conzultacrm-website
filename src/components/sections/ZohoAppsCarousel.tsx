@@ -11,15 +11,21 @@ interface ZohoApp {
 }
 
 const APPS: ZohoApp[] = [
-  { name: "CRM",       tagline: "Ventas",             color: "#E61E25", logo: "/logos/zoho/crm.svg"       },
-  { name: "SalesIQ",   tagline: "Chat en vivo",       color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"   },
-  { name: "Desk",      tagline: "Soporte",             color: "#F28A30", logo: "/logos/zoho/desk.svg"      },
-  { name: "Analytics", tagline: "BI & Reportes",      color: "#FF6B35", logo: "/logos/zoho/analytics.svg" },
-  { name: "Social",    tagline: "Redes sociales",     color: "#7B68EE", logo: "/logos/zoho/social.svg"    },
-  { name: "Projects",  tagline: "Gestión proyectos",  color: "#009DD9", logo: "/logos/zoho/projects.png"  },
-  { name: "Survey",    tagline: "Encuestas",          color: "#9C27B0", logo: "/logos/zoho/survey.svg"    },
-  { name: "Campaigns", tagline: "Email marketing",    color: "#E44D2E", logo: "/logos/zoho/campaigns.svg" },
-  { name: "Sites",     tagline: "Sitios web",         color: "#089949", logo: "/logos/zoho/sites.svg"     },
+  { name: "CRM",                  tagline: "Ventas",                    color: "#E61E25", logo: "/logos/zoho/crm.svg"                  },
+  { name: "SalesIQ",              tagline: "Chat en vivo",              color: "#00BFA5", logo: "/logos/zoho/salesiq.svg"              },
+  { name: "Desk",                 tagline: "Soporte",                   color: "#F28A30", logo: "/logos/zoho/desk.svg"                 },
+  { name: "Analytics",            tagline: "BI & Reportes",             color: "#FF6B35", logo: "/logos/zoho/analytics.svg"            },
+  { name: "Social",               tagline: "Redes sociales",            color: "#7B68EE", logo: "/logos/zoho/social.svg"               },
+  { name: "Projects",             tagline: "Gestión proyectos",         color: "#009DD9", logo: "/logos/zoho/projects.png"             },
+  { name: "Survey",               tagline: "Encuestas",                 color: "#9C27B0", logo: "/logos/zoho/survey.svg"               },
+  { name: "Campaigns",            tagline: "Email marketing",           color: "#E44D2E", logo: "/logos/zoho/campaigns.svg"            },
+  { name: "Sites",                tagline: "Sitios web",                color: "#089949", logo: "/logos/zoho/sites.svg"                },
+  { name: "Webinar",              tagline: "Webinars y eventos",        color: "#E42527", logo: "/logos/zoho/webinar.svg"              },
+  { name: "Cliq",                 tagline: "Chat y colaboración",       color: "#226DB4", logo: "/logos/zoho/cliq.svg"                 },
+  { name: "Backstage",            tagline: "Gestión de eventos",        color: "#1E3A6E", logo: "/logos/zoho/backstage.svg"            },
+  { name: "WorkDrive",            tagline: "Gestión documental",        color: "#0EA5E9", logo: "/logos/zoho/workdrive.svg"            },
+  { name: "PageSense",            tagline: "Optimización CRO",          color: "#089949", logo: "/logos/zoho/pagesense.svg"            },
+  { name: "Marketing Automation", tagline: "Automatización marketing",  color: "#F59E0B", logo: "/logos/zoho/marketingautomation.svg"  },
 ];
 
 function AppChip({ app }: { app: ZohoApp }) {
@@ -77,7 +83,7 @@ export default function ZohoAppsCarousel() {
             <Link href="/nosotros" className="inline-block hover:opacity-80 transition-opacity">
               <div className="bg-white border border-neutral-200 shadow-sm rounded-xl px-4 py-3">
                 <p className="text-neutral-400 text-xs mb-1.5 text-center" style={{ fontFamily: "var(--font-syne)" }}>
-                  Certificados por
+                  Zoho Authorized Partner
                 </p>
                 <Image
                   src="/logos/zoho-partner.png"

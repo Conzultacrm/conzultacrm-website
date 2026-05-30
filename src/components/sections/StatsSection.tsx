@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
+  { value: 13, suffix: "+", label: "Años de experiencia en CRM", color: "#F59E0B" },
   { value: 70, suffix: "+", label: "Empresas implementadas", color: "#2563EB" },
   { value: 100, suffix: "%", label: "Go-lives entregados a tiempo", color: "#7C3AED" },
   { value: 97, suffix: "%", label: "Tasa de adopción de usuarios", color: "#06B6D4" },
@@ -97,7 +98,7 @@ export default function StatsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-white/10">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-0 lg:divide-x divide-white/10">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} active={active} />
           ))}

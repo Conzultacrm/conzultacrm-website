@@ -74,6 +74,7 @@ function NosotrosDecorativeCard() {
         </div>
         <div className="space-y-2.5">
           {[
+            { label: "Años de experiencia", value: "13+", color: "#FCD34D" },
             { label: "Empresas implementadas", value: "70+", color: "#60A5FA" },
             { label: "Satisfacción del cliente", value: "97%", color: "#34D399" },
             { label: "Go-lives sin retrasos", value: "100%", color: "#A78BFA" },
@@ -163,14 +164,17 @@ export default function NosotrosPage() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
+                { num: "13+", label: "Años de experiencia en CRM", color: "#F59E0B" },
                 { num: "70+", label: "Empresas implementadas", color: "#2563EB" },
                 { num: "100%", label: "Go-lives entregados a tiempo", color: "#7C3AED" },
                 { num: "97%", label: "Satisfacción del cliente", color: "#06B6D4" },
                 { num: "100%", label: "Operación remota México", color: "#10B981" },
-              ].map((s) => (
+              ].map((s, i, arr) => (
                 <div
                   key={s.label}
-                  className="bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+                  className={`bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-lg transition-shadow${
+                    i === arr.length - 1 && arr.length % 2 !== 0 ? " col-span-2" : ""
+                  }`}
                 >
                   <p
                     className="text-4xl font-bold mb-2"

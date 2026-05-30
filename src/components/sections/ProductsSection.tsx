@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const CRM_PLUS_URL =
+  "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es";
+
 const products = [
   {
     name: "Zoho CRM",
@@ -92,10 +95,67 @@ const products = [
     logoSrc: "/logos/zoho/campaigns.svg",
     signupUrl: "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es",
   },
+  {
+    name: "Zoho Webinar",
+    tagline: "Webinars y eventos virtuales",
+    description:
+      "Organiza y transmite webinars y eventos virtuales directamente desde tu plataforma Zoho. Conecta asistentes con el CRM para convertir participantes en prospectos calificados.",
+    features: ["Sala virtual ilimitada", "Registro automático", "Seguimiento en CRM", "Grabaciones HD"],
+    color: "#E42527",
+    logoSrc: "/logos/zoho/webinar.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
+  {
+    name: "Zoho Cliq",
+    tagline: "Chat y colaboración interna",
+    description:
+      "Comunicación del equipo en tiempo real con canales, mensajes directos y bots inteligentes. Recibe notificaciones del CRM y mantén a tu equipo sincronizado sin salir de Zoho.",
+    features: ["Canales temáticos", "Videollamadas HD", "Bots y automatizaciones", "Integración CRM"],
+    color: "#226DB4",
+    logoSrc: "/logos/zoho/cliq.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
+  {
+    name: "Zoho Backstage",
+    tagline: "Gestión de eventos",
+    description:
+      "Gestiona eventos presenciales y virtuales con control total: registro, agenda, speakers y networking. Ideal para lanzamientos, conferencias y capacitaciones corporativas.",
+    features: ["Registro de asistentes", "Agenda interactiva", "App para asistentes", "Análisis de evento"],
+    color: "#1E3A6E",
+    logoSrc: "/logos/zoho/backstage.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
+  {
+    name: "Zoho WorkDrive",
+    tagline: "Gestión documental en la nube",
+    description:
+      "Almacenamiento y colaboración documental para equipos. Gestiona contratos, propuestas y documentos críticos con versionado, control de acceso y edición en tiempo real.",
+    features: ["Almacenamiento colaborativo", "Control de versiones", "Comentarios en línea", "Integración CRM"],
+    color: "#0EA5E9",
+    logoSrc: "/logos/zoho/workdrive.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
+  {
+    name: "Zoho PageSense",
+    tagline: "Optimización de conversión",
+    description:
+      "Optimiza la conversión de tu sitio web con mapas de calor, grabaciones de sesiones y pruebas A/B. Entiende cómo navegan tus visitantes y toma decisiones basadas en datos reales.",
+    features: ["Mapas de calor", "Grabación de sesiones", "Pruebas A/B", "Análisis de funnel"],
+    color: "#089949",
+    logoSrc: "/logos/zoho/pagesense.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
+  {
+    name: "Zoho Marketing Automation",
+    tagline: "Automatización de marketing",
+    description:
+      "Crea flujos de nurturing inteligentes para convertir prospectos en clientes. Automatiza emails, segmenta audiencias y mide el ROI de cada campaña con trazabilidad completa al CRM.",
+    features: ["Flujos de nurturing", "Lead scoring", "Segmentación avanzada", "Reportes de ROI"],
+    color: "#F59E0B",
+    logoSrc: "/logos/zoho/marketingautomation.svg",
+    signupUrl: CRM_PLUS_URL,
+  },
 ];
-
-const CRM_PLUS_URL =
-  "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es";
 
 export default function ProductsSection() {
   return (
@@ -109,7 +169,7 @@ export default function ProductsSection() {
             style={{ fontFamily: "var(--font-syne)" }}
           >
             Zoho CRM Plus:{" "}
-            <span className="gradient-text">9 apps, un solo ecosistema</span>
+            <span className="gradient-text">más de 15 apps, un solo ecosistema</span>
           </h2>
           <p className="text-neutral-500 text-lg">
             No compres módulos sueltos. Con Zoho CRM Plus obtienes todo el ecosistema
@@ -206,8 +266,8 @@ export default function ProductsSection() {
               ¿Quieres todas las apps en un solo plan?
             </p>
             <p className="text-neutral-500 mb-5">
-              Zoho CRM Plus incluye todas las herramientas anteriores más CRM, Campaigns,
-              SalesInbox y más — a un precio fijo por usuario al mes.
+              Zoho CRM Plus incluye más de 15 herramientas integradas — ventas, servicio,
+              marketing, colaboración y automatización — a un precio fijo por usuario al mes.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a
