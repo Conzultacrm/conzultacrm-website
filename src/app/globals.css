@@ -459,7 +459,7 @@
 }
 .animate-marquee:hover { animation-play-state: paused; }
 @media (max-width: 767px) {
-  .animate-marquee { animation-duration: 22s; }
+  .animate-marquee { animation-duration: 35s; }
 }
 
 /* Hero floating shapes */
