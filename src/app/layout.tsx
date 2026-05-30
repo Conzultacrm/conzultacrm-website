@@ -64,6 +64,35 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ConZultaCRM",
+  url: "https://conzultacrm.com",
+  logo: "https://conzultacrm.com/logos/logo-horizontal.png",
+  description:
+    "Zoho Authorized Partner en México y LATAM. Implementamos Zoho CRM Plus para empresas medianas y en expansión.",
+  foundingDate: "2020",
+  areaServed: ["MX", "LATAM"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+52-55-8404-6430",
+    contactType: "customer service",
+    availableLanguage: "Spanish",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/conzulta-crm",
+    "https://www.instagram.com/conzulta_crm/",
+    "https://www.facebook.com/ConZultaOficial",
+  ],
+  employee: {
+    "@type": "Person",
+    name: "Julio César Martínez Bejarano",
+    jobTitle: "CEO",
+    sameAs: "https://www.linkedin.com/in/julio-cesar-martinez-bejarano-4553b548/",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,6 +104,10 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-neutral-50">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

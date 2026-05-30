@@ -9,6 +9,23 @@ export const metadata: Metadata = {
     "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: hacer que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Julio César Martínez Bejarano",
+  jobTitle: "CEO",
+  worksFor: {
+    "@type": "Organization",
+    name: "ConZultaCRM",
+    url: "https://conzultacrm.com",
+  },
+  url: "https://conzultacrm.com/nosotros",
+  sameAs: [
+    "https://www.linkedin.com/in/julio-cesar-martinez-bejarano-4553b548/",
+    "https://www.linkedin.com/company/conzulta-crm",
+  ],
+};
+
 const WA_URL =
   "https://wa.me/5215584046430?text=Hola%2C%20estoy%20interesado%20en%20conocer%20m%C3%A1s%20sobre%20ConZultaCRM";
 
@@ -85,6 +102,10 @@ function NosotrosDecorativeCard() {
 export default function NosotrosPage() {
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <AnimatedPageHero
         theme="rose"
         badge="Nuestra historia"
