@@ -455,11 +455,11 @@
 .animate-marquee {
   width: max-content;          /* % transform uses content width, not viewport width */
   will-change: transform;      /* GPU layer — prevents subpixel jitter */
-  animation: marquee 20s linear infinite;
+  animation: marquee 33s linear infinite; /* 20s base × (15 apps / 9 apps) ≈ 33s */
 }
 .animate-marquee:hover { animation-play-state: paused; }
 @media (max-width: 767px) {
-  .animate-marquee { animation-duration: 8s; }
+  .animate-marquee { animation-duration: 14s; }
 }
 
 /* Hero floating shapes */
