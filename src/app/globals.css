@@ -452,7 +452,11 @@
   100% { transform: translateX(-33.333%); }
 }
 
-.animate-marquee { animation: marquee 20s linear infinite; }
+.animate-marquee {
+  width: max-content;          /* % transform uses content width, not viewport width */
+  will-change: transform;      /* GPU layer — prevents subpixel jitter */
+  animation: marquee 20s linear infinite;
+}
 .animate-marquee:hover { animation-play-state: paused; }
 @media (max-width: 767px) {
   .animate-marquee { animation-duration: 8s; }
