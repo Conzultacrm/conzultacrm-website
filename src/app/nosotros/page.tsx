@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
+import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
 
 export const metadata: Metadata = {
   title: "Nosotros — ConZultaCRM",
@@ -162,30 +163,7 @@ export default function NosotrosPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: "13+", label: "Años de experiencia en CRM", color: "#F59E0B" },
-                { num: "70+", label: "Empresas implementadas", color: "#2563EB" },
-                { num: "100%", label: "Go-lives entregados a tiempo", color: "#7C3AED" },
-                { num: "97%", label: "Satisfacción del cliente", color: "#06B6D4" },
-                { num: "100%", label: "Operación remota México", color: "#10B981" },
-              ].map((s, i, arr) => (
-                <div
-                  key={s.label}
-                  className={`bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-lg transition-shadow${
-                    i === arr.length - 1 && arr.length % 2 !== 0 ? " col-span-2" : ""
-                  }`}
-                >
-                  <p
-                    className="text-4xl font-bold mb-2"
-                    style={{ fontFamily: "var(--font-syne)", color: s.color }}
-                  >
-                    {s.num}
-                  </p>
-                  <p className="text-neutral-500 text-sm">{s.label}</p>
-                </div>
-              ))}
-            </div>
+            <NosotrosStatsGrid />
           </div>
         </div>
       </section>
