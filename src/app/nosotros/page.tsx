@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
+import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
 
 export const metadata: Metadata = {
   title: "Nosotros — ConZultaCRM",
@@ -167,6 +168,9 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+
+      {/* Client logos */}
+      <ClientLogosCarousel />
 
       {/* Values */}
       <section className="section-padding mesh-bg">
