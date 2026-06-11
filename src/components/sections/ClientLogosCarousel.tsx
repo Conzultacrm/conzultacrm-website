@@ -54,10 +54,16 @@ function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
       <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
         style={{ background: `linear-gradient(to left, ${BG}, transparent)` }} />
 
-      <div className={`flex py-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee-clients"}`}>
-        {tripled.map((logo, i) => (
-          <LogoChip key={`${logo.name}-${i}`} logo={logo} />
-        ))}
+      {/* scaleX(-1) on wrapper flips scroll direction without a separate keyframe.
+          scaleX(-1) on each chip re-flips logos so they read correctly. */}
+      <div style={reverse ? { transform: "scaleX(-1)" } : undefined}>
+        <div className="flex py-3 animate-marquee-clients">
+          {tripled.map((logo, i) => (
+            <div key={`${logo.name}-${i}`} style={reverse ? { transform: "scaleX(-1)" } : undefined}>
+              <LogoChip logo={logo} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

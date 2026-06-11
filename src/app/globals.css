@@ -451,11 +451,6 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.333%); }
 }
-@keyframes marquee-reverse {
-  0%   { transform: translateX(-33.333%); }
-  100% { transform: translateX(0); }
-}
-
 /* Zoho apps carousel — 15 apps tripled */
 .animate-marquee {
   width: max-content;
@@ -464,26 +459,17 @@
 }
 .animate-marquee:hover { animation-play-state: paused; }
 
-/* Client logos — strip 1 left (40s) */
+/* Client logos — both strips use this class; reverse direction via scaleX(-1) wrapper */
 .animate-marquee-clients {
   width: max-content;
   will-change: transform;
-  animation: marquee 40s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 .animate-marquee-clients:hover { animation-play-state: paused; }
 
-/* Client logos — strip 2 right (57s) */
-.animate-marquee-reverse {
-  width: max-content;
-  will-change: transform;
-  animation: marquee-reverse 57s linear infinite;
-}
-.animate-marquee-reverse:hover { animation-play-state: paused; }
-
 @media (max-width: 767px) {
   .animate-marquee          { animation-duration: 35s; }
-  .animate-marquee-clients  { animation-duration: 28s; }
-  .animate-marquee-reverse  { animation-duration: 38s; }
+  .animate-marquee-clients  { animation-duration: 32s; }
 }
 
 /* Hero floating shapes */
