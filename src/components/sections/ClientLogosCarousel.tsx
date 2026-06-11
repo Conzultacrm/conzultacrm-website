@@ -8,18 +8,18 @@ interface ClientLogo {
 }
 
 const ALL_LOGOS: ClientLogo[] = [
-  { name: "Century 3D",  src: "/logos/clients/CENTURY3D.svg"  },
-  { name: "Dormer",      src: "/logos/clients/DORMER.svg"      },
-  { name: "Evox",        src: "/logos/clients/EVOX.svg"        },
-  { name: "IPPS",        src: "/logos/clients/IPPS.svg"        },
-  { name: "IST",         src: "/logos/clients/IST.svg"         },
-  { name: "Localty",     src: "/logos/clients/LOCALTY.svg"     },
-  { name: "Mymme",       src: "/logos/clients/MYMME.svg"       },
-  { name: "Ofimla",      src: "/logos/clients/OFIMLA.svg"      },
-  { name: "PEO",         src: "/logos/clients/PEO.svg"         },
-  { name: "Premex",      src: "/logos/clients/PREMEX.svg"      },
-  { name: "Rakennus",    src: "/logos/clients/RAKENNUS1.svg"   },
-  { name: "Squenda",     src: "/logos/clients/SQUENDA.svg"     },
+  { name: "Century 3D",  src: "/logos/clients/CENTURY3D.png"  },
+  { name: "Dormer",      src: "/logos/clients/DORMER.png"      },
+  { name: "Evox",        src: "/logos/clients/EVOX.png"        },
+  { name: "IPPS",        src: "/logos/clients/IPPS.png"        },
+  { name: "IST",         src: "/logos/clients/IST.png"         },
+  { name: "Localty",     src: "/logos/clients/LOCALTY.png"     },
+  { name: "Mymme",       src: "/logos/clients/MYMME.png"       },
+  { name: "Ofimla",      src: "/logos/clients/OFIMLA.png"      },
+  { name: "PEO",         src: "/logos/clients/PEO.png"         },
+  { name: "Premex",      src: "/logos/clients/PREMEX.png"      },
+  { name: "Rakennus",    src: "/logos/clients/RAKENNUS1.png"   },
+  { name: "Squenda",     src: "/logos/clients/SQUENDA.png"     },
 ];
 
 // Split evenly — first strip gets extra if odd count
@@ -31,14 +31,13 @@ const BG = "#040E23";
 
 function LogoChip({ logo }: { logo: ClientLogo }) {
   return (
-    <div className="mx-5 px-4 py-2 flex items-center justify-center shrink-0 opacity-45 hover:opacity-90 transition-opacity duration-300">
+    <div className="mx-5 px-4 py-2 flex items-center justify-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300">
       <Image
         src={logo.src}
         alt={logo.name}
-        width={130}
-        height={44}
-        className="h-10 w-auto object-contain select-none"
-        style={{ filter: "brightness(0) invert(1)" }}
+        width={160}
+        height={52}
+        className="h-11 w-auto object-contain select-none"
       />
     </div>
   );
