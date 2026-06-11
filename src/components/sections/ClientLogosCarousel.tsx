@@ -31,15 +31,14 @@ const BG = "#040E23";
 
 function LogoChip({ logo }: { logo: ClientLogo }) {
   return (
-    <div className="mx-3 px-7 py-4 rounded-2xl border border-white/10 flex items-center justify-center shrink-0 hover:border-white/20 transition-colors duration-200"
-      style={{ background: "rgba(255,255,255,0.06)" }}
-    >
+    <div className="mx-5 px-4 py-2 flex items-center justify-center shrink-0 opacity-45 hover:opacity-90 transition-opacity duration-300">
       <Image
         src={logo.src}
         alt={logo.name}
         width={130}
         height={44}
-        className="h-9 w-auto object-contain select-none"
+        className="h-10 w-auto object-contain select-none"
+        style={{ filter: "brightness(0) invert(1)" }}
       />
     </div>
   );
