@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef, useEffect } from "react";
 
 const CRM_PLUS_URL =
   "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es";
@@ -68,7 +69,48 @@ function AppChip({ app }: { app: ZohoApp }) {
 }
 
 export default function ZohoAppsCarousel() {
-  const tripled = [...APPS, ...APPS, ...APPS]; // triple for seamless loop on large screens
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = marqueeRef.current;
+    if (!el) return;
+
+    // Measure one copy width (total / 3 copies)
+    const copyWidth = el.scrollWidth / 3;
+    let pos = 0;
+    el.style.transform = "translateX(0px)";
+
+    let lastTime: number | null = null;
+    let paused = false;
+    let raf: number;
+
+    function step(now: number) {
+      if (!el) return;
+      if (lastTime !== null && !paused) {
+        const dt = (now - lastTime) / 1000;
+        pos -= 50 * dt; // 50 px/s — matches previous 50s CSS animation speed
+        // Seamless reset: jump back by exactly one copy width (same frame, invisible)
+        if (pos < -copyWidth) pos += copyWidth;
+        el.style.transform = `translateX(${pos}px)`;
+      }
+      lastTime = now;
+      raf = requestAnimationFrame(step);
+    }
+
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    el.addEventListener("mouseenter", pause);
+    el.addEventListener("mouseleave", resume);
+
+    raf = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("mouseenter", pause);
+      el.removeEventListener("mouseleave", resume);
+    };
+  }, []);
+
+  const tripled = [...APPS, ...APPS, ...APPS];
 
   return (
     <section className="py-16 bg-neutral-50 border-y border-neutral-100">
@@ -116,7 +158,7 @@ export default function ZohoAppsCarousel() {
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to left, #F2F2F8, transparent)" }} />
 
-        <div className="flex animate-marquee py-3">
+        <div ref={marqueeRef} className="flex py-3" style={{ width: "max-content", willChange: "transform" }}>
           {tripled.map((app, i) => (
             <AppChip key={`${app.name}-${i}`} app={app} />
           ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useEffect } from "react";
 
 interface ClientLogo {
   name: string;
@@ -45,7 +46,53 @@ function LogoChip({ logo }: { logo: ClientLogo }) {
 }
 
 function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const copyWidth = el.scrollWidth / 4; // 4 copies
+    // Reverse strip starts at -copyWidth (showing copy 2) and scrolls right back to 0
+    let pos = reverse ? -copyWidth : 0;
+    el.style.transform = `translateX(${pos}px)`;
+
+    let lastTime: number | null = null;
+    let paused = false;
+    let raf: number;
+
+    function step(now: number) {
+      if (!el) return;
+      if (lastTime !== null && !paused) {
+        const dt = (now - lastTime) / 1000;
+        if (reverse) {
+          pos += 28 * dt; // scroll right
+          if (pos > 0) pos -= copyWidth; // seamless reset
+        } else {
+          pos -= 28 * dt; // scroll left
+          if (pos < -copyWidth) pos += copyWidth; // seamless reset
+        }
+        el.style.transform = `translateX(${pos}px)`;
+      }
+      lastTime = now;
+      raf = requestAnimationFrame(step);
+    }
+
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    el.addEventListener("mouseenter", pause);
+    el.addEventListener("mouseleave", resume);
+
+    raf = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("mouseenter", pause);
+      el.removeEventListener("mouseleave", resume);
+    };
+  }, [reverse]);
+
   const quadrupled = [...logos, ...logos, ...logos, ...logos];
+
   return (
     <div className="relative w-full" style={{ overflowX: "clip" }}>
       {/* Fade masks */}
@@ -54,7 +101,7 @@ function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
       <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
         style={{ background: `linear-gradient(to left, ${BG}, transparent)` }} />
 
-      <div className={`flex py-3 ${reverse ? "animate-marquee-clients-reverse" : "animate-marquee-clients"}`}>
+      <div ref={ref} className="flex py-3" style={{ width: "max-content", willChange: "transform" }}>
         {quadrupled.map((logo, i) => (
           <LogoChip key={`${logo.name}-${i}`} logo={logo} />
         ))}
