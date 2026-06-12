@@ -45,7 +45,7 @@ function LogoChip({ logo }: { logo: ClientLogo }) {
 }
 
 function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
-  const tripled = [...logos, ...logos, ...logos];
+  const quadrupled = [...logos, ...logos, ...logos, ...logos];
   return (
     <div className="relative w-full" style={{ overflowX: "clip" }}>
       {/* Fade masks */}
@@ -54,16 +54,10 @@ function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
       <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
         style={{ background: `linear-gradient(to left, ${BG}, transparent)` }} />
 
-      {/* scaleX(-1) on wrapper flips scroll direction without a separate keyframe.
-          scaleX(-1) on each chip re-flips logos so they read correctly. */}
-      <div style={reverse ? { transform: "scaleX(-1)" } : undefined}>
-        <div className="flex py-3 animate-marquee-clients">
-          {tripled.map((logo, i) => (
-            <div key={`${logo.name}-${i}`} style={reverse ? { transform: "scaleX(-1)" } : undefined}>
-              <LogoChip logo={logo} />
-            </div>
-          ))}
-        </div>
+      <div className={`flex py-3 ${reverse ? "animate-marquee-clients-reverse" : "animate-marquee-clients"}`}>
+        {quadrupled.map((logo, i) => (
+          <LogoChip key={`${logo.name}-${i}`} logo={logo} />
+        ))}
       </div>
     </div>
   );

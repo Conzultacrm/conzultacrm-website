@@ -459,17 +459,35 @@
 }
 .animate-marquee:hover { animation-play-state: paused; }
 
-/* Client logos — both strips use this class; reverse direction via scaleX(-1) wrapper */
+/* Client logos — separate keyframes with exact binary fractions (no rounding error) */
+@keyframes marquee-clients-fwd {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+@keyframes marquee-clients-rev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(-25%); }
+}
+
 .animate-marquee-clients {
   width: max-content;
   will-change: transform;
-  animation: marquee 45s linear infinite;
+  animation: marquee-clients-fwd 45s linear infinite;
 }
 .animate-marquee-clients:hover { animation-play-state: paused; }
 
+.animate-marquee-clients-reverse {
+  width: max-content;
+  will-change: transform;
+  animation: marquee-clients-rev 45s linear infinite;
+  animation-fill-mode: backwards;
+}
+.animate-marquee-clients-reverse:hover { animation-play-state: paused; }
+
 @media (max-width: 767px) {
-  .animate-marquee          { animation-duration: 35s; }
-  .animate-marquee-clients  { animation-duration: 32s; }
+  .animate-marquee                 { animation-duration: 35s; }
+  .animate-marquee-clients         { animation-duration: 32s; }
+  .animate-marquee-clients-reverse { animation-duration: 32s; }
 }
 
 /* Hero floating shapes */
