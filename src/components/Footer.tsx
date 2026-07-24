@@ -237,7 +237,7 @@ export default function Footer() {
             <Link href="/aviso-privacidad" className="text-neutral-400 text-xs hover:text-neutral-200 transition-colors">
               Privacidad
             </Link>
-            <Link href="/contacto" className="text-neutral-400 text-xs hover:text-neutral-200 transition-colors">
+            <Link href="/terminos" className="text-neutral-400 text-xs hover:text-neutral-200 transition-colors">
               Términos
             </Link>
           </div>
