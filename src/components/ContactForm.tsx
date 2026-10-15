@@ -2,6 +2,12 @@
 
 import { useState, useId } from "react";
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 const INDUSTRIAS = [
   "Inmobiliaria",
   "Construcción",
@@ -204,7 +210,17 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      setStatus(res.ok ? "success" : "error");
+      if (res.ok) {
+        window.dataLayer?.push({
+          event: "contact_form_submit",
+          form_industria: form.industria,
+          form_tamano: form.tamano,
+          form_crm_actual: form.crmActual || "No especificado",
+        });
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
