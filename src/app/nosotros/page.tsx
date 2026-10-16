@@ -6,9 +6,10 @@ import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
 import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
 
 export const metadata: Metadata = {
-  title: "Nosotros — ConZultaCRM",
+  title: "Nosotros",
   description:
-    "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: hacer que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
+    "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
+  alternates: { canonical: "/nosotros" },
 };
 
 const personSchema = {
@@ -19,9 +20,9 @@ const personSchema = {
   worksFor: {
     "@type": "Organization",
     name: "ConZultaCRM",
-    url: "https://conzultacrm.com",
+    url: "https://www.conzultacrm.com",
   },
-  url: "https://conzultacrm.com/nosotros",
+  url: "https://www.conzultacrm.com/nosotros",
   sameAs: [
     "https://www.linkedin.com/in/julio-cesar-martinez-bejarano-4553b548/",
     "https://www.linkedin.com/company/conzulta-crm",
@@ -143,7 +144,15 @@ export default function NosotrosPage() {
               <p className="text-neutral-500 text-lg leading-relaxed mb-8">
                 Como Zoho Authorized Partners, contamos con acceso oficial para
                 implementar, personalizar y dar soporte al ecosistema Zoho CRM Plus
-                en México y Latinoamérica.
+                en México y Latinoamérica. Conoce nuestros{" "}
+                <Link href="/servicios" className="text-[#004AC6] font-semibold hover:underline">
+                  servicios
+                </Link>{" "}
+                y las{" "}
+                <Link href="/soluciones" className="text-[#004AC6] font-semibold hover:underline">
+                  soluciones por industria
+                </Link>
+                .
               </p>
               <div className="flex items-center gap-4">
                 <div className="bg-white rounded-xl p-2 border border-neutral-200 shadow-sm">

@@ -139,12 +139,12 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4
+            <h3
               className="text-white font-bold text-sm mb-4 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Empresa
-            </h4>
+            </h3>
             <ul className="space-y-2.5">
               {links.empresa.map((l) => (
                 <li key={l.href}>
@@ -160,12 +160,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4
+            <h3
               className="text-white font-bold text-sm mb-4 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Soluciones
-            </h4>
+            </h3>
             <ul className="space-y-2.5">
               {links.soluciones.map((l) => (
                 <li key={l.href}>
@@ -181,12 +181,12 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4
+            <h3
               className="text-white font-bold text-sm mb-4 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Sectores
-            </h4>
+            </h3>
             <ul className="space-y-2.5">
               {links.sectores.map((l) => (
                 <li key={l.href}>
@@ -201,12 +201,12 @@ export default function Footer() {
             </ul>
 
             <div className="mt-8">
-              <h4
+              <h3
                 className="text-white font-bold text-sm mb-3 uppercase tracking-wider"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
                 Contacto
-              </h4>
+              </h3>
               <a
                 href={WA_URL}
                 target="_blank"

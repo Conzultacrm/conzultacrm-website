@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://conzultacrm.com/sitemap.xml",
+    sitemap: "https://www.conzultacrm.com/sitemap.xml",
   };
 }

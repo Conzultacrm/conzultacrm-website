@@ -65,11 +65,20 @@ type Status = "idle" | "loading" | "success" | "error";
 
 // --- tiny reusable input primitives ---
 
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="block text-sm font-semibold text-neutral-700 mb-1.5">
+function Label({
+  children,
+  htmlFor,
+}: {
+  children: React.ReactNode;
+  htmlFor?: string;
+}) {
+  const cls = "block text-sm font-semibold text-neutral-700 mb-1.5";
+  return htmlFor ? (
+    <label htmlFor={htmlFor} className={cls}>
       {children}
-    </span>
+    </label>
+  ) : (
+    <span className={cls}>{children}</span>
   );
 }
 
@@ -439,7 +448,7 @@ export default function ContactForm() {
         {step === 1 && (
           <div className="space-y-4">
             <div>
-              <Label>Nombre completo *</Label>
+              <Label htmlFor={`${uid}-nombre`}>Nombre completo *</Label>
               <Input
                 id={`${uid}-nombre`}
                 placeholder="Ej. María González"
@@ -451,7 +460,7 @@ export default function ContactForm() {
               <FieldError msg={errors.nombre} />
             </div>
             <div>
-              <Label>Correo electrónico *</Label>
+              <Label htmlFor={`${uid}-email`}>Correo electrónico *</Label>
               <Input
                 id={`${uid}-email`}
                 type="email"
@@ -464,7 +473,7 @@ export default function ContactForm() {
               <FieldError msg={errors.email} />
             </div>
             <div>
-              <Label>Teléfono *</Label>
+              <Label htmlFor={`${uid}-telefono`}>Teléfono *</Label>
               <Input
                 id={`${uid}-telefono`}
                 type="tel"
@@ -483,7 +492,7 @@ export default function ContactForm() {
         {step === 2 && (
           <div className="space-y-4">
             <div>
-              <Label>Nombre de tu empresa *</Label>
+              <Label htmlFor={`${uid}-empresa`}>Nombre de tu empresa *</Label>
               <Input
                 id={`${uid}-empresa`}
                 placeholder="Ej. Inmobiliaria del Norte"
@@ -495,7 +504,7 @@ export default function ContactForm() {
               <FieldError msg={errors.empresa} />
             </div>
             <div>
-              <Label>Industria *</Label>
+              <Label htmlFor={`${uid}-industria`}>Industria *</Label>
               <Select
                 id={`${uid}-industria`}
                 value={form.industria}
@@ -555,7 +564,7 @@ export default function ContactForm() {
               </div>
             </div>
             <div>
-              <Label>¿Qué necesitas mejorar? (opcional)</Label>
+              <Label htmlFor={`${uid}-mensaje`}>¿Qué necesitas mejorar? (opcional)</Label>
               <textarea
                 id={`${uid}-mensaje`}
                 rows={4}

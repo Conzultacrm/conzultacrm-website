@@ -1,0 +1,16 @@
+# ConZultaCRM
+
+> ConZultaCRM es una consultora Zoho Authorized Partner en México y LATAM. Implementa, personaliza y da soporte a Zoho CRM Plus para empresas medianas y en expansión.
+
+## Páginas principales
+
+- [Inicio](https://www.conzultacrm.com/): Resumen de la oferta de implementación de Zoho CRM Plus.
+- [Servicios](https://www.conzultacrm.com/servicios): Implementación, capacitación y soporte de Zoho CRM Plus.
+- [Soluciones](https://www.conzultacrm.com/soluciones): Zoho CRM Plus por industria (inmobiliarias, construcción, maquinaria, retail, salud y distribución).
+- [Nosotros](https://www.conzultacrm.com/nosotros): Equipo y misión de ConZultaCRM.
+- [Contacto](https://www.conzultacrm.com/contacto): Solicitud de demo gratuita; respuesta en menos de 2 horas hábiles.
+
+## Legal
+
+- [Aviso de privacidad](https://www.conzultacrm.com/aviso-privacidad)
+- [Términos y condiciones](https://www.conzultacrm.com/terminos)

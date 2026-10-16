@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Aviso de Privacidad — ConZultaCRM",
+  title: "Aviso de Privacidad",
   description:
     "Aviso de privacidad de ConZultaCRM conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) de México.",
+  alternates: { canonical: "/aviso-privacidad" },
 };
 
 const sections = [
@@ -256,6 +257,9 @@ export default function AvisoPrivacidadPage() {
         <div className="mt-14 pt-8 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="text-sm text-neutral-500 hover:text-[#004AC6] transition-colors">
             ← Volver al inicio
+          </Link>
+          <Link href="/terminos" className="text-sm text-neutral-500 hover:text-[#004AC6] transition-colors">
+            Términos y Condiciones
           </Link>
           <Link href="/contacto" className="btn-primary text-sm">
             ¿Dudas? Contáctanos

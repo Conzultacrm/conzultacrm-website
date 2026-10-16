@@ -3,9 +3,10 @@ import Link from "next/link";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
-  title: "Soluciones Zoho CRM Plus — ConZultaCRM",
+  title: "Soluciones Zoho CRM Plus",
   description:
-    "Implementamos Zoho CRM Plus para cualquier industria: inmobiliarias, salud, distribución, construcción, servicios y más. Si tienes un proceso comercial, podemos transformarlo.",
+    "Implementamos Zoho CRM Plus para cualquier industria: inmobiliarias, salud, distribución, construcción y más. Si tienes un proceso comercial, lo transformamos.",
+  alternates: { canonical: "/soluciones" },
 };
 
 const WA_URL =

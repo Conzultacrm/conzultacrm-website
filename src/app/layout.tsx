@@ -21,7 +21,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://conzultacrm.com"),
+  metadataBase: new URL("https://www.conzultacrm.com"),
   title: {
     default: "ConZultaCRM — Zoho Authorized Partner en México",
     template: "%s | ConZultaCRM",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: "https://conzultacrm.com",
+    url: "https://www.conzultacrm.com",
     siteName: "ConZultaCRM",
     title: "ConZultaCRM — Zoho Authorized Partner en México",
     description:
@@ -69,8 +69,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "ConZultaCRM",
-  url: "https://conzultacrm.com",
-  logo: "https://conzultacrm.com/logos/logo-horizontal.png",
+  url: "https://www.conzultacrm.com",
+  logo: "https://www.conzultacrm.com/logos/logo-horizontal.png",
   description:
     "Zoho Authorized Partner en México y LATAM. Implementamos Zoho CRM Plus para empresas medianas y en expansión.",
   foundingDate: "2020",

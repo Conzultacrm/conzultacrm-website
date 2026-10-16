@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
-  title: "Contacto — ConZultaCRM",
+  title: "Contacto",
   description:
     "Contáctanos para una demo gratuita de Zoho CRM Plus. Somos ConZultaCRM, Zoho Authorized Partner en México. Respuesta en menos de 2 horas hábiles.",
+  alternates: { canonical: "/contacto" },
 };
 
 const WA_URL =
@@ -122,12 +124,12 @@ export default function ContactoPage() {
                 >
                   {opt.icon}
                 </div>
-                <h3
+                <h2
                   className="font-bold text-neutral-900 mb-1.5"
                   style={{ fontFamily: "var(--font-syne)" }}
                 >
                   {opt.title}
-                </h3>
+                </h2>
                 <p className="text-neutral-500 text-sm leading-relaxed mb-4">
                   {opt.desc}
                 </p>
@@ -168,7 +170,20 @@ export default function ContactoPage() {
               <p className="text-neutral-500 leading-relaxed mb-8">
                 Completa el formulario y un especialista de ConZultaCRM te
                 contactará en menos de 2 horas hábiles para conocer tu caso
-                y planificar la mejor estrategia CRM para tu empresa.
+                y planificar la mejor estrategia CRM para tu empresa. Antes de
+                escribirnos, puedes revisar nuestros{" "}
+                <Link href="/servicios" className="text-[#004AC6] font-semibold hover:underline">
+                  servicios
+                </Link>
+                , las{" "}
+                <Link href="/soluciones" className="text-[#004AC6] font-semibold hover:underline">
+                  soluciones por industria
+                </Link>{" "}
+                o{" "}
+                <Link href="/nosotros" className="text-[#004AC6] font-semibold hover:underline">
+                  quiénes somos
+                </Link>
+                .
               </p>
 
               {/* What to expect */}

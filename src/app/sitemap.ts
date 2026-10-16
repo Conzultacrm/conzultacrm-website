@@ -1,48 +1,48 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://conzultacrm.com";
+const BASE_URL = "https://www.conzultacrm.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified: "2026-10-15",
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${BASE_URL}/servicios`,
-      lastModified: new Date(),
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/soluciones`,
-      lastModified: new Date(),
+      lastModified: "2026-05-28",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/nosotros`,
-      lastModified: new Date(),
+      lastModified: "2026-06-11",
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${BASE_URL}/contacto`,
-      lastModified: new Date(),
+      lastModified: "2026-10-15",
       changeFrequency: "yearly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/aviso-privacidad`,
-      lastModified: new Date(),
+      lastModified: "2026-05-27",
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terminos`,
-      lastModified: new Date(),
+      lastModified: "2026-07-23",
       changeFrequency: "yearly",
       priority: 0.3,
     },

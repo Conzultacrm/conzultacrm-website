@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Términos y Condiciones — ConZultaCRM",
+  title: "Términos y Condiciones",
   description:
     "Términos y condiciones de uso del sitio web y servicios de ConZultaCRM, consultora y Zoho Authorized Partner en México.",
+  alternates: { canonical: "/terminos" },
 };
 
 const sections = [
