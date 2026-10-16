@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,16 +9,6 @@ const WA_URL =
 
 export default function HeroSection() {
   const orbRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Detect mobile viewport for scaled-down aurora blobs
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   useEffect(() => {
     // Skip parallax on touch-only devices — avoids jitter when tapping/scrolling on mobile
@@ -74,45 +64,45 @@ export default function HeroSection() {
       {/* Mobile: blobs ~55% smaller + alpha reduced to avoid washed-out bloom */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Blob 1 — cyan top-left */}
-        <div style={{
-          position: "absolute", top: "-5%", left: "-5%",
-          width: isMobile ? 280 : 620, height: isMobile ? 280 : 620,
-          borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-          background: isMobile ? "rgba(34,211,238,0.38)" : "rgba(34,211,238,0.88)",
-          filter: isMobile ? "blur(22px)" : "blur(45px)",
-          mixBlendMode: "screen",
-          animation: "blob-1 14s ease-in-out infinite",
-        }} />
+        <div
+          className="w-[280px] h-[280px] md:w-[620px] md:h-[620px] bg-[rgba(34,211,238,0.38)] md:bg-[rgba(34,211,238,0.88)] blur-[22px] md:blur-[45px]"
+          style={{
+            position: "absolute", top: "-5%", left: "-5%",
+            borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+            mixBlendMode: "screen",
+            animation: "blob-1 14s ease-in-out infinite",
+          }}
+        />
         {/* Blob 2 — violet right */}
-        <div style={{
-          position: "absolute", top: "15%", right: "-8%",
-          width: isMobile ? 240 : 540, height: isMobile ? 240 : 540,
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          background: isMobile ? "rgba(167,139,250,0.34)" : "rgba(167,139,250,0.82)",
-          filter: isMobile ? "blur(25px)" : "blur(50px)",
-          mixBlendMode: "screen",
-          animation: "blob-2 18s ease-in-out infinite 2s",
-        }} />
+        <div
+          className="w-[240px] h-[240px] md:w-[540px] md:h-[540px] bg-[rgba(167,139,250,0.34)] md:bg-[rgba(167,139,250,0.82)] blur-[25px] md:blur-[50px]"
+          style={{
+            position: "absolute", top: "15%", right: "-8%",
+            borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+            mixBlendMode: "screen",
+            animation: "blob-2 18s ease-in-out infinite 2s",
+          }}
+        />
         {/* Blob 3 — emerald bottom */}
-        <div style={{
-          position: "absolute", bottom: "-5%", left: "25%",
-          width: isMobile ? 200 : 500, height: isMobile ? 200 : 500,
-          borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-          background: isMobile ? "rgba(52,211,153,0.30)" : "rgba(52,211,153,0.78)",
-          filter: isMobile ? "blur(20px)" : "blur(42px)",
-          mixBlendMode: "screen",
-          animation: "blob-3 12s ease-in-out infinite 4s",
-        }} />
+        <div
+          className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] bg-[rgba(52,211,153,0.3)] md:bg-[rgba(52,211,153,0.78)] blur-[20px] md:blur-[42px]"
+          style={{
+            position: "absolute", bottom: "-5%", left: "25%",
+            borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
+            mixBlendMode: "screen",
+            animation: "blob-3 12s ease-in-out infinite 4s",
+          }}
+        />
         {/* Blob 4 — pink accent bottom-left */}
-        <div style={{
-          position: "absolute", bottom: "10%", left: "-3%",
-          width: isMobile ? 160 : 380, height: isMobile ? 160 : 380,
-          borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
-          background: isMobile ? "rgba(244,114,182,0.28)" : "rgba(244,114,182,0.72)",
-          filter: isMobile ? "blur(18px)" : "blur(38px)",
-          mixBlendMode: "screen",
-          animation: "blob-1 10s ease-in-out infinite reverse 1s",
-        }} />
+        <div
+          className="w-[160px] h-[160px] md:w-[380px] md:h-[380px] bg-[rgba(244,114,182,0.28)] md:bg-[rgba(244,114,182,0.72)] blur-[18px] md:blur-[38px]"
+          style={{
+            position: "absolute", bottom: "10%", left: "-3%",
+            borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
+            mixBlendMode: "screen",
+            animation: "blob-1 10s ease-in-out infinite reverse 1s",
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
