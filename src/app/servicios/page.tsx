@@ -4,7 +4,7 @@ import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
-  title: "Servicios",
+  title: "Servicios de Implementación Zoho CRM Plus",
   description:
     "Servicios de implementación, capacitación y soporte de Zoho CRM Plus para empresas en México. Descubre cómo ConZultaCRM transforma tu operación comercial.",
   alternates: { canonical: "/servicios" },

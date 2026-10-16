@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contacto: Solicita tu Demo de Zoho CRM",
   description:
     "Contáctanos para una demo gratuita de Zoho CRM Plus. Somos ConZultaCRM, Zoho Authorized Partner en México. Respuesta en menos de 2 horas hábiles.",
   alternates: { canonical: "/contacto" },

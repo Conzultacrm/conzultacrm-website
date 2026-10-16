@@ -6,7 +6,7 @@ import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
 import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
 
 export const metadata: Metadata = {
-  title: "Nosotros",
+  title: "Nosotros: Zoho Authorized Partner México",
   description:
     "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
   alternates: { canonical: "/nosotros" },
