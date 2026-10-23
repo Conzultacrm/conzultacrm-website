@@ -10,14 +10,14 @@ const WA_URL =
 export default function HeroSection() {
   return (
     <section
-      className="relative flex items-center overflow-hidden"
+      className="relative flex items-center overflow-clip"
       style={{
         minHeight: "100svh", /* svh = stable on mobile (no bounce when browser chrome shows/hides) */
         background: VARIANTS.home.backgroundColor as string, /* same dark base as the waves, so they roll in over it */
       }}
     >
       {/* Gradient Waves background (lazy WebGL) + legibility scrims */}
-      <WavesBackground variant="home" />
+      <WavesBackground variant="home" pinned />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "linear-gradient(90deg, rgba(0,8,32,0.5) 0%, rgba(0,8,32,0.2) 45%, rgba(0,8,32,0) 70%)" }}
@@ -199,7 +199,7 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 opacity-50">
           <span className="text-white text-xs" style={{ fontFamily: "var(--font-syne)" }}>
             Scroll
           </span>

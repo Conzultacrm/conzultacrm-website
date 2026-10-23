@@ -34,7 +34,17 @@ function canRunWaves(): boolean {
   }
 }
 
-export default function WavesBackground({ variant = "home", full = false }: { variant?: WaveVariant; full?: boolean }) {
+export default function WavesBackground({
+  variant = "home",
+  full = false,
+  pinned = false,
+}: {
+  variant?: WaveVariant;
+  full?: boolean;
+  /** For tall sections (the home hero on phones): the waves stay pinned to the viewport while the section scrolls,
+   *  so there is never an empty band below the first screen. Needs overflow-clip (not hidden) on the section. */
+  pinned?: boolean;
+}) {
   const [level, setLevel] = useState<Level>("pending");
   const [phone, setPhone] = useState(false);
 
@@ -75,25 +85,33 @@ export default function WavesBackground({ variant = "home", full = false }: { va
   }, [level]);
 
   const area = "absolute inset-x-0 top-0 overflow-hidden pointer-events-none " + (full ? "h-full" : "h-[100svh] md:h-full");
+  const wrap = (children: React.ReactNode) =>
+    pinned ? (
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        <div className="sticky top-0 h-[100svh] overflow-hidden">{children}</div>
+      </div>
+    ) : (
+      <div aria-hidden className={area}>
+        {children}
+      </div>
+    );
   if (level === "poster") {
     // Static fallback: the settled waves, no motion.
-    return (
-      <div aria-hidden className={area + " bg-cover bg-bottom bg-no-repeat"}>
+    return wrap(
+      <>
         <div className="absolute inset-0 bg-cover bg-bottom md:hidden" style={{ backgroundImage: `url(/waves/poster-${variant}-m-0.webp)` }} />
         <div className="absolute inset-0 bg-cover bg-bottom hidden md:block" style={{ backgroundImage: `url(/waves/poster-${variant}-w-0.webp)` }} />
-      </div>
+      </>,
     );
   }
   if (level === "pending") return null;
-  return (
-    <div aria-hidden className={area}>
-      <GradientWaves
-        {...VARIANTS[variant]}
-        quality={STEPS[level].quality}
-        dpr={phone ? Math.min(STEPS[level].dpr, 1) : STEPS[level].dpr}
-        mouseInteraction={!phone}
-        className="absolute inset-0 w-full h-full"
-      />
-    </div>
+  return wrap(
+    <GradientWaves
+      {...VARIANTS[variant]}
+      quality={STEPS[level].quality}
+      dpr={phone ? Math.min(STEPS[level].dpr, 1) : STEPS[level].dpr}
+      mouseInteraction={!phone}
+      className="absolute inset-0 w-full h-full"
+    />,
   );
 }
