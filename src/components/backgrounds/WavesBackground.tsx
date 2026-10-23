@@ -1,21 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import GradientWaves from "./GradientWaves";
 import { VARIANTS, type WaveVariant } from "./wave-palettes";
 
 export type { WaveVariant };
 
-// Live WebGL is loaded lazily and only after the page has settled.
-const GradientWaves = dynamic(() => import("./GradientWaves"), { ssr: false });
+// The original React Bits "Gradient Waves" animation (entrance + continuous movement + cursor light),
+// started as soon as the component mounts, on desktop and phones. It measures its own frame rate: if the device
+// struggles it drops to a lighter quality, and if it still struggles it gives way to a static poster.
+// Visitors who ask for reduced motion / Save-Data, or have no capable GPU, also get the static poster.
 
-// Layers, from bottom to top:
-//  1. Pre-rendered frames (public/waves) crossfading over a 24 s loop + slow drift: opacity/transform only, no JS,
-//     moves from the first second on every device and is the fallback for everything below.
-//  2. Live waves (React Bits "Gradient Waves"), fading in once the page has settled, on phones too.
-//     It measures its own frame rate: if the device struggles it drops to a lighter quality, and if it
-//     still struggles it removes itself and the frames above keep going.
-type Level = "off" | "hi" | "lo";
+type Level = "pending" | "hi" | "lo" | "poster";
 
 function canRunWaves(): boolean {
   try {
@@ -36,34 +32,20 @@ function canRunWaves(): boolean {
 }
 
 export default function WavesBackground({ variant = "home", full = false }: { variant?: WaveVariant; full?: boolean }) {
-  const [frames, setFrames] = useState(false);
-  const [level, setLevel] = useState<Level>("off");
+  const [level, setLevel] = useState<Level>("pending");
   const [phone, setPhone] = useState(false);
-  const [covered, setCovered] = useState(false);
 
-  // Stagger the heavy work behind the first paint: extra frames first, live waves later.
+  // Start the moment we mount (right after hydration): the sooner the canvas exists, the sooner the entrance begins.
   useEffect(() => {
-    const timers: number[] = [];
-    const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
-    const idle = (cb: () => void) => (w.requestIdleCallback ? w.requestIdleCallback(cb, { timeout: 1500 }) : window.setTimeout(cb, 200));
-    const isPhone = window.matchMedia("(max-width: 767px)").matches;
-    const settle = (delay: number, cb: () => void) => {
-      const go = () => timers.push(window.setTimeout(() => idle(cb), performance.now() > delay + 2500 ? 0 : delay));
-      if (document.readyState === "complete") go();
-      else window.addEventListener("load", go, { once: true });
-    };
-    settle(800, () => setFrames(true));
-    settle(isPhone ? 12000 : 6000, () => {
-      if (!canRunWaves()) return;
-      setPhone(isPhone);
-      setLevel(isPhone ? "lo" : "hi");
+    queueMicrotask(() => {
+      setPhone(window.matchMedia("(max-width: 767px)").matches);
+      setLevel(canRunWaves() ? "hi" : "poster");
     });
-    return () => timers.forEach(clearTimeout);
   }, []);
 
-  // Frame-rate guard: skip the start-up hitch, sample ~1.6 s; too slow -> lighter quality -> off.
+  // Frame-rate guard: skip the start-up hitch, sample ~1.6 s; too slow -> lighter quality -> static poster.
   useEffect(() => {
-    if (level === "off") return;
+    if (level !== "hi" && level !== "lo") return;
     let raf = 0;
     let stopped = false;
     const deltas: number[] = [];
@@ -71,13 +53,12 @@ export default function WavesBackground({ variant = "home", full = false }: { va
     const t0 = performance.now();
     const tick = (now: number) => {
       if (stopped) return;
-      if (last && now - t0 > 700) deltas.push(now - last);
+      if (last && now - t0 > 900) deltas.push(now - last);
       last = now;
-      if (now - t0 < 2300) raf = requestAnimationFrame(tick);
+      if (now - t0 < 2700) raf = requestAnimationFrame(tick);
       else {
         const avg = deltas.length ? deltas.reduce((a, b) => a + b, 0) / deltas.length : 0;
-        if (avg > 30) setLevel(level === "hi" ? "lo" : "off");
-        else setCovered(true);
+        if (avg > 34) setLevel(level === "hi" ? "lo" : "poster");
       }
     };
     raf = requestAnimationFrame(tick);
@@ -87,36 +68,27 @@ export default function WavesBackground({ variant = "home", full = false }: { va
     };
   }, [level]);
 
-  const frame = (i: number) =>
-    ({
-      "--m": `url(/waves/poster-${variant}-m-${i}.webp)`,
-      "--w": `url(/waves/poster-${variant}-w-${i}.webp)`,
-    }) as React.CSSProperties;
-
   const area = "absolute inset-x-0 top-0 overflow-hidden pointer-events-none " + (full ? "h-full" : "h-[100svh] md:h-full");
-  return (
-    <>
-      <div aria-hidden className={area + (covered && level !== "off" ? " waves-covered" : "")}>
-        <div className="waves-drift absolute -inset-[8%]">
-          <div className="waves-frame absolute inset-0" style={frame(0)} />
-          {frames &&
-            [1, 2, 3].map(i => <div key={i} className={`waves-frame waves-f${i} absolute inset-0 opacity-0`} style={frame(i)} />)}
-        </div>
+  if (level === "poster") {
+    // Static fallback: the settled waves, no motion.
+    return (
+      <div aria-hidden className={area + " bg-cover bg-bottom bg-no-repeat"}>
+        <div className="absolute inset-0 bg-cover bg-bottom md:hidden" style={{ backgroundImage: `url(/waves/poster-${variant}-m-0.webp)` }} />
+        <div className="absolute inset-0 bg-cover bg-bottom hidden md:block" style={{ backgroundImage: `url(/waves/poster-${variant}-w-0.webp)` }} />
       </div>
-      {level !== "off" && (
-        <div aria-hidden className={area} style={{ animation: "waves-bg-in 1.5s ease-out both" }}>
-          <GradientWaves
-            key={level}
-            {...VARIANTS[variant]}
-            intro={false}
-            quality={level === "hi" ? "medium" : "low"}
-            dpr={level === "hi" ? 1.25 : 0.75}
-            mouseInteraction={!phone}
-            className="absolute inset-0 w-full h-full"
-          />
-          <style>{`@keyframes waves-bg-in{from{opacity:0}to{opacity:1}}`}</style>
-        </div>
-      )}
-    </>
+    );
+  }
+  if (level === "pending") return null;
+  return (
+    <div aria-hidden className={area}>
+      <GradientWaves
+        key={level}
+        {...VARIANTS[variant]}
+        quality={level === "hi" ? "medium" : "low"}
+        dpr={level === "hi" ? (phone ? 1 : 1.25) : 0.75}
+        mouseInteraction={!phone}
+        className="absolute inset-0 w-full h-full"
+      />
+    </div>
   );
 }

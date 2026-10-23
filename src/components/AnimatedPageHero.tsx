@@ -2,44 +2,11 @@
 
 import { useEffect, useState } from "react";
 import WavesBackground, { type WaveVariant } from "@/components/backgrounds/WavesBackground";
+import { VARIANTS } from "@/components/backgrounds/wave-palettes";
 
 const WAVE_VARIANT: Record<"default" | "teal" | "violet" | "rose", WaveVariant> = { default: "home", teal: "servicios", violet: "soluciones", rose: "nosotros" };
 
 type HeroTheme = "default" | "teal" | "violet" | "rose";
-
-interface HeroThemeConfig {
-  bg: string;
-  orb1: string;
-  orb2: string;
-  orb3: string;
-}
-
-const themes: Record<HeroTheme, HeroThemeConfig> = {
-  default: {
-    bg: "linear-gradient(135deg, #001A4D 0%, #003A8C 50%, #4C1D95 100%)",
-    orb1: "#60A5FA",
-    orb2: "#A78BFA",
-    orb3: "#22D3EE",
-  },
-  teal: {
-    bg: "linear-gradient(155deg, #002A2A 0%, #004D4D 45%, #003A8C 100%)",
-    orb1: "#34D399",
-    orb2: "#22D3EE",
-    orb3: "#60A5FA",
-  },
-  violet: {
-    bg: "linear-gradient(140deg, #1E0A4A 0%, #4C1D95 55%, #6D28D9 100%)",
-    orb1: "#A78BFA",
-    orb2: "#C4B5FD",
-    orb3: "#60A5FA",
-  },
-  rose: {
-    bg: "linear-gradient(145deg, #1A0A2E 0%, #3B0764 50%, #6D28D9 80%, #1E40AF 100%)",
-    orb1: "#F9A8D4",
-    orb2: "#A78BFA",
-    orb3: "#60A5FA",
-  },
-};
 
 interface AnimatedPageHeroProps {
   badge: string;
@@ -67,7 +34,6 @@ export default function AnimatedPageHero({
   waves,
 }: AnimatedPageHeroProps) {
   const [visible, setVisible] = useState(false);
-  const t = themes[theme];
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
@@ -79,7 +45,7 @@ export default function AnimatedPageHero({
   return (
     <section
       className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: t.bg }}
+      style={{ background: VARIANTS[waves ?? WAVE_VARIANT[theme]].backgroundColor as string }}
     >
       {/* Gradient Waves background, one variant per page theme (+ legibility scrim) */}
       <WavesBackground variant={waves ?? WAVE_VARIANT[theme]} full />

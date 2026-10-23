@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import WavesBackground from "@/components/backgrounds/WavesBackground";
+import { VARIANTS } from "@/components/backgrounds/wave-palettes";
 
 const WA_URL =
   "https://wa.me/5215584046430?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%2C%20%C2%BFpodr%C3%ADan%20darme%20mayor%20informaci%C3%B3n%3F";
@@ -12,7 +13,7 @@ export default function HeroSection() {
       className="relative flex items-center overflow-hidden"
       style={{
         minHeight: "100svh", /* svh = stable on mobile (no bounce when browser chrome shows/hides) */
-        background: "linear-gradient(135deg, #001A4D 0%, #003A8C 40%, #004AC6 70%, #4C1D95 100%)",
+        background: VARIANTS.home.backgroundColor as string, /* same dark base as the waves, so they roll in over it */
       }}
     >
       {/* Gradient Waves background (lazy WebGL) + legibility scrims */}
