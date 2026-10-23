@@ -7,9 +7,9 @@ const pillars = [
   {
     icon: "📈",
     color: "#2563EB",
-    title: "Adopción real, no solo instalación",
+    title: "Seguimiento hasta que tu equipo lo use",
     description:
-      "Medimos la adopción por usuario después del go-live. Hacemos sesiones de seguimiento, ajustes según el feedback del equipo y coaching a líderes hasta que el CRM sea un hábito — no una obligación.",
+      "Medimos la adopción por usuario después del go-live. Hacemos sesiones de seguimiento, ajustes según el feedback del equipo y coaching a líderes hasta que el CRM sea parte del trabajo diario.",
     items: [
       "Métricas de uso por usuario y área",
       "Sesiones de refuerzo post go-live",
@@ -35,7 +35,7 @@ const pillars = [
     color: "#06B6D4",
     title: "Soporte técnico con SLA garantizado",
     description:
-      "Un sistema caído o mal configurado paraliza a tu equipo. Respondemos en menos de 2 horas hábiles por WhatsApp, video o email — y resolvemos, no solo escalamos.",
+      "Un sistema caído o mal configurado paraliza a tu equipo. Respondemos en menos de 2 horas hábiles por WhatsApp, video o correo, y resolvemos el problema nosotros.",
     items: [
       "WhatsApp directo, respuesta < 2 horas hábiles",
       "Videollamadas de diagnóstico incluidas",
@@ -91,8 +91,8 @@ export default function PostImplementationSection() {
           >
             Implementar es solo el principio. El verdadero retorno llega cuando
             tu equipo adopta el sistema, los procesos se optimizan y el CRM
-            evoluciona con tu negocio. Somos tu socio permanente — no un
-            proveedor con fecha de cierre.
+            evoluciona con tu negocio. Seguimos contigo después del go-live,
+            sin fecha de cierre.
           </p>
         </div>
 

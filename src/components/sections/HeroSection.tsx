@@ -53,9 +53,9 @@ export default function HeroSection() {
               className="text-white/90 text-lg leading-relaxed mb-8 max-w-xl"
               style={{ textShadow: "0 1px 12px rgba(0,0,0,0.55), 0 0 40px rgba(0,0,0,0.25)" }}
             >
-              Somos Zoho Authorized Partners en México. Implementamos
-              el ecosistema Zoho CRM Plus para que tus equipos de ventas, servicio y
-              marketing trabajen en perfecta sincronía.
+              Somos Zoho Authorized Partner en México. Implementamos
+              Zoho CRM Plus para que ventas, servicio y marketing usen
+              los mismos datos de tus clientes.
             </p>
 
             {/* Bullets */}

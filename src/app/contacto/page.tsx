@@ -100,7 +100,7 @@ export default function ContactoPage() {
             <span className="gradient-text-light gu-blue">tu operación comercial?</span>
           </>
         }
-        description="Agenda una demo gratuita de 30 minutos. Sin presión, sin compromiso. Te mostramos cómo Zoho CRM Plus puede funcionar específicamente para tu empresa."
+        description="Agenda una demo gratuita de 30 minutos. Sin compromiso. Te mostramos Zoho CRM Plus con los datos y procesos de tu empresa."
         decorative={<ContactoDecorativeCard />}
       />
 
