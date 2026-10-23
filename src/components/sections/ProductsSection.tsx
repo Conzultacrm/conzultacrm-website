@@ -7,6 +7,7 @@ const CRM_PLUS_URL =
 const products = [
   {
     name: "Zoho CRM",
+    ai: "Agentes Zia para ventas listos para usar y Agent Studio para crear los tuyos.",
     tagline: "Motor de ventas",
     description:
       "Gestiona todo tu pipeline de ventas, clientes potenciales y oportunidades en un solo lugar. Con automatizaciones inteligentes, tu equipo cierra más deals en menos tiempo.",
@@ -17,6 +18,7 @@ const products = [
   },
   {
     name: "Zoho Desk",
+    ai: "Agente de servicio al cliente de Zia, integrado en Desk.",
     tagline: "Servicio al cliente",
     description:
       "Centraliza todos los tickets de soporte provenientes de email, WhatsApp, chat y redes sociales. Ofrece respuestas rápidas y consistentes con IA integrada.",
@@ -27,6 +29,7 @@ const products = [
   },
   {
     name: "Zoho Projects",
+    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Gestión de proyectos",
     description:
       "Planifica y ejecuta las implementaciones de tus clientes con control total. Asigna tareas, gestiona tiempos y documenta avances en tiempo real.",
@@ -67,6 +70,7 @@ const products = [
   },
   {
     name: "Zoho Survey",
+    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Encuestas y feedback",
     description:
       "Mide la satisfacción de clientes y empleados con encuestas profesionales. Conecta los resultados directamente al CRM para actuar sobre la retroalimentación en tiempo real.",
@@ -107,6 +111,7 @@ const products = [
   },
   {
     name: "Zoho Cliq",
+    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Chat y colaboración interna",
     description:
       "Comunicación del equipo en tiempo real con canales, mensajes directos y bots inteligentes. Recibe notificaciones del CRM y mantén a tu equipo sincronizado sin salir de Zoho.",
@@ -169,11 +174,11 @@ export default function ProductsSection() {
             style={{ fontFamily: "var(--font-syne)" }}
           >
             Zoho CRM Plus:{" "}
-            <span className="gradient-text">más de 15 apps, un solo ecosistema</span>
+            <span className="gradient-text">más de 15 apps, una sola suscripción</span>
           </h2>
           <p className="text-neutral-500 text-lg">
-            No compres módulos sueltos. Con Zoho CRM Plus obtienes todo el ecosistema
-            integrado desde el día uno, con un precio mensual fijo por usuario.
+            No compres módulos sueltos. Con Zoho CRM Plus obtienes todas las apps
+            integradas desde el día uno, con un precio mensual fijo por usuario.
           </p>
         </div>
 
@@ -234,6 +239,13 @@ export default function ProductsSection() {
                 ))}
               </ul>
 
+              {"ai" in product && product.ai && (
+                <p className="mb-4 rounded-lg px-3 py-2 text-xs leading-relaxed text-neutral-600" style={{ background: `${product.color}10`, border: `1px solid ${product.color}25` }}>
+                  <span className="font-bold" style={{ color: product.color }}>IA en Zoho · </span>
+                  {product.ai}
+                </p>
+              )}
+
               {/* Sign-up CTA */}
               <a
                 href={product.signupUrl}
@@ -266,8 +278,8 @@ export default function ProductsSection() {
               ¿Quieres todas las apps en un solo plan?
             </p>
             <p className="text-neutral-500 mb-5">
-              Zoho CRM Plus incluye más de 15 herramientas integradas — ventas, servicio,
-              marketing, colaboración y automatización — a un precio fijo por usuario al mes.
+              Zoho CRM Plus incluye más de 15 herramientas integradas (ventas, servicio,
+              marketing, colaboración y automatización) a un precio fijo por usuario al mes.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a

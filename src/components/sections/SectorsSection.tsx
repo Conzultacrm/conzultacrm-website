@@ -78,7 +78,7 @@ export default function SectorsSection() {
           </h2>
           <p className="text-neutral-500 text-lg">
             No implementamos Zoho de la misma manera para todos. Cada sector tiene
-            sus propios procesos — y nuestras configuraciones lo reflejan.
+            sus propios procesos, y nuestras configuraciones los reflejan.
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export default function SectorsSection() {
                 También implementamos en
               </p>
               <p className="text-neutral-500 text-sm mt-0.5">
-                Estas son solo algunas — si tienes un proceso comercial, podemos ayudarte.
+                Estas son algunas de las industrias. Si tienes un proceso comercial, podemos ayudarte.
               </p>
             </div>
           </div>

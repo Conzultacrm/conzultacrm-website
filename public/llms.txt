@@ -10,6 +10,14 @@
 - [Nosotros](https://www.conzultacrm.com/nosotros): Equipo y misión de ConZultaCRM.
 - [Contacto](https://www.conzultacrm.com/contacto): Solicitud de demo gratuita; respuesta en menos de 2 horas hábiles.
 
+## IA en Zoho
+
+Resumen de lo que Zoho ofrece en IA, según sus páginas oficiales. La disponibilidad y los límites dependen del plan.
+
+- Agentes Zia en Zoho CRM: agentes listos para usar (análisis de oportunidades perdidas, prospección, coach de ventas, cotizaciones, recordatorios de cierre) y Agent Studio para crear agentes propios.
+- Zoho MCP: permite que asistentes de IA como Claude o ChatGPT consulten y actúen en apps de Zoho con los permisos de cada usuario.
+- Más detalle y preguntas frecuentes: [Soluciones](https://www.conzultacrm.com/soluciones).
+
 ## Legal
 
 - [Aviso de privacidad](https://www.conzultacrm.com/aviso-privacidad)

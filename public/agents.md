@@ -8,6 +8,11 @@ ConZultaCRM (https://www.conzultacrm.com) es una consultora Zoho Authorized Part
 - Consultar un resumen estructurado del sitio en /llms.txt.
 - Consultar el mapa del sitio en /sitemap.xml.
 
+## Contenido sobre IA en Zoho
+
+- /soluciones incluye un bloque "IA incluida en Zoho" con agentes Zia, Agent Studio y Zoho MCP, y preguntas frecuentes. Las cifras vienen de Zoho y la disponibilidad depende del plan.
+- /llms.txt resume el mismo contenido.
+
 ## Cómo contactar a ConZultaCRM
 
 - Formulario de solicitud de demo: https://www.conzultacrm.com/contacto (respuesta en menos de 2 horas hábiles).

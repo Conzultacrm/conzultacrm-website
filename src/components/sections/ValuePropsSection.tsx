@@ -3,7 +3,7 @@ const values = [
     icon: "🎯",
     title: "Especialistas en Zoho",
     description:
-      "No somos generalistas. Todo nuestro conocimiento está enfocado en el ecosistema Zoho CRM Plus para que tú obtengas el máximo valor de tu inversión.",
+      "Trabajamos solo con Zoho CRM Plus. Conocemos sus módulos y sus límites, y se nota en tu proyecto.",
     color: "blue" as const,
   },
   {
@@ -31,7 +31,7 @@ const values = [
     icon: "📊",
     title: "ROI desde el Día 1",
     description:
-      "Diseñamos tu implementación con KPIs claros. Automatiza tareas manuales, reduce errores y toma decisiones con datos reales — no con corazonadas.",
+      "Definimos contigo los indicadores antes de empezar. Automatizas tareas manuales, reduces errores y decides con datos.",
     color: "violet" as const,
   },
   {
@@ -74,8 +74,8 @@ export default function ValuePropsSection() {
             <span className="gradient-text">y transformar tu negocio</span>
           </h2>
           <p className="text-neutral-500 text-lg">
-            Muchas empresas instalan Zoho CRM y no lo usan. Con ConZultaCRM,
-            eso no pasa — garantizamos adopción real y resultados comprobables.
+            Muchas empresas instalan Zoho CRM y no lo usan. En nuestros proyectos
+            medimos la adopción y los resultados contra los indicadores acordados.
           </p>
         </div>
 
