@@ -1,28 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import WavesBackground from "@/components/backgrounds/WavesBackground";
 
 const WA_URL =
   "https://wa.me/5215584046430?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%2C%20%C2%BFpodr%C3%ADan%20darme%20mayor%20informaci%C3%B3n%3F";
 
 export default function HeroSection() {
-  const orbRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Skip parallax on touch-only devices — avoids jitter when tapping/scrolling on mobile
-    if (!window.matchMedia("(hover: hover)").matches) return;
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!orbRef.current) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 30;
-      const y = (e.clientY / window.innerHeight - 0.5) * 30;
-      orbRef.current.style.transform = `translate(${x}px, ${y}px)`;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <section
       className="relative flex items-center overflow-hidden"
@@ -31,79 +15,17 @@ export default function HeroSection() {
         background: "linear-gradient(135deg, #001A4D 0%, #003A8C 40%, #004AC6 70%, #4C1D95 100%)",
       }}
     >
-      {/* Animated mesh orbs */}
+      {/* Gradient Waves background (lazy WebGL) + legibility scrims */}
+      <WavesBackground variant="home" />
       <div
-        ref={orbRef}
-        className="absolute inset-0 pointer-events-none transition-transform duration-700 ease-out"
-      >
-        <div
-          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-25 blur-3xl animate-float"
-          style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/5 w-80 h-80 rounded-full opacity-20 blur-3xl animate-float-delayed"
-          style={{ background: "radial-gradient(circle, #06B6D4, transparent)" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }}
-        />
-      </div>
-
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(90deg, rgba(0,26,77,0.55) 0%, rgba(0,26,77,0.25) 45%, rgba(0,26,77,0) 70%)" }}
       />
-
-      {/* Organic aurora blobs — individual CSS blur + mix-blend-mode:screen = vivid luminous colors */}
-      {/* Mobile: blobs ~55% smaller + alpha reduced to avoid washed-out bloom */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Blob 1 — cyan top-left */}
-        <div
-          className="w-[280px] h-[280px] md:w-[620px] md:h-[620px] bg-[rgba(34,211,238,0.38)] md:bg-[rgba(34,211,238,0.88)] blur-[22px] md:blur-[45px]"
-          style={{
-            position: "absolute", top: "-5%", left: "-5%",
-            borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-            mixBlendMode: "screen",
-            animation: "blob-1 14s ease-in-out infinite",
-          }}
-        />
-        {/* Blob 2 — violet right */}
-        <div
-          className="w-[240px] h-[240px] md:w-[540px] md:h-[540px] bg-[rgba(167,139,250,0.34)] md:bg-[rgba(167,139,250,0.82)] blur-[25px] md:blur-[50px]"
-          style={{
-            position: "absolute", top: "15%", right: "-8%",
-            borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-            mixBlendMode: "screen",
-            animation: "blob-2 18s ease-in-out infinite 2s",
-          }}
-        />
-        {/* Blob 3 — emerald bottom */}
-        <div
-          className="w-[200px] h-[200px] md:w-[500px] md:h-[500px] bg-[rgba(52,211,153,0.3)] md:bg-[rgba(52,211,153,0.78)] blur-[20px] md:blur-[42px]"
-          style={{
-            position: "absolute", bottom: "-5%", left: "25%",
-            borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-            mixBlendMode: "screen",
-            animation: "blob-3 12s ease-in-out infinite 4s",
-          }}
-        />
-        {/* Blob 4 — pink accent bottom-left */}
-        <div
-          className="w-[160px] h-[160px] md:w-[380px] md:h-[380px] bg-[rgba(244,114,182,0.28)] md:bg-[rgba(244,114,182,0.72)] blur-[18px] md:blur-[38px]"
-          style={{
-            position: "absolute", bottom: "10%", left: "-3%",
-            borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%",
-            mixBlendMode: "screen",
-            animation: "blob-1 10s ease-in-out infinite reverse 1s",
-          }}
-        />
-      </div>
+      {/* Mobile: protect CTAs sitting over the lower waves */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{ background: "linear-gradient(180deg, rgba(0,26,77,0) 55%, rgba(0,26,77,0.6) 100%)" }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
         <div className="grid lg:grid-cols-2 gap-14 items-center">

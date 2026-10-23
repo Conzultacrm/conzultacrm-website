@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import WavesBackground, { type WaveVariant } from "@/components/backgrounds/WavesBackground";
+
+const WAVE_VARIANT: Record<"default" | "teal" | "violet" | "rose", WaveVariant> = { default: "home", teal: "servicios", violet: "soluciones", rose: "nosotros" };
 
 type HeroTheme = "default" | "teal" | "violet" | "rose";
 
@@ -10,23 +13,6 @@ interface HeroThemeConfig {
   orb2: string;
   orb3: string;
 }
-
-// Aurora blob colors per theme [top-left, bottom-right, center]
-// Organic blob colors per theme — mix-blend-mode:screen makes them luminous on dark bg
-const blobColors: Record<HeroTheme, [string, string, string]> = {
-  default: ["rgba(34,211,238,0.88)",  "rgba(167,139,250,0.82)", "rgba(52,211,153,0.78)"],
-  teal:    ["rgba(34,211,238,0.88)",  "rgba(52,211,153,0.82)",  "rgba(96,165,250,0.78)"],
-  violet:  ["rgba(167,139,250,0.88)", "rgba(34,211,238,0.82)",  "rgba(244,114,182,0.78)"],
-  rose:    ["rgba(244,114,182,0.88)", "rgba(167,139,250,0.82)", "rgba(34,211,238,0.78)"],
-};
-
-// Mobile: reduced alpha to avoid bloom/washout on small viewports (blobs ~55% smaller)
-const blobColorsMobile: Record<HeroTheme, [string, string, string]> = {
-  default: ["rgba(34,211,238,0.38)",  "rgba(167,139,250,0.32)", "rgba(52,211,153,0.28)"],
-  teal:    ["rgba(34,211,238,0.38)",  "rgba(52,211,153,0.32)",  "rgba(96,165,250,0.28)"],
-  violet:  ["rgba(167,139,250,0.38)", "rgba(34,211,238,0.32)",  "rgba(244,114,182,0.28)"],
-  rose:    ["rgba(244,114,182,0.38)", "rgba(167,139,250,0.32)", "rgba(34,211,238,0.28)"],
-};
 
 const themes: Record<HeroTheme, HeroThemeConfig> = {
   default: {
@@ -66,6 +52,8 @@ interface AnimatedPageHeroProps {
   align?: "center" | "left";
   /** Visual theme — changes gradient and orb colors per page */
   theme?: HeroTheme;
+  /** Override the wave variant (defaults to the one matching the theme) */
+  waves?: WaveVariant;
 }
 
 export default function AnimatedPageHero({
@@ -76,23 +64,14 @@ export default function AnimatedPageHero({
   decorative,
   align = "center",
   theme = "default",
+  waves,
 }: AnimatedPageHeroProps) {
   const [visible, setVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const t = themes[theme];
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
-  }, []);
-
-  useEffect(() => {
-    // Detect mobile viewport for scaled-down aurora blobs
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const hasDecorative = !!decorative;
@@ -102,68 +81,9 @@ export default function AnimatedPageHero({
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{ background: t.bg }}
     >
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute w-96 h-96 rounded-full opacity-15"
-          style={{
-            top: "-10%",
-            left: "-8%",
-            background: `radial-gradient(circle at center, ${t.orb1}, transparent 70%)`,
-            animation: "float 9s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute w-80 h-80 rounded-full opacity-10"
-          style={{
-            top: "20%",
-            right: "-6%",
-            background: `radial-gradient(circle at center, ${t.orb2}, transparent 70%)`,
-            animation: "float 12s ease-in-out infinite reverse",
-          }}
-        />
-        <div
-          className="absolute w-64 h-64 rounded-full opacity-10"
-          style={{
-            bottom: "-5%",
-            left: "35%",
-            background: `radial-gradient(circle at center, ${t.orb3}, transparent 70%)`,
-            animation: "float 7s ease-in-out infinite 2s",
-          }}
-        />
-      </div>
-
-      {/* Organic aurora blobs — individual CSS blur + mix-blend-mode:screen = vivid on dark bg */}
-      {/* Mobile: blobs ~55% smaller + reduced alpha to avoid bloom/washout */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div style={{
-          position: "absolute", top: "-5%", left: "-5%",
-          width: isMobile ? 220 : 500, height: isMobile ? 220 : 500,
-          borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
-          background: isMobile ? blobColorsMobile[theme][0] : blobColors[theme][0],
-          filter: isMobile ? "blur(20px)" : "blur(42px)",
-          mixBlendMode: "screen",
-          animation: "blob-1 14s ease-in-out infinite",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "-5%", right: "-5%",
-          width: isMobile ? 190 : 440, height: isMobile ? 190 : 440,
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-          background: isMobile ? blobColorsMobile[theme][1] : blobColors[theme][1],
-          filter: isMobile ? "blur(22px)" : "blur(48px)",
-          mixBlendMode: "screen",
-          animation: "blob-2 18s ease-in-out infinite 3s",
-        }} />
-        <div style={{
-          position: "absolute", top: "40%", left: "10%",
-          width: isMobile ? 160 : 360, height: isMobile ? 160 : 360,
-          borderRadius: "30% 60% 60% 40% / 70% 30% 70% 30%",
-          background: isMobile ? blobColorsMobile[theme][2] : blobColors[theme][2],
-          filter: isMobile ? "blur(18px)" : "blur(38px)",
-          mixBlendMode: "screen",
-          animation: "blob-3 12s ease-in-out infinite 6s",
-        }} />
-      </div>
+      {/* Gradient Waves background, one variant per page theme (+ legibility scrim) */}
+      <WavesBackground variant={waves ?? WAVE_VARIANT[theme]} full />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(0,10,40,0.35) 0%, rgba(0,10,40,0.12) 60%, rgba(0,10,40,0.3) 100%)" }} />
 
       {/* Grid overlay */}
       <div

@@ -91,6 +91,7 @@ export default function ContactoPage() {
   return (
     <div className="pt-16">
       <AnimatedPageHero
+        waves="contacto"
         badge="Hablemos"
         title={
           <>
