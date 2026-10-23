@@ -55,11 +55,13 @@ export default function WavesBackground({ variant = "home", full = false }: { va
   const area = "absolute inset-x-0 top-0 pointer-events-none " + (full ? "h-full" : "h-[100svh] md:h-full");
   return (
     <>
-      <div
-        aria-hidden
-        className={area + " md:hidden bg-cover bg-bottom bg-no-repeat"}
-        style={{ backgroundImage: `url(/waves/poster-${variant}.webp)` }}
-      />
+      <div aria-hidden className={area + " md:hidden overflow-hidden"}>
+        {/* Slow CSS drift (compositor-only transform): motion without any JS or GPU shader cost */}
+        <div
+          className="waves-drift absolute -inset-[10%] bg-cover bg-bottom bg-no-repeat"
+          style={{ backgroundImage: `url(/waves/poster-${variant}.webp)` }}
+        />
+      </div>
       {live && (
         <div aria-hidden className={area + " hidden md:block"} style={{ animation: "waves-bg-in 1.2s ease-out both" }}>
           <GradientWaves
