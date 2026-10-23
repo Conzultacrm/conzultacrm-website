@@ -22,12 +22,12 @@ export default function CtaSection() {
           >
             Tu equipo merece una herramienta
             <br />
-            <span className="gradient-text">que realmente use</span>
+            <span className="gradient-text">que sí use</span>
           </h2>
 
           <p className="text-neutral-500 text-xl mb-10 max-w-2xl mx-auto">
-            Agenda una demo gratuita de 30 minutos. Te mostramos exactamente
-            cómo quedaría Zoho CRM Plus configurado para tu empresa, sin compromiso.
+            Agenda una demo gratuita de 30 minutos. Te mostramos cómo
+            quedaría Zoho CRM Plus configurado para tu empresa, sin compromiso.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-14">

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ZohoAiSection from "@/components/sections/ZohoAiSection";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Soluciones Zoho CRM Plus",
   description:
-    "Implementamos Zoho CRM Plus para cualquier industria: inmobiliarias, salud, distribución, construcción y más. Si tienes un proceso comercial, lo transformamos.",
+    "Implementamos Zoho CRM Plus en inmobiliarias, salud, distribución, construcción y otros sectores. Si tienes un proceso comercial, lo configuramos contigo.",
   alternates: { canonical: "/soluciones" },
 };
 
@@ -17,9 +18,9 @@ const solutions = [
     id: "crm-plus",
     icon: "🌐",
     sector: "Plataforma",
-    title: "Zoho CRM Plus: El ecosistema completo",
+    title: "Zoho CRM Plus: todo en una suscripción",
     description:
-      "Zoho CRM Plus no es solo un CRM — es un ecosistema de 8+ aplicaciones integradas que cubren ventas, servicio al cliente, marketing, análisis y colaboración en una sola suscripción.",
+      "Zoho CRM Plus reúne más de 8 aplicaciones para ventas, servicio al cliente, marketing, análisis y colaboración en una sola suscripción, y todas comparten los datos de tu cliente.",
     benefits: [
       "Un solo login para todas las aplicaciones",
       "Datos unificados entre ventas y soporte",
@@ -198,7 +199,7 @@ export default function SolucionesPage() {
             <span className="gradient-text-light gu-rose">a tu negocio</span>
           </>
         }
-        description="No importa tu industria — si tienes un proceso de ventas, clientes que gestionar o equipos que coordinar, implementamos Zoho CRM Plus a tu medida. Sin configuraciones genéricas."
+        description="Si tu empresa vende, atiende clientes o coordina equipos, configuramos Zoho CRM Plus para tu proceso, no para una plantilla."
         decorative={<SolucionesDecorativeCard />}
       />
 
@@ -298,6 +299,9 @@ export default function SolucionesPage() {
           </div>
         </div>
       </section>
+
+      {/* IA en Zoho */}
+      <ZohoAiSection />
 
       {/* CTA */}
       <section className="py-20 px-4 bg-white border-t border-neutral-100">

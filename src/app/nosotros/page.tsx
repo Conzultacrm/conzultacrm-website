@@ -8,7 +8,7 @@ import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
 export const metadata: Metadata = {
   title: "Nosotros: Zoho Authorized Partner México",
   description:
-    "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: que las empresas mexicanas crezcan con tecnología CRM de clase mundial.",
+    "Conoce al equipo de ConZultaCRM, Zoho Authorized Partner en México. Nuestra misión: que las empresas mexicanas vendan y atiendan mejor con Zoho CRM Plus.",
   alternates: { canonical: "/nosotros" },
 };
 
@@ -36,17 +36,17 @@ const values = [
   {
     icon: "🎯",
     title: "Enfoque en resultados",
-    desc: "No implementamos software — transformamos operaciones. Cada proyecto se mide por el impacto real en el negocio.",
+    desc: "Dejamos tu CRM funcionando y a tu equipo usándolo. Cada proyecto parte de indicadores que definimos contigo antes de empezar.",
   },
   {
     icon: "🤝",
     title: "Relaciones a largo plazo",
-    desc: "Preferimos crecer con nuestros clientes. Un cliente satisfecho nos recomienda — esa es nuestra mejor estrategia de ventas.",
+    desc: "Preferimos crecer con nuestros clientes. Un cliente satisfecho nos recomienda, y esa recomendación vale más que un anuncio.",
   },
   {
     icon: "💡",
     title: "Innovación continua",
-    desc: "Zoho lanza actualizaciones constantemente. Nuestros clientes siempre acceden a las funcionalidades más recientes.",
+    desc: "Zoho publica mejoras con frecuencia. Te mostramos las que sirven a tu operación y las activamos contigo.",
   },
   {
     icon: "🇲🇽",
@@ -119,7 +119,7 @@ export default function NosotrosPage() {
             <span className="gradient-text-light gu-violet">ConZultaCRM</span>
           </>
         }
-        description="Somos un equipo de especialistas en Zoho CRM apasionados por ayudar a empresas mexicanas a crecer con tecnología de clase mundial."
+        description="Somos un equipo de especialistas en Zoho CRM. Ayudamos a empresas mexicanas a vender y atender mejor con Zoho CRM Plus."
         decorative={<NosotrosDecorativeCard />}
       />
 
@@ -137,13 +137,13 @@ export default function NosotrosPage() {
                 <span className="gradient-text gu-blue-d">negocios en crecimiento</span>
               </h2>
               <p className="text-neutral-500 text-lg leading-relaxed mb-6">
-                ConZultaCRM nació con una convicción clara: las empresas mexicanas
-                merecen acceder a tecnología CRM de clase mundial, con implementación
-                profesional, en su idioma y adaptada a su realidad de negocio.
+                ConZultaCRM nació con una convicción: las empresas mexicanas
+                merecen un CRM bien implementado, en su idioma y adaptado a su
+                forma de trabajar.
               </p>
               <p className="text-neutral-500 text-lg leading-relaxed mb-8">
                 Como Zoho Authorized Partners, contamos con acceso oficial para
-                implementar, personalizar y dar soporte al ecosistema Zoho CRM Plus
+                implementar, personalizar y dar soporte a Zoho CRM Plus
                 en México y Latinoamérica. Conoce nuestros{" "}
                 <Link href="/servicios" className="text-[#004AC6] font-semibold hover:underline">
                   servicios
@@ -235,7 +235,7 @@ export default function NosotrosPage() {
               {
                 num: "02",
                 title: "En español, de principio a fin",
-                desc: "Diagnóstico, implementación, capacitación y soporte — todo en tu idioma, sin intermediarios.",
+                desc: "Diagnóstico, implementación, capacitación y soporte en español, directo con nuestro equipo.",
               },
               {
                 num: "03",

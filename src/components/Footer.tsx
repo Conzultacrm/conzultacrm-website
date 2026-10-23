@@ -80,7 +80,7 @@ export default function Footer() {
           </h2>
           <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
             Agenda una demo gratuita y descubre cómo ConZultaCRM puede automatizar
-            tus ventas, servicio y marketing en un solo ecosistema.
+            tus ventas, servicio y marketing en una sola plataforma.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/contacto" className="btn-primary">

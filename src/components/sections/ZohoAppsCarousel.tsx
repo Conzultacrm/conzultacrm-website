@@ -123,11 +123,11 @@ export default function ZohoAppsCarousel() {
               style={{ fontFamily: "var(--font-syne)" }}
             >
               Todas las herramientas,{" "}
-              <span className="gradient-text">un solo ecosistema</span>
+              <span className="gradient-text">una sola plataforma</span>
             </h2>
             <p className="text-neutral-500 max-w-xl text-base">
-              Implementamos y conectamos el ecosistema completo de Zoho para que
-              ventas, servicio, marketing y operaciones trabajen en sincronía.
+              Implementamos y conectamos las herramientas de Zoho para que
+              ventas, servicio, marketing y operaciones usen los mismos datos.
             </p>
           </div>
           {/* Zoho Authorized Partner badge */}

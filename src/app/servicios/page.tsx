@@ -40,7 +40,7 @@ const services = [
     title: "Capacitación & Adopción",
     subtitle: "Tu equipo usando el CRM desde el día uno",
     description:
-      "La implementación perfecta no sirve si tu equipo no la adopta. Nuestro programa de capacitación garantiza que todos los usuarios dominen Zoho CRM desde el primer día.",
+      "Un CRM bien configurado no sirve si el equipo no lo usa. Capacitamos a tu equipo con sesiones en vivo y manuales hechos para tu empresa, y medimos el uso después del arranque.",
     includes: [
       "Sesiones de capacitación en vivo (online o presencial)",
       "Manuales de usuario personalizados para tu empresa",
@@ -78,9 +78,9 @@ const services = [
     id: "integraciones",
     icon: "🔗",
     title: "Integraciones & Automatizaciones",
-    subtitle: "Conecta Zoho con todo tu ecosistema tech",
+    subtitle: "Conecta Zoho con las herramientas que ya usas",
     description:
-      "Conectamos Zoho CRM Plus con tus sistemas actuales para crear un ecosistema digital unificado. Sin islas de información, sin trabajo manual duplicado.",
+      "Integramos Zoho CRM Plus con tus sistemas actuales para que cada dato se capture una sola vez.",
     includes: [
       "Integración con WhatsApp Business API",
       "Conexión con ERPs (SAP, CONTPAQi, Aspel, etc.)",
@@ -159,7 +159,7 @@ export default function ServiciosPage() {
             <span className="gradient-text-light gu-cyan">aprovechar Zoho al máximo</span>
           </>
         }
-        description="Desde la implementación inicial hasta el soporte continuo, te acompañamos en cada etapa de tu transformación digital con Zoho CRM Plus."
+        description="Desde el diagnóstico hasta el soporte continuo, trabajamos contigo para que Zoho CRM Plus quede funcionando en tu empresa."
         decorative={<ServiciosDecorativeCard />}
       />
 
@@ -402,7 +402,7 @@ export default function ServiciosPage() {
                   <span className="text-orange-300">Vendidos y cobrados.</span>
                 </p>
                 <p className="text-red-200 text-sm leading-relaxed mb-6">
-                  El agente de ventas con IA diseñado específicamente para
+                  El agente de ventas con IA diseñado para
                   distribuidores industriales en Latinoamérica.
                 </p>
                 <div className="flex flex-wrap gap-2">
