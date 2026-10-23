@@ -11,7 +11,10 @@ export type { WaveVariant };
 // struggles it drops to a lighter quality, and if it still struggles it gives way to a static poster.
 // Visitors who ask for reduced motion / Save-Data, or have no capable GPU, also get the static poster.
 
-type Level = "pending" | "hi" | "lo" | "poster";
+type Level = "pending" | "hi" | "mid" | "lo" | "poster";
+
+// Quality steps. Moving between them changes props only: the animation is never remounted or restarted.
+const STEPS = { hi: { quality: "medium", dpr: 1.25 }, mid: { quality: "medium", dpr: 0.85 }, lo: { quality: "low", dpr: 0.6 } } as const;
 
 function canRunWaves(): boolean {
   try {
@@ -43,9 +46,11 @@ export default function WavesBackground({ variant = "home", full = false }: { va
     });
   }, []);
 
-  // Frame-rate guard: skip the start-up hitch, sample ~1.6 s; too slow -> lighter quality -> static poster.
+  // Frame-rate guard. Skip the start-up hitch, then sample ~2 s. Only a clearly slow device (< ~20 fps) steps down
+  // to a lighter quality, in place (no restart). It re-checks after each step and never switches to the poster
+  // once the animation is running.
   useEffect(() => {
-    if (level !== "hi" && level !== "lo") return;
+    if (level !== "hi" && level !== "mid") return;
     let raf = 0;
     let stopped = false;
     const deltas: number[] = [];
@@ -53,12 +58,13 @@ export default function WavesBackground({ variant = "home", full = false }: { va
     const t0 = performance.now();
     const tick = (now: number) => {
       if (stopped) return;
-      if (last && now - t0 > 900) deltas.push(now - last);
+      if (last && now - t0 > 1500) deltas.push(now - last);
       last = now;
-      if (now - t0 < 2700) raf = requestAnimationFrame(tick);
+      if (now - t0 < 4000) raf = requestAnimationFrame(tick);
       else {
-        const avg = deltas.length ? deltas.reduce((a, b) => a + b, 0) / deltas.length : 0;
-        if (avg > 34) setLevel(level === "hi" ? "lo" : "poster");
+        deltas.sort((x, y) => x - y);
+        const median = deltas.length ? deltas[Math.floor(deltas.length / 2)] : 0;
+        if (median > 50) setLevel(level === "hi" ? "mid" : "lo");
       }
     };
     raf = requestAnimationFrame(tick);
@@ -82,10 +88,9 @@ export default function WavesBackground({ variant = "home", full = false }: { va
   return (
     <div aria-hidden className={area}>
       <GradientWaves
-        key={level}
         {...VARIANTS[variant]}
-        quality={level === "hi" ? "medium" : "low"}
-        dpr={level === "hi" ? (phone ? 1 : 1.25) : 0.75}
+        quality={STEPS[level].quality}
+        dpr={phone ? Math.min(STEPS[level].dpr, 1) : STEPS[level].dpr}
         mouseInteraction={!phone}
         className="absolute inset-0 w-full h-full"
       />
