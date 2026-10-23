@@ -83,7 +83,7 @@ export default function AnimatedPageHero({
     >
       {/* Gradient Waves background, one variant per page theme (+ legibility scrim) */}
       <WavesBackground variant={waves ?? WAVE_VARIANT[theme]} full />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(0,10,40,0.35) 0%, rgba(0,10,40,0.12) 60%, rgba(0,10,40,0.3) 100%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(0,10,40,0.28) 0%, rgba(0,10,40,0.06) 60%, rgba(0,10,40,0.22) 100%)" }} />
 
       {/* Grid overlay */}
       <div

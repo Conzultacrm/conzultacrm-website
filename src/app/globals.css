@@ -581,19 +581,30 @@
   animation: wapp-ping 2.5s ease-out infinite;
 }
 
-/* Phone hero waves (see WavesBackground): slow drift + 4-frame crossfade, 32 s loop.
+/* Hero waves (see WavesBackground): 4-frame crossfade, 24 s loop, plus a slow drift of the whole stack.
    Frame 0 stays underneath; frames 1-3 fade in one after another and all fade out together at the end. */
 @keyframes waves-drift {
-  0%   { transform: translate3d(-2.5%, 1%, 0) scale(1.04); }
-  100% { transform: translate3d(2.5%, -3%, 0) scale(1.14); }
+  0%   { transform: translate3d(-4%, 2%, 0) scale(1.06); }
+  100% { transform: translate3d(4%, -3%, 0) scale(1.2); }
 }
-@keyframes waves-f1 { 0%, 15.6% { opacity: 0 } 25%, 90.6% { opacity: 1 } 100% { opacity: 0 } }
-@keyframes waves-f2 { 0%, 40.6% { opacity: 0 } 50%, 90.6% { opacity: 1 } 100% { opacity: 0 } }
-@keyframes waves-f3 { 0%, 65.6% { opacity: 0 } 75%, 90.6% { opacity: 1 } 100% { opacity: 0 } }
-.waves-drift { will-change: transform; animation: waves-drift 26s ease-in-out infinite alternate; }
-.waves-f1 { animation: waves-f1 32s linear infinite; }
-.waves-f2 { animation: waves-f2 32s linear infinite; }
-.waves-f3 { animation: waves-f3 32s linear infinite; }
+@keyframes waves-f1 { 0%, 12.5% { opacity: 0 } 25%, 87.5% { opacity: 1 } 100% { opacity: 0 } }
+@keyframes waves-f2 { 0%, 37.5% { opacity: 0 } 50%, 87.5% { opacity: 1 } 100% { opacity: 0 } }
+@keyframes waves-f3 { 0%, 62.5% { opacity: 0 } 75%, 87.5% { opacity: 1 } 100% { opacity: 0 } }
+.waves-frame {
+  background-image: var(--m);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .waves-frame { background-image: var(--w); }
+}
+.waves-drift { will-change: transform; animation: waves-drift 22s ease-in-out infinite alternate; }
+.waves-f1 { animation: waves-f1 24s linear infinite; }
+.waves-f2 { animation: waves-f2 24s linear infinite; }
+.waves-f3 { animation: waves-f3 24s linear infinite; }
+/* once the live waves cover the frames, stop animating them (no hidden work) */
+.waves-covered .waves-drift, .waves-covered .waves-f1, .waves-covered .waves-f2, .waves-covered .waves-f3 { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .waves-drift { animation: none; }
   .waves-f1, .waves-f2, .waves-f3 { display: none; }

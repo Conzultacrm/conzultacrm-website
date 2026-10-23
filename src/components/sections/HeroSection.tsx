@@ -19,12 +19,12 @@ export default function HeroSection() {
       <WavesBackground variant="home" />
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(90deg, rgba(0,26,77,0.55) 0%, rgba(0,26,77,0.25) 45%, rgba(0,26,77,0) 70%)" }}
+        style={{ background: "linear-gradient(90deg, rgba(0,8,32,0.5) 0%, rgba(0,8,32,0.2) 45%, rgba(0,8,32,0) 70%)" }}
       />
       {/* Mobile: protect CTAs sitting over the lower waves */}
       <div
         className="absolute inset-0 pointer-events-none md:hidden"
-        style={{ background: "linear-gradient(180deg, rgba(0,26,77,0) 55%, rgba(0,26,77,0.6) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(0,8,32,0) 55%, rgba(0,8,32,0.45) 100%)" }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">

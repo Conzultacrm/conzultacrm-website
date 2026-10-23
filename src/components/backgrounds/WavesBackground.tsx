@@ -2,36 +2,27 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { VARIANTS, type WaveVariant } from "./wave-palettes";
 
-// Phones get a pre-rendered image of the same waves (a few KB, zero GPU/JS cost).
-// Larger screens load the live WebGL version after first paint; until then, and for visitors who
-// ask for reduced motion, enable Save-Data or have no capable GPU, the section's CSS gradient stays.
+export type { WaveVariant };
+
+// Live WebGL is loaded lazily and only after the page has settled.
 const GradientWaves = dynamic(() => import("./GradientWaves"), { ssr: false });
 
-export type WaveVariant = "home" | "servicios" | "soluciones" | "nosotros" | "contacto";
+// Layers, from bottom to top:
+//  1. Pre-rendered frames (public/waves) crossfading over a 24 s loop + slow drift: opacity/transform only, no JS,
+//     moves from the first second on every device and is the fallback for everything below.
+//  2. Live waves (React Bits "Gradient Waves"), fading in once the page has settled, on phones too.
+//     It measures its own frame rate: if the device struggles it drops to a lighter quality, and if it
+//     still struggles it removes itself and the frames above keep going.
+type Level = "off" | "hi" | "lo";
 
-// One engine, one palette per page; shape parameters differ so pages don't look identical.
-export const VARIANTS: Record<WaveVariant, Record<string, string | number>> = {
-  // base blue/violet body + cyan crest (high contrast on navy)
-  home: { backgroundColor: "#001A4D", horizonColor: "#1E3FD0", waveColor: "#6D5BFF", crestColor: "#67E8F9", brightness: 1.15, relief: 1.6, sheen: 0.9 },
-  // teal body + mint crest
-  servicios: { backgroundColor: "#002A2A", horizonColor: "#0B7285", waveColor: "#14B8A6", crestColor: "#A7F3D0", brightness: 1.15, relief: 1.6, sheen: 0.9, lightAngle: 70, tilt: 56 },
-  // deep violet body + pink crest
-  soluciones: { backgroundColor: "#12053A", horizonColor: "#5B21B6", waveColor: "#8B5CF6", crestColor: "#F5D0FE", brightness: 1.15, relief: 1.6, sheen: 0.9, lightAngle: 150, tilt: 70 },
-  // magenta body + warm gold crest
-  nosotros: { backgroundColor: "#1F0A2E", horizonColor: "#A21CAF", waveColor: "#E879F9", crestColor: "#FDE68A", brightness: 1.1, relief: 1.6, sheen: 0.9, lightAngle: 100, tilt: 60 },
-  // calmer: slower, softer, cyan-ice crest
-  contacto: { backgroundColor: "#001A4D", horizonColor: "#2F2FA8", waveColor: "#6D5BFF", crestColor: "#A5F3FC", brightness: 1.05, relief: 1.3, speed: 0.2, amplitude: 1.8, lightAngle: 130 },
-};
-
-// WebGL on a software rasterizer (no GPU) would compete with the page for the main thread.
 function canRunWaves(): boolean {
   try {
-    if (window.matchMedia("(max-width: 767px)").matches) return false; // phones use the poster
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
     const nav = navigator as Navigator & { connection?: { saveData?: boolean }; deviceMemory?: number };
     if (nav.connection?.saveData) return false;
-    if ((nav.hardwareConcurrency ?? 8) < 4 || (nav.deviceMemory ?? 8) < 4) return false;
+    if ((nav.hardwareConcurrency ?? 8) < 4 || (nav.deviceMemory ?? 8) < 3) return false;
     const probe = document.createElement("canvas");
     const gl = probe.getContext("webgl2", { failIfMajorPerformanceCaveat: true });
     if (!gl) return false;
@@ -45,52 +36,82 @@ function canRunWaves(): boolean {
 }
 
 export default function WavesBackground({ variant = "home", full = false }: { variant?: WaveVariant; full?: boolean }) {
-  const [live, setLive] = useState(false);
   const [frames, setFrames] = useState(false);
+  const [level, setLevel] = useState<Level>("off");
+  const [phone, setPhone] = useState(false);
+  const [covered, setCovered] = useState(false);
 
+  // Stagger the heavy work behind the first paint: extra frames first, live waves later.
   useEffect(() => {
     const timers: number[] = [];
     const w = window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
     const idle = (cb: () => void) => (w.requestIdleCallback ? w.requestIdleCallback(cb, { timeout: 1500 }) : window.setTimeout(cb, 200));
-    // Everything beyond the first poster waits until the page has fully loaded and settled, so it never
-    // competes with the initial render. On client-side navigations (page already settled) it starts right away.
+    const isPhone = window.matchMedia("(max-width: 767px)").matches;
     const settle = (delay: number, cb: () => void) => {
-      const go = () => timers.push(window.setTimeout(() => idle(cb), performance.now() > 6000 ? 0 : delay));
+      const go = () => timers.push(window.setTimeout(() => idle(cb), performance.now() > delay + 2500 ? 0 : delay));
       if (document.readyState === "complete") go();
       else window.addEventListener("load", go, { once: true });
     };
-    settle(1500, () => setFrames(true));
-    settle(4000, () => {
-      if (canRunWaves()) setLive(true);
+    settle(800, () => setFrames(true));
+    settle(isPhone ? 12000 : 6000, () => {
+      if (!canRunWaves()) return;
+      setPhone(isPhone);
+      setLevel(isPhone ? "lo" : "hi");
     });
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const area = "absolute inset-x-0 top-0 pointer-events-none " + (full ? "h-full" : "h-[100svh] md:h-full");
-  const img = (n: number | "wide") => ({ backgroundImage: `url(/waves/poster-${variant}-${n}.webp)` });
+  // Frame-rate guard: skip the start-up hitch, sample ~1.6 s; too slow -> lighter quality -> off.
+  useEffect(() => {
+    if (level === "off") return;
+    let raf = 0;
+    let stopped = false;
+    const deltas: number[] = [];
+    let last = 0;
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      if (stopped) return;
+      if (last && now - t0 > 700) deltas.push(now - last);
+      last = now;
+      if (now - t0 < 2300) raf = requestAnimationFrame(tick);
+      else {
+        const avg = deltas.length ? deltas.reduce((a, b) => a + b, 0) / deltas.length : 0;
+        if (avg > 30) setLevel(level === "hi" ? "lo" : "off");
+        else setCovered(true);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+    };
+  }, [level]);
+
+  const frame = (i: number) =>
+    ({
+      "--m": `url(/waves/poster-${variant}-m-${i}.webp)`,
+      "--w": `url(/waves/poster-${variant}-w-${i}.webp)`,
+    }) as React.CSSProperties;
+
+  const area = "absolute inset-x-0 top-0 overflow-hidden pointer-events-none " + (full ? "h-full" : "h-[100svh] md:h-full");
   return (
     <>
-      {/* Phones: real frames of the waves crossfading slowly (opacity + transform only, no JS, no shader).
-          Frame 0 is always underneath, so there is never an empty gap. */}
-      <div aria-hidden className={area + " md:hidden overflow-hidden"}>
-        <div className="waves-drift absolute -inset-[10%]">
-          <div className="absolute inset-0 bg-cover bg-bottom bg-no-repeat" style={img(0)} />
-          {frames && [1, 2, 3].map(i => (
-            <div key={i} className={`waves-f${i} absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-0`} style={img(i)} />
-          ))}
+      <div aria-hidden className={area + (covered && level !== "off" ? " waves-covered" : "")}>
+        <div className="waves-drift absolute -inset-[8%]">
+          <div className="waves-frame absolute inset-0" style={frame(0)} />
+          {frames &&
+            [1, 2, 3].map(i => <div key={i} className={`waves-frame waves-f${i} absolute inset-0 opacity-0`} style={frame(i)} />)}
         </div>
       </div>
-
-      {/* Larger screens: the first frame of the live waves is always there (also while navigating between
-          pages), and the live canvas fades in on top once the GPU is ready. */}
-      <div aria-hidden className={area + " hidden md:block bg-cover bg-bottom bg-no-repeat"} style={img("wide")} />
-      {live && (
-        <div aria-hidden className={area + " hidden md:block"} style={{ animation: "waves-bg-in 1.5s ease-out both" }}>
+      {level !== "off" && (
+        <div aria-hidden className={area} style={{ animation: "waves-bg-in 1.5s ease-out both" }}>
           <GradientWaves
+            key={level}
             {...VARIANTS[variant]}
             intro={false}
-            quality="medium"
-            dpr={1.25}
+            quality={level === "hi" ? "medium" : "low"}
+            dpr={level === "hi" ? 1.25 : 0.75}
+            mouseInteraction={!phone}
             className="absolute inset-0 w-full h-full"
           />
           <style>{`@keyframes waves-bg-in{from{opacity:0}to{opacity:1}}`}</style>
