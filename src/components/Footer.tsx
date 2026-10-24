@@ -44,6 +44,7 @@ const links = {
     { label: "Nosotros", href: "/nosotros" },
     { label: "Servicios", href: "/servicios" },
     { label: "Soluciones", href: "/soluciones" },
+    { label: "Recursos", href: "/recursos" },
     { label: "Contacto", href: "/contacto" },
   ],
   soluciones: [
