@@ -35,6 +35,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/recursos`,
+      lastModified: "2026-10-23",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/recursos/cuanto-cuesta-implementar-zoho-crm-mexico`,
+      lastModified: "2026-10-23",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/recursos/zoho-crm-vs-hubspot-vs-salesforce`,
+      lastModified: "2026-10-23",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/recursos/migrar-de-excel-a-zoho-crm`,
+      lastModified: "2026-10-23",
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/aviso-privacidad`,
       lastModified: "2026-05-27",
       changeFrequency: "yearly",
