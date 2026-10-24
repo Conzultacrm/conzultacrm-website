@@ -1,5 +1,8 @@
 export type Guide = {
   slug: string;
+  /** Short topic label and accent color for the listing */
+  tag: string;
+  color: string;
   title: string;
   /** <title> / H1 */
   h1: string;
@@ -14,6 +17,8 @@ export type Guide = {
 export const guides: Guide[] = [
   {
     slug: "cuanto-cuesta-implementar-zoho-crm-mexico",
+    tag: "Costos",
+    color: "#2563EB",
     title: "Cuánto cuesta implementar Zoho CRM en México",
     h1: "Cuánto cuesta implementar Zoho CRM en México: de qué depende el presupuesto",
     description:
@@ -80,6 +85,8 @@ export const guides: Guide[] = [
   },
   {
     slug: "zoho-crm-vs-hubspot-vs-salesforce",
+    tag: "Comparativa",
+    color: "#7C3AED",
     title: "Zoho CRM vs HubSpot vs Salesforce",
     h1: "Zoho CRM vs HubSpot vs Salesforce: cómo elegir el CRM para tu empresa",
     description:
@@ -140,6 +147,8 @@ export const guides: Guide[] = [
   },
   {
     slug: "migrar-de-excel-a-zoho-crm",
+    tag: "Migración",
+    color: "#0D9488",
     title: "Cómo migrar de Excel a Zoho CRM",
     h1: "Cómo migrar de Excel a Zoho CRM paso a paso",
     description:
