@@ -20,16 +20,16 @@ const WA_URL =
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  // The menu is open only for the page it was opened on, so navigating closes it without an effect.
+  const [openPath, setOpenPath] = useState<string | null>(null);
   const pathname = usePathname();
+  const mobileOpen = openPath === pathname;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => setMobileOpen(false), [pathname]);
 
   const isHome = pathname === "/";
   // Cuando el menú está abierto: navbar se vuelve sólido aunque sea home al top
@@ -134,7 +134,7 @@ export default function Navbar() {
                 ? "text-white hover:bg-white/10"
                 : "text-neutral-700 hover:bg-neutral-100"
             }`}
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setOpenPath(mobileOpen ? null : pathname)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
