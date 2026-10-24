@@ -18,7 +18,7 @@ const products = [
   },
   {
     name: "Zoho Desk",
-    ai: "Agente de servicio al cliente de Zia, integrado en Desk.",
+    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Servicio al cliente",
     description:
       "Centraliza todos los tickets de soporte provenientes de email, WhatsApp, chat y redes sociales. Ofrece respuestas rápidas y consistentes con IA integrada.",
@@ -70,7 +70,6 @@ const products = [
   },
   {
     name: "Zoho Survey",
-    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Encuestas y feedback",
     description:
       "Mide la satisfacción de clientes y empleados con encuestas profesionales. Conecta los resultados directamente al CRM para actuar sobre la retroalimentación en tiempo real.",
@@ -132,6 +131,7 @@ const products = [
   },
   {
     name: "Zoho WorkDrive",
+    ai: "Se conecta a asistentes de IA externos (Claude, ChatGPT) con Zoho MCP.",
     tagline: "Gestión documental en la nube",
     description:
       "Almacenamiento y colaboración documental para equipos. Gestiona contratos, propuestas y documentos críticos con versionado, control de acceso y edición en tiempo real.",

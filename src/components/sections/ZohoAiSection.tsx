@@ -10,7 +10,7 @@ const cards = [
   {
     tag: "Agent Studio",
     title: "Crea agentes para tu operación",
-    text: "Defines el rol y las tareas de un agente con instrucciones en lenguaje natural, con opción de bajo código. Zoho habla de más de 700 acciones disponibles dentro de sus aplicaciones.",
+    text: "Defines el rol y las tareas de un agente con instrucciones en lenguaje natural, con opción de bajo código.",
     color: "#7C3AED",
   },
   {
