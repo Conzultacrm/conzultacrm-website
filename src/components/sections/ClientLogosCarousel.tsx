@@ -102,9 +102,16 @@ function Strip({ logos, reverse }: { logos: ClientLogo[]; reverse: boolean }) {
         style={{ background: `linear-gradient(to left, ${BG}, transparent)` }} />
 
       <div ref={ref} className="flex py-3" style={{ width: "max-content", willChange: "transform" }}>
-        {quadrupled.map((logo, i) => (
-          <LogoChip key={`${logo.name}-${i}`} logo={logo} />
-        ))}
+        {quadrupled.map((logo, i) =>
+          i < logos.length ? (
+            <LogoChip key={`${logo.name}-${i}`} logo={logo} />
+          ) : (
+            // Repeated copies exist only for the endless marquee: hidden from screen readers
+            <div key={`${logo.name}-${i}`} inert aria-hidden="true" className="contents">
+              <LogoChip logo={logo} />
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

@@ -274,19 +274,19 @@
 
   .badge-blue {
     background: rgba(37,99,235,0.1);
-    color: #2563EB;
+    color: #004AC6;
     border: 1px solid rgba(37,99,235,0.2);
   }
 
   .badge-violet {
     background: rgba(124,58,237,0.1);
-    color: #7C3AED;
+    color: #6D28D9;
     border: 1px solid rgba(124,58,237,0.2);
   }
 
   .badge-cyan {
     background: rgba(6,182,212,0.1);
-    color: #0891B2;
+    color: #0E7490;
     border: 1px solid rgba(6,182,212,0.2);
   }
 
@@ -386,7 +386,7 @@
   will-change: transform;
   animation: marquee 50s linear infinite;
 }
-.animate-marquee:hover { animation-play-state: paused; }
+.animate-marquee:hover, .animate-marquee:focus-within { animation-play-state: paused; }
 
 /* Client logos — separate keyframes with exact binary fractions (no rounding error) */
 @keyframes marquee-clients-fwd {
@@ -403,7 +403,7 @@
   will-change: transform;
   animation: marquee-clients-fwd 45s linear infinite;
 }
-.animate-marquee-clients:hover { animation-play-state: paused; }
+.animate-marquee-clients:hover, .animate-marquee-clients:focus-within { animation-play-state: paused; }
 
 .animate-marquee-clients-reverse {
   width: max-content;
@@ -411,7 +411,7 @@
   animation: marquee-clients-rev 45s linear infinite;
   animation-fill-mode: backwards;
 }
-.animate-marquee-clients-reverse:hover { animation-play-state: paused; }
+.animate-marquee-clients-reverse:hover, .animate-marquee-clients-reverse:focus-within { animation-play-state: paused; }
 
 @media (max-width: 767px) {
   .animate-marquee                 { animation-duration: 35s; }
@@ -509,3 +509,33 @@
   background: inherit;
   animation: wapp-ping 2.5s ease-out infinite;
 }
+
+
+/* Reduced motion: no endless marquees or decorative loops. The marquees become a static wrapped list
+   (the repeated copies, marked aria-hidden, are removed). */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-clients,
+  .animate-marquee-clients-reverse {
+    animation: none !important;
+    width: auto !important;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: none !important;
+  }
+  .animate-marquee [aria-hidden="true"],
+  .animate-marquee-clients [aria-hidden="true"],
+  .animate-marquee-clients-reverse [aria-hidden="true"] {
+    display: none;
+  }
+  .animate-float,
+  .animate-float-delayed,
+  .animate-pulse-glow,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+}
+
+/* Decorative step numbers: drawn from a data attribute so they are not read as low-contrast text */
+.step-num::before { content: attr(data-num); }

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Pause, Play } from "lucide-react";
 
 const testimonials = [
   {
@@ -85,43 +86,40 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startAutoPlay = () => {
-    intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-  };
+  const [paused, setPaused] = useState(false); // user pressed pause
+  const [hovered, setHovered] = useState(false); // pointer or keyboard focus inside
+  const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    startAutoPlay();
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  const handleDotClick = (idx: number) => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setActive(idx);
-    startAutoPlay();
-  };
+  // Auto-advance only when the user has not paused it, is not interacting with it and has not asked for reduced motion.
+  const playing = !paused && !hovered && !reduced;
+  useEffect(() => {
+    if (!playing) return;
+    const id = setInterval(() => setActive((prev) => (prev + 1) % testimonials.length), 5000);
+    return () => clearInterval(id);
+  }, [playing]);
 
-  const handlePrev = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    startAutoPlay();
-  };
-
-  const handleNext = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setActive((prev) => (prev + 1) % testimonials.length);
-    startAutoPlay();
-  };
+  const handlePrev = () => setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const handleNext = () => setActive((prev) => (prev + 1) % testimonials.length);
+  const handleDotClick = (idx: number) => setActive(idx);
 
   const current = testimonials[active];
 
   return (
     <section
+      aria-roledescription="carousel"
+      aria-label="Testimonios de clientes"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
       className="section-padding"
       style={{
         background: "linear-gradient(135deg, #001A4D 0%, #002966 60%, #1E0A4A 100%)",
@@ -140,7 +138,7 @@ export default function TestimonialsSection() {
 
         {/* Main testimonial */}
         <div className="max-w-3xl mx-auto">
-          <div className="glass rounded-3xl p-8 lg:p-12 text-center transition-all duration-500">
+          <div aria-live={playing ? "off" : "polite"} className="glass rounded-3xl p-8 lg:p-12 text-center transition-all duration-500">
             {/* Sector badge */}
             <span className="badge badge-white mb-5">{current.sector}</span>
 
@@ -181,7 +179,7 @@ export default function TestimonialsSection() {
             <button
               onClick={handlePrev}
               className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
-              aria-label="Anterior testimonial"
+              aria-label="Testimonio anterior"
             >
               <ChevronLeftIcon className="w-4 h-4 text-white" />
             </button>
@@ -192,13 +190,16 @@ export default function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => handleDotClick(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === active
-                      ? "w-8 h-2.5 bg-white"
-                      : "w-2.5 h-2.5 bg-white/30 hover:bg-white/50"
-                  }`}
-                  aria-label={`Testimonial ${i + 1}`}
-                />
+                  className="h-6 min-w-6 px-0.5 flex items-center justify-center rounded-full"
+                  aria-label={`Ir al testimonio ${i + 1}`}
+                  aria-current={i === active ? "true" : undefined}
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      i === active ? "w-8 h-2.5 bg-white" : "w-2.5 h-2.5 bg-white/40"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
@@ -206,9 +207,18 @@ export default function TestimonialsSection() {
             <button
               onClick={handleNext}
               className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
-              aria-label="Siguiente testimonial"
+              aria-label="Testimonio siguiente"
             >
               <ChevronRightIcon className="w-4 h-4 text-white" />
+            </button>
+
+            {/* Pause / play (WCAG 2.2.2) */}
+            <button
+              onClick={() => setPaused((p) => !p)}
+              className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-white"
+              aria-label={paused ? "Reanudar rotación automática" : "Pausar rotación automática"}
+            >
+              {paused ? <Play size={14} aria-hidden /> : <Pause size={14} aria-hidden />}
             </button>
           </div>
         </div>

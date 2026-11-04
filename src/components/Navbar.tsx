@@ -82,7 +82,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav aria-label="Principal" className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
@@ -135,7 +135,9 @@ export default function Navbar() {
                 : "text-neutral-700 hover:bg-neutral-100"
             }`}
             onClick={() => setOpenPath(mobileOpen ? null : pathname)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={mobileOpen}
+            aria-controls="menu-movil"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -144,6 +146,8 @@ export default function Navbar() {
 
       {/* Mobile Menu — absolute para no cambiar altura del header fixed y evitar re-compositing */}
       <div
+        id="menu-movil"
+        inert={!mobileOpen}
         className={`lg:hidden absolute left-0 right-0 transition-all duration-300 z-50 ${
           mobileOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -152,7 +156,7 @@ export default function Navbar() {
         style={{ top: "100%" }}
       >
         <div className="bg-white border-t border-neutral-200 shadow-xl">
-          <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+          <nav aria-label="Menú móvil" className="max-w-7xl mx-auto px-4 py-4 space-y-1">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
@@ -184,7 +188,7 @@ export default function Navbar() {
                 Solicitar Demo Gratuita
               </Link>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>

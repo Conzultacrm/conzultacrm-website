@@ -233,7 +233,7 @@ const sections = [
             </a>
           </p>
         </div>
-        <p className="text-sm text-neutral-400">
+        <p className="text-sm text-neutral-500">
           Última actualización: julio 2026
         </p>
       </div>

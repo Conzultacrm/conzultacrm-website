@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Servicios de Implementación Zoho CRM Plus",
@@ -192,7 +193,7 @@ export default function ServiciosPage() {
                     <div>
                       <span
                         className="text-xs font-bold uppercase tracking-wider"
-                        style={{ color: service.color, fontFamily: "var(--font-syne)" }}
+                        style={{ color: readable(service.color), fontFamily: "var(--font-syne)" }}
                       >
                         {service.subtitle}
                       </span>
@@ -215,7 +216,7 @@ export default function ServiciosPage() {
                       className="badge"
                       style={{
                         background: `${service.color}10`,
-                        color: service.color,
+                        color: readable(service.color),
                         border: `1px solid ${service.color}20`,
                       }}
                     >
@@ -258,7 +259,7 @@ export default function ServiciosPage() {
                         >
                           <svg
                             className="w-3 h-3"
-                            style={{ color: service.color }}
+                            style={{ color: readable(service.color) }}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"

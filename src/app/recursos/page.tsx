@@ -4,6 +4,7 @@ import AnimatedPageHero from "@/components/AnimatedPageHero";
 import CtaSection from "@/components/sections/CtaSection";
 import { guides } from "@/content/guides";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Guías de Zoho CRM para empresas en México",
@@ -32,7 +33,7 @@ export default function RecursosPage() {
                 >
                   <Ico e={g.icon} />
                 </div>
-                <span className="badge" style={{ background: `${g.color}12`, color: g.color, border: `1px solid ${g.color}25` }}>
+                <span className="badge" style={{ background: `${g.color}12`, color: readable(g.color), border: `1px solid ${g.color}25` }}>
                   {g.tag}
                 </span>
               </div>
@@ -41,8 +42,8 @@ export default function RecursosPage() {
               </h2>
               <p className="text-neutral-500 text-sm leading-relaxed mb-6">{g.excerpt}</p>
               <div className="mt-auto flex items-center justify-between text-sm">
-                <span className="text-neutral-400">{g.readMinutes} min de lectura</span>
-                <span className="font-semibold group-hover:underline" style={{ color: g.color }}>Leer la guía →</span>
+                <span className="text-neutral-500">{g.readMinutes} min de lectura</span>
+                <span className="font-semibold group-hover:underline" style={{ color: readable(g.color) }}>Leer la guía →</span>
               </div>
             </Link>
           ))}

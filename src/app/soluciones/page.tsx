@@ -3,6 +3,7 @@ import Link from "next/link";
 import ZohoAiSection from "@/components/sections/ZohoAiSection";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Soluciones Zoho CRM Plus",
@@ -234,7 +235,7 @@ export default function SolucionesPage() {
                       className="badge"
                       style={{
                         background: `${sol.color}12`,
-                        color: sol.color,
+                        color: readable(sol.color),
                         border: `1px solid ${sol.color}25`,
                       }}
                     >
@@ -284,7 +285,7 @@ export default function SolucionesPage() {
                             style={{
                               background: `${sol.color}12`,
                               border: `1px solid ${sol.color}25`,
-                              color: sol.color,
+                              color: readable(sol.color),
                             }}
                           >
                             ✓

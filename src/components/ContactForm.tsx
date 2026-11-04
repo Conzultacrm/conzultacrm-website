@@ -82,9 +82,13 @@ function Label({
   );
 }
 
-function FieldError({ msg }: { msg?: string }) {
+function FieldError({ id, msg }: { id: string; msg?: string }) {
   if (!msg) return null;
-  return <p className="mt-1 text-xs text-red-500">{msg}</p>;
+  return (
+    <p id={id} role="alert" className="mt-1 text-xs text-red-600">
+      {msg}
+    </p>
+  );
 }
 
 function Input({
@@ -112,7 +116,10 @@ function Input({
       value={value}
       onChange={onChange}
       autoComplete={autoComplete}
-      className={`w-full px-4 py-3 rounded-xl border text-sm text-neutral-900 placeholder:text-neutral-400 bg-neutral-50 focus:bg-white focus:outline-none transition-all duration-200 ${
+      aria-required="true"
+      aria-invalid={error ? true : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
+      className={`w-full px-4 py-3 rounded-xl border text-sm text-neutral-900 placeholder:text-neutral-500 bg-neutral-50 focus:bg-white focus:outline-none transition-all duration-200 ${
         error
           ? "border-red-300 focus:border-red-400 focus:ring-2 focus:ring-red-100"
           : "border-neutral-200 focus:border-[#004AC6] focus:ring-2 focus:ring-blue-100"
@@ -141,8 +148,11 @@ function Select({
       id={id}
       value={value}
       onChange={onChange}
+      aria-required="true"
+      aria-invalid={error ? true : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
       className={`w-full px-4 py-3 rounded-xl border text-sm bg-neutral-50 focus:bg-white focus:outline-none transition-all duration-200 appearance-none cursor-pointer ${
-        value ? "text-neutral-900" : "text-neutral-400"
+        value ? "text-neutral-900" : "text-neutral-500"
       } ${
         error
           ? "border-red-300 focus:border-red-400 focus:ring-2 focus:ring-red-100"
@@ -238,7 +248,7 @@ export default function ContactForm() {
   // ── Success ──────────────────────────────────────────────────────────
   if (status === "success") {
     return (
-      <div className="w-full bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
+      <div role="status" aria-live="polite" className="w-full bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
         <div className="px-4 sm:px-8 py-14 text-center">
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
@@ -290,7 +300,7 @@ export default function ContactForm() {
             <WhatsAppIcon className="w-4 h-4" />
             También escríbenos por WhatsApp
           </a>
-          <p className="mt-6 text-xs text-neutral-400 break-all">
+          <p className="mt-6 text-xs text-neutral-500 break-all">
             Recibirás una confirmación en{" "}
             <strong className="text-neutral-500">{form.email}</strong>
           </p>
@@ -302,7 +312,7 @@ export default function ContactForm() {
   // ── Error ─────────────────────────────────────────────────────────────
   if (status === "error") {
     return (
-      <div className="bg-white border border-neutral-200 rounded-2xl p-10 text-center shadow-sm">
+      <div role="alert" className="bg-white border border-neutral-200 rounded-2xl p-10 text-center shadow-sm">
         <div className="w-16 h-16 bg-red-50 border border-red-200 rounded-full flex items-center justify-center mx-auto mb-5">
           <svg
             className="w-8 h-8 text-red-400"
@@ -388,7 +398,7 @@ export default function ContactForm() {
                       ? "text-white"
                       : step === s.num
                       ? "text-white"
-                      : "bg-neutral-100 text-neutral-400"
+                      : "bg-neutral-100 text-neutral-500"
                   }`}
                   style={
                     step >= s.num
@@ -419,7 +429,7 @@ export default function ContactForm() {
                 </div>
                 <span
                   className={`text-xs font-semibold transition-colors ${
-                    step >= s.num ? "text-neutral-700" : "text-neutral-400"
+                    step >= s.num ? "text-neutral-700" : "text-neutral-500"
                   }`}
                 >
                   {s.label}
@@ -457,7 +467,7 @@ export default function ContactForm() {
                 error={errors.nombre}
                 autoComplete="name"
               />
-              <FieldError msg={errors.nombre} />
+              <FieldError id={`${uid}-nombre-error`} msg={errors.nombre} />
             </div>
             <div>
               <Label htmlFor={`${uid}-email`}>Correo electrónico *</Label>
@@ -470,7 +480,7 @@ export default function ContactForm() {
                 error={errors.email}
                 autoComplete="email"
               />
-              <FieldError msg={errors.email} />
+              <FieldError id={`${uid}-email-error`} msg={errors.email} />
             </div>
             <div>
               <Label htmlFor={`${uid}-telefono`}>Teléfono *</Label>
@@ -483,7 +493,7 @@ export default function ContactForm() {
                 error={errors.telefono}
                 autoComplete="tel"
               />
-              <FieldError msg={errors.telefono} />
+              <FieldError id={`${uid}-telefono-error`} msg={errors.telefono} />
             </div>
           </div>
         )}
@@ -501,7 +511,7 @@ export default function ContactForm() {
                 error={errors.empresa}
                 autoComplete="organization"
               />
-              <FieldError msg={errors.empresa} />
+              <FieldError id={`${uid}-empresa-error`} msg={errors.empresa} />
             </div>
             <div>
               <Label htmlFor={`${uid}-industria`}>Industria *</Label>
@@ -513,7 +523,7 @@ export default function ContactForm() {
                 placeholder="Selecciona tu industria"
                 error={errors.industria}
               />
-              <FieldError msg={errors.industria} />
+              <FieldError id={`${uid}-industria-error`} msg={errors.industria} />
             </div>
             <div>
               <Label>Tamaño del equipo *</Label>
@@ -536,7 +546,7 @@ export default function ContactForm() {
                   </button>
                 ))}
               </div>
-              <FieldError msg={errors.tamano} />
+              <FieldError id={`${uid}-tamano-error`} msg={errors.tamano} />
             </div>
           </div>
         )}
@@ -571,7 +581,7 @@ export default function ContactForm() {
                 placeholder="Cuéntanos tu reto principal: qué procesos quieres automatizar, cuántos usuarios tendrás, o cualquier detalle que nos ayude a preparar una demo personalizada..."
                 value={form.mensaje}
                 onChange={f("mensaje")}
-                className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 focus:bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#004AC6] focus:ring-2 focus:ring-blue-100 transition-all duration-200 resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-neutral-50 focus:bg-white text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:border-[#004AC6] focus:ring-2 focus:ring-blue-100 transition-all duration-200 resize-none"
               />
             </div>
           </div>
@@ -677,7 +687,7 @@ export default function ContactForm() {
 
       {/* Footer note */}
       <div className="px-6 py-3 border-t border-neutral-100 bg-neutral-50">
-        <p className="text-xs text-neutral-400 text-center">
+        <p className="text-xs text-neutral-500 text-center">
           Tus datos están seguros y protegidos.{" "}
           <span className="font-semibold text-neutral-500">
             Nunca compartimos tu información

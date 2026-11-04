@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Contacto: Solicita tu Demo de Zoho CRM",
@@ -137,7 +138,7 @@ export default function ContactoPage() {
                 </p>
                 <span
                   className="text-sm font-semibold flex items-center gap-1 transition-colors"
-                  style={{ color: opt.color }}
+                  style={{ color: readable(opt.color) }}
                 >
                   {opt.action}
                   <svg

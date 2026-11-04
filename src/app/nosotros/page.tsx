@@ -5,6 +5,7 @@ import AnimatedPageHero from "@/components/AnimatedPageHero";
 import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
 import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Nosotros: Zoho Authorized Partner México",
@@ -85,7 +86,7 @@ function NosotrosDecorativeCard() {
           ].map((s) => (
             <div key={s.label} className="flex items-center justify-between">
               <span className="text-blue-200 text-xs">{s.label}</span>
-              <span className="font-bold text-sm" style={{ color: s.color }}>
+              <span className="font-bold text-sm" style={{ color: readable(s.color) }}>
                 {s.value}
               </span>
             </div>
@@ -300,7 +301,7 @@ export default function NosotrosPage() {
           <Link href="/contacto" className="btn-primary">
             Agendar llamada gratuita
           </Link>
-          <p className="mt-5 text-sm text-neutral-400">
+          <p className="mt-5 text-sm text-neutral-500">
             O escríbenos a{" "}
             <a
               href="mailto:info@conzultacrm.com"

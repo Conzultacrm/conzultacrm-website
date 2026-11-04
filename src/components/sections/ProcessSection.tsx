@@ -91,14 +91,14 @@ export default function ProcessSection() {
               {/* Step number */}
               <div className="flex items-start justify-between mb-4">
                 <span
-                  className="text-5xl font-bold leading-none"
+                  aria-hidden="true"
+                  data-num={step.num}
+                  className="step-num text-5xl font-bold leading-none"
                   style={{
                     fontFamily: "var(--font-syne)",
                     color: idx < 3 ? "rgba(37,99,235,0.12)" : "rgba(124,58,237,0.12)",
                   }}
-                >
-                  {step.num}
-                </span>
+                />
                 <div className="text-2xl"><Ico e={step.icon} /></div>
               </div>
 
@@ -117,7 +117,7 @@ export default function ProcessSection() {
 
               {/* Deliverable */}
               <div className="border-t border-neutral-100 pt-3">
-                <p className="text-xs text-neutral-400 mb-0.5 uppercase font-semibold tracking-wide">
+                <p className="text-xs text-neutral-500 mb-0.5 uppercase font-semibold tracking-wide">
                   Entregable
                 </p>
                 <p className="text-sm font-medium text-neutral-700">{step.deliverable}</p>
@@ -126,7 +126,7 @@ export default function ProcessSection() {
               {/* Arrow connector (not for last) */}
               {idx < steps.length - 1 && idx % 3 !== 2 && (
                 <div className="hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 -right-3 z-10 w-6 h-6 bg-white border border-neutral-200 rounded-full">
-                  <svg className="w-3 h-3 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-3 h-3 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>

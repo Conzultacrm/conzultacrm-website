@@ -132,7 +132,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <p className="text-neutral-500 text-xs">
+            <p className="text-neutral-400 text-xs">
               Zoho es una marca registrada de Zoho Corporation Pvt. Ltd.
             </p>
           </div>

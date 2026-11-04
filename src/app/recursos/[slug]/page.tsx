@@ -62,7 +62,7 @@ export default async function GuidePage({ params }: Props) {
       <AnimatedPageHero badge="Guía" title={g.h1} description={g.description} theme="violet" />
       <article className="section-padding bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-neutral-400 mb-8">
+          <p className="text-sm text-neutral-500 mb-8">
             {g.readMinutes} min de lectura · Actualizado el{" "}
             {new Date(g.updated + "T12:00:00").toLocaleDateString("es-MX", { day: "numeric", month: "long", year: "numeric" })}
           </p>

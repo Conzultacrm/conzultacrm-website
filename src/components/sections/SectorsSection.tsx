@@ -1,6 +1,7 @@
 import Ico from "@/components/ui/Ico";
 
 import Link from "next/link";
+import { readable } from "@/lib/readable";
 
 const sectors = [
   {
@@ -133,7 +134,7 @@ export default function SectorsSection() {
                 <Link
                   href="/contacto"
                   className="text-sm font-semibold transition-colors flex items-center gap-1"
-                  style={{ color: sector.color, fontFamily: "var(--font-syne)" }}
+                  style={{ color: readable(sector.color), fontFamily: "var(--font-syne)" }}
                 >
                   Ver caso de uso
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

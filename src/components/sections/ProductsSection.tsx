@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { readable } from "@/lib/readable";
 
 const CRM_PLUS_URL =
   "https://store.zoho.com/ResellerCustomerSignUp.do?id=d71cea3d76bbe0f2db5a487a3822bf2e&locale=es";
@@ -216,7 +217,7 @@ export default function ProductsSection() {
                   >
                     {product.name}
                   </h3>
-                  <p className="text-xs font-semibold" style={{ color: product.color }}>
+                  <p className="text-xs font-semibold" style={{ color: readable(product.color) }}>
                     {product.tagline}
                   </p>
                 </div>
@@ -240,7 +241,7 @@ export default function ProductsSection() {
 
               {"ai" in product && product.ai && (
                 <p className="mb-4 rounded-lg px-3 py-2 text-xs leading-relaxed text-neutral-600" style={{ background: `${product.color}10`, border: `1px solid ${product.color}25` }}>
-                  <span className="font-bold" style={{ color: product.color }}>IA en Zoho · </span>
+                  <span className="font-bold" style={{ color: readable(product.color) }}>IA en Zoho · </span>
                   {product.ai}
                 </p>
               )}
@@ -251,7 +252,7 @@ export default function ProductsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-auto inline-flex items-center gap-1.5 text-xs font-bold transition-colors group/link"
-                style={{ color: product.color }}
+                style={{ color: readable(product.color) }}
               >
                 Prueba gratis
                 <svg

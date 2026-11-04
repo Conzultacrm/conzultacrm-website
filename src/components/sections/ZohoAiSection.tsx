@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { readable } from "@/lib/readable";
 
 const cards = [
   {
@@ -73,7 +74,7 @@ export default function ZohoAiSection() {
             <div key={c.tag} className="card flex flex-col gap-3">
               <span
                 className="inline-block self-start text-xs font-bold rounded-full px-3 py-1"
-                style={{ background: `${c.color}15`, color: c.color }}
+                style={{ background: `${c.color}15`, color: readable(c.color) }}
               >
                 {c.tag}
               </span>
@@ -84,7 +85,7 @@ export default function ZohoAiSection() {
             </div>
           ))}
         </div>
-        <p className="text-neutral-400 text-xs mb-12">
+        <p className="text-neutral-500 text-xs mb-12">
           Datos publicados por Zoho (zoho.com/mcp y la página de agentes de Zia). La disponibilidad y los límites dependen de tu plan.
         </p>
 

@@ -62,7 +62,7 @@ function AppChip({ app }: { app: ZohoApp }) {
         <p className="text-sm font-bold text-neutral-800 leading-none mb-0.5" style={{ fontFamily: "var(--font-syne)" }}>
           Zoho {app.name}
         </p>
-        <p className="text-xs text-neutral-400 leading-none">{app.tagline}</p>
+        <p className="text-xs text-neutral-500 leading-none">{app.tagline}</p>
       </div>
     </a>
   );
@@ -133,7 +133,7 @@ export default function ZohoAppsCarousel() {
           <div className="flex justify-center lg:justify-end shrink-0">
             <Link href="/nosotros" className="inline-block hover:opacity-80 transition-opacity">
               <div className="bg-white border border-neutral-200 shadow-sm rounded-xl px-4 py-3">
-                <p className="text-neutral-400 text-xs mb-1.5 text-center" style={{ fontFamily: "var(--font-syne)" }}>
+                <p className="text-neutral-500 text-xs mb-1.5 text-center" style={{ fontFamily: "var(--font-syne)" }}>
                   Zoho Authorized Partner
                 </p>
                 <Image
@@ -158,9 +158,16 @@ export default function ZohoAppsCarousel() {
           style={{ background: "linear-gradient(to left, #F2F2F8, transparent)" }} />
 
         <div ref={marqueeRef} className="flex py-3" style={{ width: "max-content", willChange: "transform" }}>
-          {tripled.map((app, i) => (
-            <AppChip key={`${app.name}-${i}`} app={app} />
-          ))}
+          {tripled.map((app, i) =>
+            i < APPS.length ? (
+              <AppChip key={`${app.name}-${i}`} app={app} />
+            ) : (
+              // Repeated copies exist only for the endless marquee: hidden from screen readers
+              <div key={`${app.name}-${i}`} inert aria-hidden="true" className="contents">
+                <AppChip app={app} />
+              </div>
+            ),
+          )}
         </div>
       </div>
     </section>
