@@ -16,5 +16,5 @@ const MAP: Record<string, LucideIcon> = {
 
 export default function Ico({ e, className }: { e: string; className?: string }) {
   const Icon = MAP[e] ?? CircleHelp;
-  return <Icon aria-hidden size="1em" strokeWidth={1.75} className={className} />;
+  return <Icon aria-hidden size="1em" strokeWidth={1.75} className={`inline-block shrink-0 ${className ?? ""}`} />;
 }

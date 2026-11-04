@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Contacto: Solicita tu Demo de Zoho CRM",
@@ -69,7 +70,7 @@ function ContactoDecorativeCard() {
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl"
               style={{ background: "rgba(255,255,255,0.08)" }}
             >
-              <span className="text-xl"><Ico e={c.icon} /></span>
+              <span className="text-xl text-white/90"><Ico e={c.icon} /></span>
               <div>
                 <p className="text-white text-sm font-semibold">{c.channel}</p>
                 <p className="text-blue-200 text-xs">{c.status}</p>
@@ -122,6 +123,7 @@ export default function ContactoPage() {
                   style={{
                     background: `${opt.color}12`,
                     border: `1.5px solid ${opt.color}25`,
+                  color: readable(opt.color),
                   }}
                 >
                   <Ico e={opt.icon} />

@@ -124,7 +124,7 @@ export default function StatsSection() {
             },
           ].map((item) => (
             <div key={item.title} className="glass rounded-2xl p-6 text-center">
-              <div className="text-3xl mb-3"><Ico e={item.icon} /></div>
+              <div className="text-3xl mb-3 text-white/90"><Ico e={item.icon} /></div>
               <h3
                 className="text-white font-bold mb-2"
                 style={{ fontFamily: "var(--font-syne)" }}

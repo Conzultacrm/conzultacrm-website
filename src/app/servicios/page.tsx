@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import Ico from "@/components/ui/Ico";
+import { readable } from "@/lib/readable";
 
 export const metadata: Metadata = {
   title: "Servicios de Implementación Zoho CRM Plus",
@@ -185,6 +186,7 @@ export default function ServiciosPage() {
                       style={{
                         background: `${service.color}12`,
                         border: `1.5px solid ${service.color}25`,
+                      color: readable(service.color),
                       }}
                     >
                       <Ico e={service.icon} />
