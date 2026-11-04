@@ -102,7 +102,7 @@ export default function PostImplementationSection() {
 
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
-                style={{ background: `${pillar.color}18`, border: `1.5px solid ${pillar.color}35` }}
+                style={{ background: `${pillar.color}18`, border: `1.5px solid ${pillar.color}35`, color: pillar.color }}
               >
                 <Ico e={pillar.icon} />
               </div>

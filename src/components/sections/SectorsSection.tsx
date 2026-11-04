@@ -1,6 +1,7 @@
 import Ico from "@/components/ui/Ico";
 
 import Link from "next/link";
+import { readable } from "@/lib/readable";
 
 const sectors = [
   {
@@ -103,6 +104,7 @@ export default function SectorsSection() {
                   style={{
                     background: `${sector.color}12`,
                     border: `1.5px solid ${sector.color}22`,
+                  color: readable(sector.color),
                   }}
                 >
                   <Ico e={sector.icon} />

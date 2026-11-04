@@ -66,7 +66,7 @@ function NosotrosDecorativeCard() {
         style={{ animation: "float 6s ease-in-out infinite" }}
       >
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl text-white">
             <Ico e="🏆" />
           </div>
           <div>
@@ -97,7 +97,7 @@ function NosotrosDecorativeCard() {
         className="absolute -bottom-4 -right-4 bg-white rounded-xl px-3 py-2 shadow-lg flex items-center gap-2"
         style={{ animation: "float 8s ease-in-out infinite 1s" }}
       >
-        <span className="text-lg"><Ico e="✅" /></span>
+        <span className="text-lg text-emerald-600"><Ico e="✅" /></span>
         <span className="text-xs font-bold text-neutral-800">Certificados</span>
       </div>
     </div>
@@ -282,7 +282,7 @@ export default function NosotrosPage() {
       <section className="py-16 bg-neutral-50 border-t border-neutral-100">
         <div className="max-w-xl mx-auto px-4 text-center">
           <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl"
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl text-white"
             style={{ background: "#004AC6" }}
           >
             <Ico e="📅" />
