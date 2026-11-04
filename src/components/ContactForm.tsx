@@ -371,7 +371,7 @@ export default function ContactForm() {
           </p>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-400" />
           <span className="text-xs text-neutral-500 font-medium">En línea</span>
         </div>
       </div>
@@ -394,7 +394,7 @@ export default function ContactForm() {
                     step >= s.num
                       ? {
                           background:
-                            "linear-gradient(135deg, #004AC6, #7C3AED)",
+                            "#004AC6",
                         }
                       : {}
                   }
@@ -432,7 +432,7 @@ export default function ContactForm() {
                     style={{
                       width: step > s.num ? "100%" : "0%",
                       background:
-                        "linear-gradient(to right, #004AC6, #7C3AED)",
+                        "#004AC6",
                     }}
                   />
                 </div>

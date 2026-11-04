@@ -130,7 +130,6 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="section-label text-blue-300 mb-3">Casos de éxito</p>
           <h2
             className="text-3xl lg:text-4xl font-bold text-white"
             style={{ fontFamily: "var(--font-syne)" }}
@@ -160,7 +159,7 @@ export default function TestimonialsSection() {
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mb-2"
                 style={{
-                  background: "linear-gradient(135deg, #2563EB, #7C3AED)",
+                  background: "#004AC6",
                 }}
               >
                 {current.name[0]}

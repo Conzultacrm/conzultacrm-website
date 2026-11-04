@@ -117,7 +117,6 @@ export default function ZohoAppsCarousel() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div className="text-center lg:text-left">
-            <p className="section-label mb-3">Ecosistema</p>
             <h2
               className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3"
               style={{ fontFamily: "var(--font-syne)" }}

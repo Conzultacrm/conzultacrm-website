@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ZohoAiSection from "@/components/sections/ZohoAiSection";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
+import Ico from "@/components/ui/Ico";
 
 export const metadata: Metadata = {
   title: "Soluciones Zoho CRM Plus",
@@ -167,12 +168,12 @@ function SolucionesDecorativeCard() {
               className="flex items-center gap-2 px-2.5 py-2 rounded-xl"
               style={{ background: s.color + "15", border: `1px solid ${s.color}30` }}
             >
-              <span className="text-base">{s.icon}</span>
+              <span className="text-base"><Ico e={s.icon} /></span>
               <span className="text-white text-xs font-medium">{s.label}</span>
             </div>
           ))}
           <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl col-span-2" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-            <span className="text-base">🌐</span>
+            <span className="text-base"><Ico e="🌐" /></span>
             <span className="text-blue-200 text-xs">+ Salud, Servicios, Tecnología y más</span>
           </div>
         </div>
@@ -227,7 +228,7 @@ export default function SolucionesPage() {
                         border: `1.5px solid ${sol.color}25`,
                       }}
                     >
-                      {sol.icon}
+                      <Ico e={sol.icon} />
                     </div>
                     <span
                       className="badge"

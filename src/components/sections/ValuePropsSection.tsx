@@ -1,3 +1,5 @@
+import Ico from "@/components/ui/Ico";
+
 const values = [
   {
     icon: "🎯",
@@ -64,7 +66,6 @@ export default function ValuePropsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="section-label mb-3">Por qué elegirnos</p>
           <h2
             className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
@@ -84,7 +85,7 @@ export default function ValuePropsSection() {
           {values.map((v) => (
             <div key={v.title} className={`card ${colorMap[v.color].border}`}>
               <div className={`${colorMap[v.color].icon} mb-4 text-xl`}>
-                {v.icon}
+                <Ico e={v.icon} />
               </div>
               <h3
                 className="text-lg font-bold text-neutral-900 mb-2"

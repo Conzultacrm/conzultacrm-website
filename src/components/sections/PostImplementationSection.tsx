@@ -1,3 +1,5 @@
+import Ico from "@/components/ui/Ico";
+
 import Link from "next/link";
 
 const WA_URL =
@@ -53,25 +55,14 @@ export default function PostImplementationSection() {
         background: "linear-gradient(160deg, #0A0A14 0%, #0D1A3A 50%, #1A0A3D 100%)",
       }}
     >
-      {/* Subtle grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="section-label text-blue-300 mb-3">Soporte & Mantenimiento</p>
 
           {/* Stat chip */}
           <div className="inline-flex items-center gap-2.5 bg-white/8 border border-white/15 rounded-full px-5 py-2 mb-6">
             <span
-              className="w-2 h-2 rounded-full bg-red-400 animate-pulse"
+              className="w-2 h-2 rounded-full bg-red-400"
             />
             <span className="text-white/80 text-sm font-semibold" style={{ fontFamily: "var(--font-syne)" }}>
               El 70% de los CRM fracasan después del go-live
@@ -113,7 +104,7 @@ export default function PostImplementationSection() {
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5"
                 style={{ background: `${pillar.color}18`, border: `1.5px solid ${pillar.color}35` }}
               >
-                {pillar.icon}
+                <Ico e={pillar.icon} />
               </div>
 
               <h3
