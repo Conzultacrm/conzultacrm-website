@@ -51,26 +51,6 @@ export default function AnimatedPageHero({
       <WavesBackground variant={waves ?? WAVE_VARIANT[theme]} full />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(0,10,40,0.28) 0%, rgba(0,10,40,0.06) 60%, rgba(0,10,40,0.22) 100%)" }} />
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Diagonal accent line */}
-      <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0.1) 41%, transparent 41%)",
-          backgroundSize: "400px 400px",
-        }}
-      />
-
       {/* Content */}
       <div
         className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${

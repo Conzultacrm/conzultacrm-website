@@ -60,7 +60,6 @@ export default function ZohoAiSection() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-10">
-          <p className="section-label mb-3">IA en Zoho</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4" style={{ fontFamily: "var(--font-syne)" }}>
             IA incluida en Zoho: agentes, Agent Studio y MCP
           </h2>

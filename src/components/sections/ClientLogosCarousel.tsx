@@ -115,9 +115,6 @@ export default function ClientLogosCarousel() {
     <section className="py-16" style={{ background: BG }}>
       {/* Heading */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        <p className="section-label mb-3" style={{ color: "rgba(255,255,255,0.45)" }}>
-          Clientes
-        </p>
         <h2
           className="text-2xl lg:text-3xl font-bold text-white"
           style={{ fontFamily: "var(--font-syne)" }}

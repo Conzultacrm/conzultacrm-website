@@ -1,3 +1,5 @@
+import Ico from "@/components/ui/Ico";
+
 const steps = [
   {
     num: "01",
@@ -66,7 +68,6 @@ export default function ProcessSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="section-label mb-3">Metodología</p>
           <h2
             className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
@@ -98,7 +99,7 @@ export default function ProcessSection() {
                 >
                   {step.num}
                 </span>
-                <div className="text-2xl">{step.icon}</div>
+                <div className="text-2xl"><Ico e={step.icon} /></div>
               </div>
 
               {/* Duration badge */}
@@ -151,7 +152,7 @@ export default function ProcessSection() {
                 className="h-full rounded-full animate-gradient"
                 style={{
                   width: "100%",
-                  background: "linear-gradient(90deg, #2563EB, #7C3AED, #06B6D4, #2563EB)",
+                  background: "#004AC6",
                   backgroundSize: "200%",
                 }}
               />

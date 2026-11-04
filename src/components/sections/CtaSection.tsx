@@ -7,14 +7,8 @@ export default function CtaSection() {
   return (
     <section className="section-padding mesh-bg">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Glow decoration */}
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl opacity-30 pointer-events-none"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }}
-        />
 
         <div className="relative">
-          <p className="section-label mb-4">Próximo paso</p>
 
           <h2
             className="text-3xl lg:text-5xl font-bold text-neutral-900 mb-6 leading-[1.1]"

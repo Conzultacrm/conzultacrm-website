@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
+import Ico from "@/components/ui/Ico";
 
 export const metadata: Metadata = {
   title: "Servicios de Implementación Zoho CRM Plus",
@@ -186,7 +187,7 @@ export default function ServiciosPage() {
                         border: `1.5px solid ${service.color}25`,
                       }}
                     >
-                      {service.icon}
+                      <Ico e={service.icon} />
                     </div>
                     <div>
                       <span
@@ -356,7 +357,7 @@ export default function ServiciosPage() {
                     key={feat.title}
                     className="p-4 rounded-xl bg-neutral-50 border border-neutral-100"
                   >
-                    <div className="text-2xl mb-2">{feat.icon}</div>
+                    <div className="text-2xl mb-2"><Ico e={feat.icon} /></div>
                     <p className="font-bold text-neutral-900 text-sm mb-1" style={{ fontFamily: "var(--font-syne)" }}>
                       {feat.title}
                     </p>
@@ -378,11 +379,6 @@ export default function ServiciosPage() {
               className="relative rounded-2xl p-8 overflow-hidden hidden lg:block"
               style={{ background: "linear-gradient(135deg, #1A0A0A 0%, #7B1A1A 50%, #C0392B 100%)" }}
             >
-              {/* Background orb */}
-              <div
-                className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20"
-                style={{ background: "radial-gradient(circle, #FF6B35, transparent 70%)" }}
-              />
               <div className="relative">
                 <a href="https://www.peaking.ai" target="_blank" rel="noopener noreferrer" className="inline-block hover:opacity-80 transition-opacity">
                   <Image
@@ -492,7 +488,6 @@ export default function ServiciosPage() {
       {/* Pricing note */}
       <section className="py-10 bg-neutral-50 border-t border-neutral-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="section-label text-neutral-400 mb-2">Inversión</p>
           <h2
             className="text-xl font-bold text-neutral-800 mb-3"
             style={{ fontFamily: "var(--font-syne)" }}

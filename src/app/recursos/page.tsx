@@ -3,6 +3,7 @@ import Link from "next/link";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import CtaSection from "@/components/sections/CtaSection";
 import { guides } from "@/content/guides";
+import Ico from "@/components/ui/Ico";
 
 export const metadata: Metadata = {
   title: "Guías de Zoho CRM para empresas en México",
@@ -29,7 +30,7 @@ export default function RecursosPage() {
                   className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl"
                   style={{ background: `${g.color}12`, border: `1.5px solid ${g.color}25` }}
                 >
-                  {g.icon}
+                  <Ico e={g.icon} />
                 </div>
                 <span className="badge" style={{ background: `${g.color}12`, color: g.color, border: `1px solid ${g.color}25` }}>
                   {g.tag}

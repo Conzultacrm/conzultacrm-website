@@ -72,7 +72,6 @@ export default function Footer() {
         }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <p className="section-label text-blue-200 mb-3">¿Listo para crecer?</p>
           <h2
             className="text-3xl lg:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-syne)" }}

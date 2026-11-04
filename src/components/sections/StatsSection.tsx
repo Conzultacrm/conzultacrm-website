@@ -1,5 +1,7 @@
 "use client";
 
+import Ico from "@/components/ui/Ico";
+
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
@@ -89,7 +91,6 @@ export default function StatsSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="section-label text-blue-300 mb-3">Resultados comprobados</p>
           <h2
             className="text-3xl lg:text-4xl font-bold text-white"
             style={{ fontFamily: "var(--font-syne)" }}
@@ -123,7 +124,7 @@ export default function StatsSection() {
             },
           ].map((item) => (
             <div key={item.title} className="glass rounded-2xl p-6 text-center">
-              <div className="text-3xl mb-3">{item.icon}</div>
+              <div className="text-3xl mb-3"><Ico e={item.icon} /></div>
               <h3
                 className="text-white font-bold mb-2"
                 style={{ fontFamily: "var(--font-syne)" }}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
+import Ico from "@/components/ui/Ico";
 
 export const metadata: Metadata = {
   title: "Contacto: Solicita tu Demo de Zoho CRM",
@@ -54,7 +55,7 @@ function ContactoDecorativeCard() {
         style={{ animation: "float 7s ease-in-out infinite" }}
       >
         <div className="flex items-center gap-2 mb-4">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
           <p className="text-emerald-300 text-xs font-semibold">Disponibles ahora</p>
         </div>
         <div className="space-y-3">
@@ -68,7 +69,7 @@ function ContactoDecorativeCard() {
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl"
               style={{ background: "rgba(255,255,255,0.08)" }}
             >
-              <span className="text-xl">{c.icon}</span>
+              <span className="text-xl"><Ico e={c.icon} /></span>
               <div>
                 <p className="text-white text-sm font-semibold">{c.channel}</p>
                 <p className="text-blue-200 text-xs">{c.status}</p>
@@ -81,7 +82,7 @@ function ContactoDecorativeCard() {
         className="absolute -bottom-3 left-4 bg-white text-xs font-bold text-neutral-800 px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5"
         style={{ animation: "float 9s ease-in-out infinite 1.5s" }}
       >
-        <span className="text-base">🎯</span> Demo gratis, sin compromiso
+        <span className="text-base"><Ico e="🎯" /></span> Demo gratis, sin compromiso
       </div>
     </div>
   );
@@ -123,7 +124,7 @@ export default function ContactoPage() {
                     border: `1.5px solid ${opt.color}25`,
                   }}
                 >
-                  {opt.icon}
+                  <Ico e={opt.icon} />
                 </div>
                 <h2
                   className="font-bold text-neutral-900 mb-1.5"
@@ -160,7 +161,6 @@ export default function ContactoPage() {
           <div className="grid lg:grid-cols-5 gap-14 items-start">
             {/* Left info */}
             <div className="lg:col-span-2">
-              <p className="section-label mb-3">Formulario de contacto</p>
               <h2
                 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-5"
                 style={{ fontFamily: "var(--font-syne)" }}
@@ -204,7 +204,7 @@ export default function ContactoPage() {
                   <div key={item.step} className="flex items-start gap-3">
                     <span
                       className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
-                      style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }}
+                      style={{ background: "#004AC6" }}
                     >
                       {item.step}
                     </span>

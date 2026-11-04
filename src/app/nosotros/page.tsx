@@ -4,6 +4,7 @@ import Link from "next/link";
 import AnimatedPageHero from "@/components/AnimatedPageHero";
 import NosotrosStatsGrid from "@/components/NosotrosStatsGrid";
 import ClientLogosCarousel from "@/components/sections/ClientLogosCarousel";
+import Ico from "@/components/ui/Ico";
 
 export const metadata: Metadata = {
   title: "Nosotros: Zoho Authorized Partner México",
@@ -66,7 +67,7 @@ function NosotrosDecorativeCard() {
       >
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-            🏆
+            <Ico e="🏆" />
           </div>
           <div>
             <p className="text-white font-bold text-sm" style={{ fontFamily: "var(--font-syne)" }}>
@@ -96,7 +97,7 @@ function NosotrosDecorativeCard() {
         className="absolute -bottom-4 -right-4 bg-white rounded-xl px-3 py-2 shadow-lg flex items-center gap-2"
         style={{ animation: "float 8s ease-in-out infinite 1s" }}
       >
-        <span className="text-lg">✅</span>
+        <span className="text-lg"><Ico e="✅" /></span>
         <span className="text-xs font-bold text-neutral-800">Certificados</span>
       </div>
     </div>
@@ -128,7 +129,6 @@ export default function NosotrosPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="section-label mb-3">Nuestra misión</p>
               <h2
                 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-6"
                 style={{ fontFamily: "var(--font-syne)" }}
@@ -185,7 +185,6 @@ export default function NosotrosPage() {
       <section className="section-padding mesh-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="section-label mb-3">Nuestros valores</p>
             <h2
               className="text-3xl font-bold text-neutral-900"
               style={{ fontFamily: "var(--font-syne)" }}
@@ -196,7 +195,7 @@ export default function NosotrosPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
               <div key={v.title} className="card text-center">
-                <div className="text-4xl mb-4">{v.icon}</div>
+                <div className="text-4xl mb-4"><Ico e={v.icon} /></div>
                 <h3
                   className="font-bold text-neutral-900 mb-2"
                   style={{ fontFamily: "var(--font-syne)" }}
@@ -214,7 +213,6 @@ export default function NosotrosPage() {
       <section className="section-padding bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="section-label mb-3">Compromiso</p>
             <h2
               className="text-3xl font-bold text-neutral-900 mb-4"
               style={{ fontFamily: "var(--font-syne)" }}
@@ -251,13 +249,13 @@ export default function NosotrosPage() {
               <div
                 key={item.num}
                 className="flex gap-5 p-6 rounded-2xl border border-neutral-100 bg-neutral-50 hover:border-blue-200 hover:bg-white hover:shadow-md transition-all"
-                style={{ borderLeft: "4px solid transparent", backgroundImage: "linear-gradient(white, white), linear-gradient(135deg, #004AC6, #7C3AED)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box" }}
+                style={{ borderLeft: "4px solid transparent", backgroundImage: "linear-gradient(white, white), linear-gradient(#004AC6, #004AC6)", backgroundOrigin: "border-box", backgroundClip: "padding-box, border-box" }}
               >
                 <span
                   className="text-5xl font-black leading-none flex-shrink-0 mt-1"
                   style={{
                     fontFamily: "var(--font-syne)",
-                    background: "linear-gradient(135deg, #004AC6, #7C3AED)",
+                    background: "#004AC6",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -285,9 +283,9 @@ export default function NosotrosPage() {
         <div className="max-w-xl mx-auto px-4 text-center">
           <div
             className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl"
-            style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }}
+            style={{ background: "#004AC6" }}
           >
-            📅
+            <Ico e="📅" />
           </div>
           <h2
             className="text-2xl font-bold text-neutral-900 mb-3"
